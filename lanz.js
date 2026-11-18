@@ -1,8 +1,8 @@
-/* Bloque de lanzamiento «De 0 a 100 por día», arriba de todo. Para quitarlo: borrar este archivo y su <script> en index.html */
+/* Bloque de lanzamiento «De 0 a 100 por día», primero de la lista de productos (antes de #manifestacion). Para quitarlo: borrar este archivo y su <script> en index.html */
 (function () {
   if (location.pathname !== "/" && location.pathname !== "/index.html") return;
   var URL_ = "https://de0a100.romimanfiesta.com/?utm_source=productos&utm_medium=hub&utm_campaign=lanzamiento";
-  var css = "#lz{position:relative;z-index:30;overflow:hidden;background:linear-gradient(135deg,#8e0f45 0%,#c2185b 45%,#e0457f 100%);color:#fff;font-family:Montserrat,system-ui,sans-serif;padding:26px 16px 30px}"
+  var css = "#lz{position:relative;z-index:20;scroll-margin-top:80px;overflow:hidden;background:linear-gradient(135deg,#8e0f45 0%,#c2185b 45%,#e0457f 100%);color:#fff;font-family:Montserrat,system-ui,sans-serif;padding:26px 16px 30px}"
     + "#lz *{box-sizing:border-box}#lz .in{max-width:980px;margin:0 auto;display:flex;align-items:center;gap:28px}"
     + "#lz .tx{flex:1;min-width:0}#lz img{width:300px;max-width:42%;border-radius:22px;box-shadow:0 22px 50px -18px rgba(0,0,0,.55);transform:rotate(2deg);animation:lzf 4s ease-in-out infinite}"
     + "#lz .ey{display:inline-flex;align-items:center;gap:8px;background:#f6d98a;color:#5a0a2c;font-weight:600;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;padding:7px 14px;border-radius:999px;animation:lzp 1.8s ease-in-out infinite}"
@@ -27,9 +27,15 @@
   function poner() {
     if (document.getElementById("lz") || !document.body) return;
     if (!document.getElementById("lz-css")) { var s = document.createElement("style"); s.id = "lz-css"; s.textContent = css; document.head.appendChild(s); }
+    var ancla = document.getElementById("manifestacion");
+    if (!ancla || !ancla.parentNode) return;
     var d = document.createElement("section"); d.id = "lz"; d.setAttribute("aria-label", "Lanzamiento"); d.innerHTML = html;
-    document.body.insertBefore(d, document.body.firstChild);
+    ancla.parentNode.insertBefore(d, ancla);
   }
-  function arrancar() { setTimeout(poner, 600); var n = 0, t = setInterval(function () { poner(); if (++n > 20) clearInterval(t); }, 700); }
+  function arrancar() {
+    setTimeout(poner, 600);
+    var n = 0, t = setInterval(function () { poner(); if (++n > 20) clearInterval(t); }, 700);
+    try { new MutationObserver(function () { if (!document.getElementById("lz")) poner(); }).observe(document.body, { childList: true, subtree: true }); } catch (e) {}
+  }
   if (document.readyState === "complete") arrancar(); else window.addEventListener("load", arrancar);
 })();
