@@ -171,10 +171,11 @@ h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;line-height:1.05;te
   <div class="stats">
     <div class="card stat"><b id="sHechas">0</b><small>misiones hechas</small></div>
     <div class="card stat"><b><span class="fuego" aria-hidden="true">🔥</span><span id="sRacha">0</span></b><small>días seguidos</small></div>
-    <div class="card stat"><b id="sPct">0%</b><small>de tu idea lista</small></div>
+    <div class="card stat"><b id="sPct">0%</b><small>de tu preparación</small></div>
   </div>
 
   <h2 style="margin-top:28px;font-size:32px">Tu camino <span class="g">a la clase</span></h2>
+  <p class="muted" style="margin:6px 0 0">Estas misiones son para que llegues preparada: con las herramientas listas, Claude conociéndote y tus temas investigados. Qué vas a vender lo decidimos en la clase.</p>
   <p class="muted" style="margin:4px 0 0" id="planTxt"></p>
   <div id="plan"></div>
 
@@ -217,105 +218,98 @@ const REGALOS=[
 ];
 const ZOOM="";        /* ej: "https://zoom.us/j/..." */
 /* ============================================================ */
-const CL="https://claude.ai/new",PROY="https://claude.ai/projects";
-/* Cada misión: e icono, t título, por (por qué importa), pasos, frases [título, texto] para su cuaderno en Claude, links [texto, url], lleva (con qué te quedás) */
+const CL="https://claude.ai/new",PROY="https://claude.ai/projects",DESC="https://claude.ai/download";
+/* Misiones de PREPARACIÓN: el producto se crea en vivo en la clase. Acá llegan con las herramientas listas, Claude conociéndolas, su material juntado y 2 o 3 temas investigados. */
 const M=[
  {e:"🌱",t:"Tu porqué",
-  por:"Cuando aparezcan las ganas de tirar la toalla (van a aparecer), tu porqué es lo que te sostiene. Y además es la base de cómo vas a hablarle a tu clienta.",
-  pasos:["Buscá 15 minutos sin interrupciones y un cuaderno de papel o el celular.","Pegale a Claude la primera frase y respondé sus preguntas sin pensarlo demasiado: lo primero que sale es lo más verdadero.","Pedile la segunda frase para convertirlo en tu «carta de un año».","Guardá las 3 frases finales: las vas a pegar en tu cuaderno de Claude mañana."],
-  frases:[["Tu porqué","Ayudame a escribir mi porqué. Haceme 5 preguntas, de a una, sobre por qué quiero mi propio negocio digital, qué quiero dejar de hacer y cómo quiero vivir dentro de un año. Esperá mi respuesta antes de pasar a la siguiente. Al final resumilo en 3 frases cortas, con mis palabras."],
-   ["Carta de un año","Con lo que te conté, escribí una carta de mí misma dentro de un año, contándome cómo es un martes cualquiera de mi vida con mi negocio funcionando: a qué hora me levanto, qué hago, qué ya no hago y cómo me siento. Que sea concreta, cálida y en primera persona."]],
+  por:"Esto es para prepararte para la clase. Antes de las herramientas, lo más importante: para qué hacés esto. Cuando aparezcan las ganas de tirar la toalla (van a aparecer), tu porqué te sostiene. Y además Claude lo va a usar para escribir con tu verdad.",
+  pasos:["Buscá 20 minutos sin interrupciones.","Pegale a Claude la frase «Entrevista de mi porqué» y respondé de a una pregunta, sin pensarlo demasiado: lo primero que sale es lo más verdadero.","Cuando termine, pedile la «Carta de un año».","Guardá las dos respuestas en un documento: mañana las subís a tu cuaderno."],
+  frases:[["Entrevista de mi porqué","Quiero que me entrevistes como una coach para descubrir mi porqué. Haceme 8 preguntas, de a una, esperando mi respuesta antes de la siguiente: qué me llevó a querer mi propio negocio digital, qué estoy cansada de hacer, qué haría con más tiempo, qué me da miedo, qué sé hacer que a otras les cuesta, a quién me gustaría ayudar, cómo quiero que me recuerden mis clientas y qué pasaría si no lo hago. Si una respuesta mía es vaga, repreguntá. Al final resumí mi porqué en 3 frases con mis palabras y decime qué patrón ves en mis respuestas."],
+   ["Carta de un año","Con todo lo que te conté, escribí una carta mía de dentro de un año, contándome cómo es un martes cualquiera con mi negocio funcionando: a qué hora me levanto, qué hago, qué ya no hago, cuánto tiempo le dedico y cómo me siento. Que sea concreta, cálida y en primera persona."]],
   links:[["Abrir Claude",CL]],
   lleva:"Tu porqué en 3 frases y tu carta de un año."},
- {e:"🤖",t:"Instalá a Claude y armá tu cuaderno",
-  por:"Todo lo que hagas estos días se guarda en un solo lugar: tu cuaderno (un Proyecto de Claude). Así Claude te conoce, recuerda tu clienta, tu idea y tu estilo, y no le tenés que explicar todo de nuevo cada vez.",
-  pasos:["Entrá a claude.ai y creá tu cuenta con tu mail. Para la clase vas a necesitar el plan Pro (20 USD por mes).","Andá a «Proyectos» y tocá «Crear proyecto». Ponele de nombre «Mi producto».","En «Instrucciones del proyecto» pegá la frase de abajo «Instrucciones de mi cuaderno», completando lo que está entre corchetes.","En «Conocimiento del proyecto» agregá un archivo de texto con tu porqué de ayer.","Desde ahora, cada misión la hacés DENTRO de ese proyecto."],
-  frases:[["Instrucciones de mi cuaderno","Soy [tu nombre], de [tu país]. Estoy creando mi primer producto digital para venderlo con mi propia página y mi propia app. Hablame en español, cercana y simple, de vos. Explicame todo como si fuera la primera vez que lo hago, paso a paso, y de a una cosa por vez. Cuando escribas textos para mis clientas, usá mi voz: [describí cómo hablás: cálida, directa, divertida…]. Antes de darme una respuesta larga, preguntame lo que te falte saber."],
-   ["Primer mensaje","Hola Claude. Ya te conté quién soy en las instrucciones. Contame en 5 pasos simples cómo me vas a ayudar a crear mi producto, mi página de venta y mi app en las próximas semanas."]],
-  links:[["Crear mi cuenta",CL],["Ir a Proyectos",PROY]],
-  lleva:"Tu cuaderno «Mi producto» listo, con tus instrucciones y tu porqué adentro."},
+ {e:"💻",t:"Claude de escritorio: sí o sí",
+  por:"En la clase trabajamos con Claude en la computadora, no en el navegador ni en el celular. La app de escritorio te deja trabajar con archivos y carpetas de tu compu, que es lo que vamos a usar para crear tu producto, tu página y tu app.",
+  pasos:["Si todavía no tenés cuenta, creala en claude.ai con tu mail.","Pasate al plan Pro (20 USD por mes): en Configuración → Facturación. Con el plan gratis no te alcanza para la clase.","Descargá Claude de escritorio desde claude.ai/download (Windows o Mac) e instalalo como cualquier programa.","Abrilo e iniciá sesión con el mismo mail.","Creá en tu compu una carpeta llamada «Mi negocio» en Documentos: ahí va a vivir todo lo que creemos.","Mandale tu primer mensaje con la frase de abajo y fijate que te responda."],
+  frases:[["Primer mensaje","Hola Claude. Soy [tu nombre], de [tu país]. El 8 de diciembre voy a una clase en vivo donde voy a crear mi primer producto digital, su página de venta y su app con tu ayuda. Antes de eso quiero conocerte. Explicame, como si fuera la primera vez que uso inteligencia artificial: qué podés hacer en la app de escritorio que no puedas en el celular, qué es un Proyecto, y qué cosas NO te tengo que pedir porque no las sabés hacer bien."]],
+  links:[["Descargar Claude de escritorio",DESC],["Abrir Claude",CL]],
+  lleva:"Claude Pro instalado en tu compu y tu carpeta «Mi negocio» creada."},
+ {e:"🔄",t:"Pasá todo de ChatGPT a Claude",
+  por:"Si venís usando ChatGPT, ahí está mucho de vos: cómo escribís, tus proyectos, lo que ya pensaste. No empieces de cero: llevátelo a Claude y ahorrás semanas.",
+  pasos:["Abrí ChatGPT y pegale la frase «Mi resumen para Claude». Si tenés varios chats importantes, pegala también al final de cada uno.","Copiá la respuesta completa en un documento y guardalo en tu carpeta «Mi negocio» como «Lo que ChatGPT sabe de mí».","Si querés todo tu historial: en ChatGPT andá a Configuración → Controles de datos → Exportar datos. Te llega un mail con un archivo; guardalo en tu carpeta (no hace falta subirlo entero, después elegimos qué sirve).","Juntá también los textos, ideas o productos que hayas armado con ChatGPT: van a la misma carpeta.","Mañana, cuando armes tu cuaderno, subís el documento ahí."],
+  frases:[["Mi resumen para Claude (pegar en ChatGPT)","Voy a empezar a trabajar con otra inteligencia artificial y quiero pasarle todo lo que sabés de mí. Escribí un resumen completo y ordenado, en tercera persona, con: quién soy y a qué me dedico, mis proyectos e ideas de negocio, lo que ya armé con vos, cómo escribo y hablo (con ejemplos de frases mías), mis preferencias, las cosas que me pediste que no hicieras, los temas de los que más hablamos y lo que dejamos pendiente. Que sea lo más completo posible, en formato de lista con títulos."],
+   ["Ordenar lo que traje (pegar en Claude)","Te paso lo que ChatGPT sabe de mí: [pegalo]. Ordenalo en una ficha «Quién soy» que te sirva a vos para ayudarme: mi historia, lo que sé hacer, mis proyectos, mi forma de hablar y lo pendiente. Marcá con ⭐ lo que te parezca más valioso para crear un producto digital y preguntame lo que no te quede claro."]],
+  links:[["Abrir ChatGPT","https://chatgpt.com/"],["Abrir Claude",CL]],
+  lleva:"Todo lo de ChatGPT ordenado en una ficha, listo para tu cuaderno."},
+ {e:"📓",t:"Tu cuaderno en Claude",
+  por:"Tu cuaderno es un Proyecto de Claude: un lugar donde Claude recuerda quién sos, tu porqué y tu material, para no explicarle todo de nuevo cada vez. En la clase vamos a trabajar adentro de este cuaderno.",
+  pasos:["En Claude de escritorio, andá a «Proyectos» → «Crear proyecto» y ponele «Mi negocio».","En «Instrucciones del proyecto» pegá la frase de abajo, completando lo que está entre corchetes.","En «Archivos del proyecto» subí: tu porqué, tu carta de un año y la ficha «Quién soy» que armaste desde ChatGPT.","Abrí un chat nuevo DENTRO del proyecto y pedile la segunda frase para probar que te conoce.","Desde ahora, cada misión la hacés dentro de este cuaderno."],
+  frases:[["Instrucciones de mi cuaderno","Soy [tu nombre], de [tu país]. Estoy preparándome para crear mi primer producto digital y venderlo con mi propia página y mi propia app. En los archivos de este proyecto está mi porqué y quién soy: leelos siempre antes de responder. Hablame en español, de vos, cercana y simple. Explicame todo paso a paso y de a una cosa por vez, como si fuera la primera vez que lo hago. Cuando no sepas algo de mí, preguntame en vez de inventar. Cuando escribas para mis futuras clientas, usá mi forma de hablar: [describila]. Si te pido algo que no conviene, decímelo con honestidad."],
+   ["¿Me conocés?","Contame en 10 líneas quién soy, por qué quiero esto y qué ves que me hace distinta, según lo que hay en este proyecto. Después decime 3 cosas que te faltan saber de mí para ayudarme mejor y preguntámelas."]],
+  links:[["Ir a Proyectos",PROY]],
+  lleva:"Tu cuaderno «Mi negocio» armado: Claude ya sabe quién sos."},
  {e:"🌀",t:"Tus veinte mil funciones",
-  por:"No te falta tiempo: te sobran tareas. Antes de sumar un producto, vemos qué le pasás a Claude, así el negocio no se vuelve otra cosa más que cargás sola.",
-  pasos:["Durante el día, anotá TODO lo que hacés: casa, trabajo, redes, mensajes, hasta lo más chiquito.","A la noche pegá la lista en tu cuaderno con la primera frase.","Elegí 3 tareas de la columna «me ayuda la IA» y probá la segunda frase con una de ellas.","Marcá con una cruz una tarea que vas a dejar de hacer esta semana."],
-  frases:[["Separar mi semana","Te paso la lista de todo lo que hago en una semana: [pegá tu lista]. Separala en una tabla de 3 columnas: «lo hago yo», «me puede ayudar la IA» y «lo puedo dejar de hacer». Al lado de cada tarea de la IA, decime en una línea cómo me ayudarías."],
-   ["Mi primera tarea delegada","Ayudame ahora mismo con esta tarea: [elegí una]. Hacela vos y después explicame qué frase te tengo que pasar para que lo hagas siempre igual."]],
+  por:"No te falta tiempo: te sobran tareas. Antes de sumar un negocio, vemos qué le pasás a Claude. Así no se vuelve una cosa más que cargás sola.",
+  pasos:["Durante el día anotá TODO lo que hacés: casa, trabajo, redes, mensajes, hasta lo más chiquito, con cuánto tiempo te lleva.","A la noche pegá la lista en tu cuaderno con la primera frase.","Elegí la tarea que más tiempo te come de la columna «la IA me ayuda» y resolvela hoy con Claude con la segunda frase.","Decidí cuántas horas por semana le vas a dar a tu negocio desde el 8/12 y anotalo en tu calendario."],
+  frases:[["Separar mi semana","Te paso todo lo que hago en una semana con el tiempo que me lleva: [pegá tu lista]. Armá una tabla con 3 columnas: «lo hago yo», «la IA me ayuda» y «lo dejo de hacer». Al lado de cada tarea de la IA, decime cómo me ayudarías y cuánto tiempo me ahorrarías. Al final sumá cuántas horas por semana libero y proponeme cómo usar esas horas para mi negocio."],
+   ["Mi primera tarea delegada","Hacé ahora conmigo esta tarea: [la que elegiste]. Preguntame lo que necesites. Cuando terminemos, escribime la frase exacta que te tengo que pasar para que la hagas siempre igual, y guardala en este proyecto."]],
   links:[["Abrir mi cuaderno",PROY]],
-  lleva:"Tu semana separada en 3 columnas y tu primera tarea delegada."},
- {e:"💬",t:"Lo que ya sabés",
-  por:"Tu producto ya existe: está en lo que la gente te pregunta, te pide o te agradece. No hace falta inventar nada.",
-  pasos:["Revisá tus mensajes de WhatsApp, Instagram y mails de los últimos meses.","Anotá 10 cosas que te preguntan o te piden seguido (y en qué palabras te lo dicen).","Sumá 5 cosas que superaste en tu vida y que a otras les cuestan.","Pegalo todo en tu cuaderno con la frase de abajo."],
-  frases:[["Mis 10 ideas","Estas son 10 cosas que me preguntan seguido: [lista]. Y estas son 5 cosas que superé: [lista]. ¿Qué productos digitales podría crear con eso (journal, guía, plantillas, agenda, kit)? Dame 10 ideas en una tabla con: nombre, para quién es, qué problema resuelve y qué formato tendría."],
-   ["Lo que me hace distinta","Con todo lo que te conté de mí en este proyecto, decime 5 cosas que me hacen distinta de otras personas que enseñan lo mismo. Sé honesta: si algo no me diferencia, decímelo."]],
+  lleva:"Las horas que liberás por semana y tu primera tarea delegada."},
+ {e:"🧪",t:"Perdele el miedo: tu primera creación",
+  por:"En la clase vamos a crear páginas y una app con Claude. Hoy hacés una prueba chiquita para ver con tus ojos que podés: Claude crea, vos pedís cambios con palabras.",
+  pasos:["En tu cuaderno, pegale la primera frase. Claude te va a mostrar una página que podés ver y tocar.","Pedile 3 cambios con tus palabras: «más grande», «otro color», «agregá un botón». Fijate cómo cambia.","Probá la segunda frase para crear una herramienta útil para vos.","Sacale captura a lo que hiciste: en la clase vas a ver lo lejos que llegaste."],
+  frases:[["Mi primera página","Creá una página web simple y linda que sea mi tarjeta de presentación: mi nombre, una frase que diga a qué me dedico o qué me gustaría hacer, 3 cosas que sé hacer y un botón de contacto. Mostrámela para que la pueda ver acá mismo. Después explicame en 3 líneas qué hiciste, sin palabras técnicas."],
+   ["Una herramienta para mí","Creá una mini app para usar en mi día: una lista de tareas donde pueda escribir, tildar y borrar, con mis colores favoritos [decilos]. Que se vea linda en el celular. Mostrámela acá."]],
   links:[["Abrir mi cuaderno",PROY]],
-  lleva:"10 ideas de producto nacidas de lo que ya sabés."},
- {e:"👩",t:"Tu clienta",
-  por:"Vende quien describe el problema mejor que la propia clienta. Hoy vas a escuchar cómo habla ella, con sus palabras, no con las tuyas.",
-  pasos:["Respondé las preguntas de Claude con la primera frase.","Buscá 10 comentarios reales de tu clienta: en publicaciones de Instagram de tu tema, en reseñas de libros de Amazon (las de 3 estrellas son oro) y en foros como Reddit.","Copiá las frases tal como las escribió ella y pegalas en tu cuaderno con la segunda frase.","Guardá el resultado como archivo del proyecto: «Mi clienta»."],
-  frases:[["Conocer a mi clienta","Ayudame a conocer a mi clienta ideal. Haceme preguntas de a una (máximo 8) y al final escribí su ficha: quién es, cómo es un día suyo, qué le duele dicho con sus palabras, qué sueña, qué ya probó y por qué no le funcionó, y qué la haría comprar hoy."],
-   ["Sus palabras","Te pego comentarios reales de mujeres como mi clienta: [pegalos]. Sacá las 10 frases de dolor que más se repiten, tal cual las dicen, y agrupalas por tema. Después decime cuál es el dolor más fuerte y por qué."]],
-  links:[["Reseñas en Amazon","https://www.amazon.com/s?k=journal+ansiedad&i=stripbooks"],["Buscar en Reddit","https://www.reddit.com/search/?q=no%20s%C3%A9%20por%20d%C3%B3nde%20empezar"],["Abrir mi cuaderno",PROY]],
-  lleva:"La ficha de tu clienta y sus 10 frases de dolor, guardadas en tu cuaderno."},
- {e:"🔎",t:"Espiá lo que ya se vende",
-  por:"Si ya se vende, hay demanda. No copiamos: miramos qué funciona para hacerlo distinto y mejor.",
-  pasos:["Entrá a la Biblioteca de anuncios de Meta, elegí tu país y buscá palabras de tu tema (journal, guía, plantilla, ansiedad, organización…).","Abrí 3 anuncios que lleven muchos días activos (los que duran es porque venden) y entrá a su página.","Anotá: qué venden, a qué precio, qué prometen y qué regalos dan.","Mirá también Etsy y Hotmart con las mismas palabras.","Pegá todo en tu cuaderno con la frase de abajo."],
-  frases:[["Qué tienen en común","Te paso 3 productos que ya se venden: [nombre, link, precio, promesa y regalos de cada uno]. ¿Qué tienen en común? ¿Qué le falta a cada uno según lo que le duele a mi clienta? Decime 5 formas de hacer el mío distinto y mejor."],
-   ["Mi precio","Con estos 3 productos y sus precios, ¿en qué rango de precio debería salir el mío para ser una compra fácil? Explicámelo simple."]],
-  links:[["Biblioteca de anuncios","https://www.facebook.com/ads/library/?active_status=active&ad_type=all&media_type=all"],["Buscar en Etsy","https://www.etsy.com/search?q=digital%20journal"],["Abrir mi cuaderno",PROY]],
-  lleva:"3 productos de referencia analizados y tu rango de precio."},
- {e:"✨",t:"Tus 3 ideas",
-  por:"Con todo lo que juntaste, ya no elegís por intuición: elegís con datos.",
-  pasos:["Pegale a Claude la frase de abajo dentro de tu cuaderno (ya tiene tu porqué, tu clienta y lo que ya sabés).","Pedile que puntúe cada idea del 1 al 10.","Quedate con las 2 de mayor puntaje para que vote tu comunidad mañana."],
-  frases:[["Mis 3 ideas con puntaje","Con todo lo que hay en este proyecto (mi porqué, mi clienta, lo que ya sé y lo que ya se vende), proponeme 3 ideas de producto digital. Para cada una: nombre provisorio, qué incluye, qué resultado logra mi clienta y por qué lo compraría. Después puntuá cada una del 1 al 10 en: dolor que resuelve, facilidad para crearla y qué tan distinta es. Mostralo en una tabla."]],
+  lleva:"Tu primera página y tu primera mini app creadas con palabras."},
+ {e:"💬",t:"Lo que ya sabés y lo que viviste",
+  por:"Tu producto ya existe: está en lo que la gente te pregunta, en lo que superaste y en lo que hacés sin esfuerzo. Hoy juntamos esa materia prima. Todavía no elegimos nada: solo juntamos.",
+  pasos:["Revisá tus mensajes de WhatsApp, Instagram y mails de los últimos meses: anotá lo que te preguntan o te piden seguido, con las palabras exactas.","Anotá 5 cosas difíciles que superaste en tu vida.","Anotá 5 cosas que hacés sin esfuerzo y a otras les cuestan.","Pegá todo en tu cuaderno con la frase de abajo y dejá que Claude te entreviste."],
+  frases:[["Mi materia prima","Te paso lo que me preguntan seguido: [lista], lo que superé: [lista] y lo que hago fácil: [lista]. Primero entrevistame: haceme 6 preguntas, de a una, para descubrir conocimientos míos que no estoy viendo. Después armá una tabla con todos mis «saberes»: el tema, quién lo necesitaría y qué tan urgente es para esa persona (del 1 al 10)."]],
   links:[["Abrir mi cuaderno",PROY]],
-  lleva:"Tus 3 ideas con puntaje y las 2 finalistas."},
- {e:"🗳️",t:"Que tu comunidad vote",
-  por:"Antes de crear, preguntá. Las que votan hoy son tus primeras compradoras mañana.",
-  pasos:["Pedile a Claude los textos de 3 historias con la frase de abajo.","Subí las 3 historias: la última con la encuesta entre tus 2 ideas.","A las personas que voten, escribiles por privado: «¡Gracias por votar! ¿Por qué elegiste esa?». Sus respuestas valen oro.","Pegá los resultados y las respuestas en tu cuaderno."],
-  frases:[["Mis 3 historias","Escribime el texto de 3 historias de Instagram para que mi comunidad vote entre estas 2 ideas: [idea 1] y [idea 2]. Historia 1: cuento qué estoy creando y por qué. Historia 2: el problema que resuelve, con las palabras de mi clienta. Historia 3: la encuesta. Que suene cercano, como hablo yo."],
-   ["Leer los votos","Ganó [idea] con [X] votos. Estas son las respuestas que me dieron por privado: [pegalas]. ¿Qué me dicen sobre lo que esperan del producto? ¿Qué tengo que incluir sí o sí?"]],
+  lleva:"La lista de tus saberes, con quién los necesita y qué tan urgente es."},
+ {e:"🔎",t:"Qué se vende hoy",
+  por:"No adivinamos: miramos qué productos digitales ya se venden con anuncios. Si alguien paga para mostrarlo hace semanas, es porque vende. Así llegás a la clase sabiendo qué funciona.",
+  pasos:["Entrá a la Biblioteca de anuncios de Meta, elegí tu país y «Todos los anuncios».","Buscá palabras de los temas de tu lista (por ejemplo: journal, guía, ansiedad, autoestima, organización, maternidad) y también «ebook», «PDF», «descarga».","Abrí los anuncios que lleven muchas semanas activos (lo dice la fecha de inicio) y entrá a su página.","Anotá de 5 productos: qué es (journal, guía, kit, plantillas), para quién, qué promete, a qué precio y qué regalos da.","Pegalo en tu cuaderno con la frase de abajo."],
+  frases:[["Qué funciona","Te paso 5 productos digitales que hoy se venden con anuncios: [para cada uno: qué es, para quién, promesa, precio, regalos y desde cuándo está activo el anuncio]. Decime: qué formatos se repiten, qué promesas funcionan, en qué rango de precios están y qué les falta. Después cruzalo con mis saberes de este proyecto y decime en cuáles de mis temas hay gente comprando."]],
+  links:[["Biblioteca de anuncios","https://www.facebook.com/ads/library/?active_status=active&ad_type=all&media_type=all"],["Abrir mi cuaderno",PROY]],
+  lleva:"5 productos que ya se venden, analizados, y qué temas tuyos tienen compradores."},
+ {e:"🎯",t:"Tus 3 temas posibles",
+  por:"Todavía no elegimos el producto: eso lo hacemos en la clase, con datos. Hoy dejás 3 temas posibles listos para decidir en vivo.",
+  pasos:["Pedile a Claude la frase de abajo, dentro de tu cuaderno (ya tiene tus saberes y lo que se vende).","Leé las 3 propuestas y preguntale lo que no entiendas.","Si alguna no te entusiasma, pedile que la cambie: tiene que ser algo de lo que puedas hablar 6 meses sin aburrirte.","Guardá la tabla final como archivo del proyecto: «Mis 3 temas»."],
+  frases:[["Mis 3 temas","Con todo lo que hay en este proyecto (mi porqué, mis saberes y lo que ya se vende), proponeme 3 temas posibles para mi primer producto digital. Para cada uno decime: a quién ayuda, qué problema urgente resuelve, qué productos parecidos ya se venden y por qué el mío podría ser distinto. Puntuá cada tema del 1 al 10 en: urgencia del problema, gente que ya compra, mi experiencia en el tema y mis ganas. No elijas por mí: dejame la tabla para decidir en la clase."]],
   links:[["Abrir mi cuaderno",PROY]],
-  lleva:"Tu idea elegida por tu comunidad y lo que esperan de ella."},
- {e:"🏷️",t:"El nombre",
-  por:"Un buen nombre vende solo: dice qué logra tu clienta. «Journal de 30 días» no vende; «Volver a mí» sí.",
-  pasos:["Pedile a Claude 15 nombres con la primera frase.","Quedate con 3 que te hagan sonreír y pasalos por la prueba de la segunda frase.","Decilo en voz alta: si suena raro o cuesta escribirlo, descartalo.","Buscá el nombre en Instagram y en Google: que no sea de otra marca.","Elegí uno y sumale un subtítulo que diga la promesa (ej: «Volver a mí · journal de 30 días para soltar la culpa»)."],
-  frases:[["15 nombres","Dame 15 nombres para mi producto: [describilo]. Mezclá estilos: 5 que digan el resultado, 5 emocionales y 5 cortitos de una o dos palabras. Que sean fáciles de recordar y de escribir. Al lado de cada uno, por qué funciona."],
-   ["La prueba del nombre","Estos son mis 3 nombres favoritos: [nombres]. Puntuá cada uno del 1 al 10 en: se entiende qué logra, es fácil de recordar, suena a marca grande y se diferencia. Después escribí para el mejor 3 subtítulos que digan la promesa."]],
-  links:[["Buscar en Instagram","https://www.instagram.com/explore/"],["Abrir mi cuaderno",PROY]],
-  lleva:"El nombre de tu producto y su subtítulo con la promesa."},
- {e:"📑",t:"El índice",
-  por:"El índice es el mapa del viaje de tu clienta: de cómo está hoy a cómo queda al terminar. Si el índice está bien, el producto casi se escribe solo.",
-  pasos:["Escribí en una línea dónde está tu clienta HOY y dónde está al TERMINAR tu producto.","Pedile a Claude el índice con la primera frase.","Revisalo con la segunda frase: que cada parte tenga un ejercicio o una acción, no solo teoría.","Sumá un regalo dentro del producto (una plantilla, una lista, un audio) que lo haga sentir más completo.","Guardá el índice como archivo del proyecto."],
-  frases:[["Mi índice","Armame el índice de mi producto [nombre], para [mi clienta]. Hoy ella está así: [antes]. Al terminar está así: [después]. Dividilo en 5 a 7 partes que sean pasos del camino. En cada parte poné: título lindo, qué aprende o hace y un ejercicio práctico."],
-   ["Revisar el índice","Revisá este índice como si fueras mi clienta: [pegalo]. ¿Dónde se aburriría? ¿Qué le falta para llegar al resultado? ¿Qué sacarías? Proponeme la versión mejorada y un regalo extra para sumar adentro."]],
+  lleva:"3 temas posibles con puntaje, listos para decidir en la clase."},
+ {e:"👂",t:"Escuchá a tu futura clienta",
+  por:"Vende quien describe el problema mejor que la propia clienta. Hoy escuchás cómo habla, con sus palabras, sobre tus 3 temas.",
+  pasos:["Para cada uno de tus 3 temas, buscá comentarios reales: en publicaciones de Instagram del tema, en reseñas de libros en Amazon (las de 3 estrellas dicen lo que faltó) y en foros como Reddit.","Copiá 5 a 10 frases por tema, tal como las escribió la gente, sin corregirlas.","Si tenés comunidad, subí una historia con una caja de preguntas: «¿Qué es lo que más te cuesta de [tema]?».","Pegá todo en tu cuaderno con la frase de abajo."],
+  frases:[["Lo que le duele","Te pego frases reales de personas sobre mis 3 temas: [pegalas, separadas por tema]. Para cada tema: agrupá los dolores que más se repiten, dejá las frases tal cual las dicen, decime qué ya probaron y no les funcionó, y qué estarían dispuestas a pagar para resolverlo. Al final decime en cuál de los 3 temas el dolor es más fuerte y por qué."]],
+  links:[["Reseñas en Amazon","https://www.amazon.com/s?i=stripbooks"],["Buscar en Reddit","https://www.reddit.com/"],["Abrir mi cuaderno",PROY]],
+  lleva:"Los dolores reales de tus 3 temas, con las palabras de tus clientas."},
+ {e:"🎭",t:"¿Con tu cara o sin cara?",
+  por:"Podés vender con tu marca personal (mostrándote) o con una marca sin cara (un nombre de marca, sin mostrarte). Las dos funcionan: yo vendo de las dos formas. No hace falta decidirlo hoy: lo vemos en la clase, pero llegá sabiendo qué te tira más.",
+  pasos:["Pedile a Claude la frase de abajo y leé con calma las diferencias.","Respondé sus preguntas con honestidad: no hay respuesta correcta.","Anotá qué te tira más y qué te da miedo de cada opción. Traelo a la clase."],
+  frases:[["Mi forma de vender","Explicame con ejemplos simples las diferencias entre vender un producto digital con marca personal (mostrándome) y con una marca sin cara: ventajas, desventajas, cuánto tiempo lleva cada una, cómo se consigue confianza en cada caso y qué pasa si quiero vender en otros países. Después haceme 5 preguntas, de a una, para ver cuál va más conmigo, y decime qué ves sin decidir por mí."]],
   links:[["Abrir mi cuaderno",PROY]],
-  lleva:"El índice completo de tu producto, con un ejercicio por parte."},
- {e:"🎨",t:"Tus colores y tus letras",
-  por:"Tu producto tiene que verse de marca grande. Con 3 colores y 2 letras bien elegidos, todo (producto, página y app) se ve armado por una diseñadora.",
-  pasos:["Entrá a Pinterest y guardá en un tablero 10 imágenes que te gusten para tu producto (portadas, cuadernos, colores).","Subí 3 de esas imágenes a tu cuaderno de Claude con la primera frase.","Probá la paleta que te propone en Coolors y las letras en Google Fonts.","Elegí: 1 color de fondo, 1 color principal y 1 color para los botones, una letra para títulos y una para textos.","Guardá todo como archivo del proyecto: «Mi marca»."],
-  frases:[["Mi paleta","Te paso imágenes del estilo que me gusta. Proponeme 3 paletas de colores (cada una con fondo, principal, acento y texto, con su código #), y para cada paleta 2 tipografías de Google Fonts que combinen: una para títulos y otra para textos. Decime qué transmite cada combinación y cuál va mejor con mi clienta."],
-   ["Mi marca en una hoja","Con la paleta [la que elegiste] y las letras [las que elegiste], armame mi «hoja de marca»: colores con su código, letras, 5 palabras que describen mi estilo y 5 cosas que NUNCA uso. La voy a guardar en este proyecto para que siempre la respetes."]],
-  links:[["Pinterest","https://www.pinterest.com/search/pins/?q=journal%20aesthetic"],["Coolors","https://coolors.co/generate"],["Google Fonts","https://fonts.google.com/"],["Abrir mi cuaderno",PROY]],
-  lleva:"Tu hoja de marca: 3 colores con su código y tus 2 letras."},
- {e:"✍️",t:"La primera página",
-  por:"Empezar es lo más difícil. Hoy escribís solo la bienvenida, y al terminar te vas a dar cuenta de que ya sos creadora.",
-  pasos:["Pedile la primera página con la frase de abajo (Claude ya tiene tu clienta, tu nombre, tu índice y tu marca).","Leela en voz alta. Donde no suene a vos, pedile «decilo más como yo, más simple».","Pedile la segunda frase para escribir la primera parte del índice.","Guardá las dos en tu cuaderno: en la clase las convertimos en PDF."],
-  frases:[["Mi bienvenida","Escribí la primera página de mi producto [nombre]: la bienvenida. Con mi voz, cercana y simple. Que le hable directo a mi clienta, nombre lo que le pasa con sus propias palabras, le cuente qué va a lograr al terminar y cómo usar el producto. Máximo 250 palabras."],
-   ["La primera parte","Ahora escribí la primera parte del índice completa: una explicación corta y cálida, un ejemplo de la vida real y un ejercicio con espacio para escribir. Que se pueda hacer en 15 minutos."]],
+  lleva:"Claridad sobre las dos formas de vender y cuál te tira más."},
+ {e:"🔐",t:"Tus cuentas y tu material listos",
+  por:"El día de la clase no querés perder tiempo buscando contraseñas o fotos. Hoy dejás todo a mano para crear sin trabarte.",
+  pasos:["Creá (o elegí) un Gmail solo para tu negocio: ahí van a llegar tus ventas.","Guardá tus contraseñas en un lugar seguro (por ejemplo, el administrador de contraseñas de Google).","Creá una cuenta gratis en Canva.","En tu carpeta «Mi negocio» armá 3 subcarpetas: «Fotos», «Textos» y «Capturas». Juntá fotos tuyas o de tu estilo, textos que hayas escrito y capturas de mensajes lindos de clientas o seguidoras.","Pedile a Claude la frase de abajo para revisar que no te falte nada."],
+  frases:[["Lista de verificación","Haceme una lista de verificación con casillas para llegar lista a una clase en vivo donde voy a crear con vos mi producto digital, su página de venta y su app, usando Claude de escritorio. Incluí: cuentas, programas, carpetas, material y cómo preparar la compu. Revisá lo que hay en este proyecto y marcá lo que ya tengo."]],
+  links:[["Crear Gmail","https://accounts.google.com/signup"],["Canva gratis","https://www.canva.com/"],["Abrir mi cuaderno",PROY]],
+  lleva:"Tu mail del negocio, tus contraseñas a mano y tu material ordenado."},
+ {e:"🗓️",t:"Organizá tu semana de la clase",
+  por:"La clase es el comienzo: lo que hagas en los 7 días siguientes decide si tu producto sale. Hoy le hacés lugar en tu agenda.",
+  pasos:["Agendá la clase con el botón de arriba de esta app (martes 8/12, 20 h de Uruguay) y avisá en tu casa que ese rato no estás.","Bloqueá en tu calendario 1 hora por día del 9 al 14 de diciembre para aplicar lo de la clase.","Agendá también la clase 2 de preguntas y respuestas (martes 15/12).","Pedile a Claude la frase de abajo para armar tu semana."],
+  frases:[["Mi semana después de la clase","Ayudame a organizar mi semana del 9 al 14 de diciembre para aplicar lo que aprenda en la clase: tengo [X] horas por día y estas obligaciones fijas: [lista]. Proponeme qué días y a qué hora trabajo en mi negocio y qué tareas de mi casa o trabajo puedo soltar o pasarte esa semana."]],
   links:[["Abrir mi cuaderno",PROY]],
-  lleva:"La bienvenida y la primera parte de tu producto, escritas."},
- {e:"💻",t:"Prepará tu compu",
-  por:"El día de la clase no querés perder tiempo buscando contraseñas. Hoy dejás todo listo para crear sin trabarte.",
-  pasos:["Confirmá que tenés el plan Pro de Claude activo.","Abrí tu cuaderno «Mi producto» y fijate que estén: tu porqué, tu clienta, tu nombre, tu índice, tu hoja de marca y tu primera página.","Tené a mano tu mail y su contraseña, y una cuenta de Canva gratis.","Usá la compu con el cargador enchufado y Chrome actualizado.","Agendá la clase en tu calendario con el botón de arriba de esta app."],
-  frases:[["Mi lista de verificación","Revisá todo lo que hay en este proyecto y decime qué me falta para llegar lista a una clase en vivo donde voy a crear mi producto, mi página de venta y mi app. Haceme una lista de verificación con casillas."],
-   ["Mi resumen","Haceme un resumen de una página de mi producto con todo lo que armamos: nombre, subtítulo, para quién es, qué logra, índice y marca. Lo voy a tener abierto en la clase."]],
-  links:[["Canva gratis","https://www.canva.com/"],["Abrir mi cuaderno",PROY]],
-  lleva:"Tu compu lista y el resumen de tu producto en una página."},
+  lleva:"La clase, la semana siguiente y la clase 2 en tu calendario."},
  {e:"❓",t:"Tus preguntas",
-  por:"Llegás con todo armado. Ahora juntá tus dudas para que la clase te rinda al máximo. Y descansá: mañana creamos.",
-  pasos:["Ordená tus dudas con la frase de abajo.","Mandame las 3 más importantes desde «Tus preguntas para Romi», acá en la app.","Prepará un mate o un té para la clase y dormí bien."],
-  frases:[["Mis 3 preguntas","Con todo lo que armamos en este proyecto, ayudame a convertir mis dudas en 3 preguntas claras para llevar a la clase: [escribí tus dudas como te salgan]."]],
+  por:"Llegás con Claude instalado, tu cuaderno armado, tus temas investigados y tu material listo. Ahora juntá tus dudas para que la clase te rinda al máximo. Y descansá: mañana creamos juntas.",
+  pasos:["Ordená tus dudas con la frase de abajo.","Mandame las más importantes desde «Tus preguntas para Romi», acá en la app.","Repasá tu tabla «Mis 3 temas»: mañana elegimos.","Prepará un mate o un té, cargá la compu y dormí bien."],
+  frases:[["Mis preguntas","Con todo lo que hay en este proyecto, ayudame a convertir mis dudas en preguntas claras para llevar a la clase: [escribí tus dudas como te salgan]. Ordenalas de la más importante a la menos importante."]],
   links:[["Mandar mis preguntas","#preguntas"]],
-  lleva:"Tus 3 preguntas enviadas y la cabeza tranquila."}
+  lleva:"Tus preguntas enviadas y la cabeza tranquila."}
 ];
 const CLASE="2026-12-08";
 const ROMI=new URLSearchParams(location.search).has("romi8");if(ROMI)$("#modoRomi").hidden=false;
@@ -330,7 +324,7 @@ if(!est.inicio){est.inicio=hoyUY()<CLASE?hoyUY():sumar(CLASE,-1);guardar()}
 /* reparte las misiones entre los días que le quedan desde que compró hasta el 7/12 */
 const DIAS=Math.max(1,entre(est.inicio,CLASE));
 const plan=Array.from({length:DIAS},(_,k)=>{const a=Math.floor(k*M.length/DIAS),b=Math.floor((k+1)*M.length/DIAS);return{fecha:sumar(est.inicio,k),mis:Array.from({length:b-a},(_,j)=>a+j)}});
-$("#planTxt").textContent=DIAS>=M.length?"Una misión por día. Cada una te acerca a llegar con tu idea lista.":"Compraste con "+DIAS+(DIAS===1?" día":" días")+" por delante: te armé el plan con "+(M.length/DIAS>1.5?"2 o 3":"1 o 2")+" misiones por día.";
+$("#planTxt").textContent=DIAS>=M.length?"Una misión por día para llegar preparada. Tu producto lo creamos juntas en vivo.":"Compraste con "+DIAS+(DIAS===1?" día":" días")+" por delante: te armé el plan con "+(M.length/DIAS>1.5?"2 o 3":"1 o 2")+" misiones por día.";
 
 function pintar(){
  const hoy=hoyUY();let html="";
@@ -340,7 +334,7 @@ function pintar(){
    html+='<div class="mision'+(h?' hecha':'')+(esHoy&&!h?' open':'')+'" data-i="'+i+'"><div class="mc" '+(abierto?'role="button" tabindex="0"':'aria-disabled="true"')+'><div class="top"><span class="em">'+(abierto?m.e:'<span class="cand">🔒</span>')+'</span><h3>'+m.t+'</h3>'+(h?'<span class="tag">hecha ✓</span>':'')+'</div>'+
     (abierto?'<div class="det"><p>'+m.por+'</p><h4>Paso a paso</h4><ol>'+m.pasos.map(x=>'<li>'+x+'</li>').join("")+'</ol><h4>Frases para tu cuaderno en Claude</h4>'+m.frases.map((f,j)=>'<div class="frase"><b>'+f[0]+'</b>'+f[1]+'<br><span class="b s copiar" role="button" tabindex="0" data-f="'+j+'">Copiar la frase</span></div>').join("")+'<h4>Enlaces</h4><div class="links">'+m.links.map(l=>'<a class="b s" href="'+l[1]+'"'+(l[1][0]==="#"?'':' target="_blank" rel="noopener"')+'>'+l[0]+' ↗</a>').join("")+'</div>'+'<div class="lleva">🎒 Te llevás: '+m.lleva+'</div><div class="acc"><span class="b p hecho" role="button" tabindex="0">'+(h?'Desmarcar':'¡Hecha!')+'</span></div></div>':'<p class="muted" style="margin:6px 0 0">Se abre ese día</p>')+'</div></div>';});
   html+='</div>';});
- html+='<div class="dia'+(hoy===CLASE?' hoy':'')+'"><div class="cab"><b>🚀 8 de diciembre</b><span>'+(hoy===CLASE?'hoy':'la clase')+'</span></div><div class="card" style="padding:16px"><h3>¡Hoy es la clase!</h3><p class="muted" style="margin:6px 0 0">Llegás con tu porqué, tu clienta, tu idea, su nombre, su índice y tus colores. Hoy la convertimos en tu app.</p></div></div>';
+ html+='<div class="dia'+(hoy===CLASE?' hoy':'')+'"><div class="cab"><b>🚀 8 de diciembre</b><span>'+(hoy===CLASE?'hoy':'la clase')+'</span></div><div class="card" style="padding:16px"><h3>¡Hoy es la clase!</h3><p class="muted" style="margin:6px 0 0">Llegás con Claude instalado, tu cuaderno armado, tus 3 temas investigados y tu material listo. Hoy elegimos tu producto y lo creamos juntas: el producto, su página de venta y su app.</p></div></div>';
  $("#plan").innerHTML=html;stats();
 }
 $("#plan").addEventListener("click",ev=>{const mi=ev.target.closest(".mision");if(!mi||mi.closest(".lock"))return;const i=+mi.dataset.i;
