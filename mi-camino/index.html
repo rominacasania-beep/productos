@@ -190,7 +190,7 @@ const AVISOS=[
  ["💻","24/11","Para la clase vas a necesitar una computadora y el plan mínimo de Claude (20 USD por mes)."],
  ["🔗","Antes del 8/12","El link del Zoom aparece en esta sala antes de la clase. Agendá la clase en tu calendario para que te avise."]
 ];
-const HORA="";        /* ej: "20:00 (Uruguay)" */
+const HORA="20 h (hora de Uruguay)";        /* ej: "20:00 (Uruguay)" */
 const HORA2="";       /* hora de la clase 2 (15/12) */
 /* Regalos: cuando un regalo esté listo, poné su link en la 4.ª posición */
 const REGALOS=[
@@ -274,7 +274,7 @@ $("#pqEnviar").addEventListener("click",async ev=>{const q=$("#pqQ").value.trim(
  catch(x){err.textContent="No se pudo enviar. Revisá tu conexión y probá de nuevo."}
  b.disabled=false;b.textContent="Enviar mi pregunta"});
 $("#pqQ").addEventListener("input",()=>$("#pqErr").textContent="");
-const gcal="https://calendar.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent("Taller intensivo «De la idea a tu app» con Romi")+"&dates=20261208/20261209&details="+encodeURIComponent("Clase en vivo. El link del Zoom está en tu app: "+location.href);
+const gcal="https://calendar.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent("Taller intensivo «De la idea a tu app» con Romi")+"&dates=20261208T230000Z/20261209T010000Z&details="+encodeURIComponent("Clase en vivo. El link del Zoom está en tu app: "+location.href);
 $("#agendar").href=gcal;
 
 const clase=Date.UTC(2026,11,8,3,0,0),ini=new Date(est.inicio+"T03:00:00Z").getTime();
