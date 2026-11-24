@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#120a1c">
+<title>Cliente ideal con IA · De la idea a tu app</title>
+<style>html,body{margin:0;background:#120a1c}</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Poppins:wght@300;400;500;600&display=swap">
+<style>
+:root{
+  --bg:#120a1c; --card:#231638; --card2:#1a1029; --fg:#fbf8ff; --muted:#b9aed0; --line:rgba(255,255,255,.1);
+  --lila:#b49be8; --rosa:#f0a3c4; --oro:#e6c06a; --menta:#6fdcb0;
+  --grad:linear-gradient(100deg,#f0a3c4,#b49be8 50%,#e6c06a);
+  --display:"Cormorant Garamond",Georgia,serif; --body:"Poppins",system-ui,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-weight:300;line-height:1.6;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(500px 360px at 90% -5%,rgba(240,163,196,.2),transparent 70%),radial-gradient(420px 320px at -10% 40%,rgba(180,155,232,.16),transparent 70%),radial-gradient(420px 320px at 110% 85%,rgba(111,220,176,.08),transparent 70%)}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(1.5px 1.5px at 12% 18%,#fff8,transparent),radial-gradient(1px 1px at 78% 12%,#fff9,transparent),radial-gradient(1.5px 1.5px at 40% 70%,#e6c06a99,transparent),radial-gradient(1px 1px at 88% 58%,#fff7,transparent),radial-gradient(1.5px 1.5px at 22% 88%,#f0a3c499,transparent),radial-gradient(1px 1px at 60% 34%,#fff6,transparent);animation:titila 5s ease-in-out infinite alternate}
+@keyframes titila{to{opacity:.35}}
+a{color:var(--rosa)}
+.app{position:relative;z-index:1;max-width:560px;margin:0 auto;padding:18px 16px 60px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;line-height:1.08;text-wrap:balance}
+.g{font-style:italic;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--oro);font-weight:600}
+.muted{color:var(--muted);font-size:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;box-shadow:0 24px 50px -24px rgba(0,0,0,.8)}
+.barra{position:sticky;top:0;z-index:20;background:rgba(18,10,28,.88);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.barra .in{max-width:560px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:12px}
+.pista{flex:1;height:10px;border-radius:99px;background:#2c1d44;overflow:hidden}
+.pista i{display:block;height:100%;width:0;background:var(--grad);border-radius:99px;transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.pct{font-weight:600;font-size:13px;min-width:44px;text-align:right;font-variant-numeric:tabular-nums}
+.hero{text-align:center;padding:26px 4px 8px}
+.hero h1{font-size:42px;margin-top:8px}
+.hero p{margin:12px auto 0;max-width:430px}
+.sello{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:8px 14px;border-radius:99px;background:var(--card2);border:1px solid var(--line);font-size:13px}
+.flota{display:inline-block;animation:flota 3s ease-in-out infinite}
+@keyframes flota{50%{transform:translateY(-6px)}}
+.paso{margin-top:18px;padding:20px 18px}
+.paso .cab{display:flex;gap:12px;align-items:center}
+.num{flex:none;width:44px;height:44px;border-radius:14px;display:grid;place-items:center;font-size:22px;background:var(--card2);border:1px solid var(--line)}
+.paso.lista .num{background:var(--grad);border:0}
+.paso h2{font-size:27px}
+.paso .por{margin:10px 0 4px;color:var(--muted);font-size:14px}
+.chk{display:flex;gap:12px;align-items:flex-start;padding:11px 12px;margin-top:8px;border-radius:14px;background:var(--card2);border:1px solid var(--line);cursor:pointer;font-size:14px;transition:border-color .2s}
+.chk:hover{border-color:rgba(180,155,232,.5)}
+.chk input{position:absolute;opacity:0;width:1px;height:1px}
+.box{flex:none;width:24px;height:24px;margin-top:1px;border-radius:8px;border:2px solid var(--lila);display:grid;place-items:center;transition:transform .25s cubic-bezier(.3,1.6,.5,1),background .2s}
+.box::after{content:"✓";font-weight:700;font-size:15px;color:#120a1c;transform:scale(0);transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
+.chk input:checked+.box{background:var(--menta);border-color:var(--menta);transform:scale(1.08)}
+.chk input:checked+.box::after{transform:scale(1)}
+.chk input:checked~.txt{color:var(--muted);text-decoration:line-through;text-decoration-color:rgba(111,220,176,.6)}
+.chk input:focus-visible+.box{outline:3px solid var(--oro);outline-offset:2px}
+.txt b{font-weight:600;color:var(--fg)}
+.b{border:0;border-radius:999px;padding:11px 16px;font:600 14px var(--body);cursor:pointer;transition:transform .15s;text-decoration:none;display:inline-flex;gap:8px;align-items:center;justify-content:center;color:var(--fg)}
+.b:active{transform:scale(.95)}
+.b.p{background:var(--grad);color:#120a1c}
+.b.s{background:var(--card2);border:1px solid var(--line)}
+.b:focus-visible,.chip:focus-visible,.tab:focus-visible{outline:3px solid var(--oro);outline-offset:2px}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.frase{margin-top:14px;border-radius:16px;border:1px dashed rgba(230,192,106,.55);background:#1d1230;padding:14px}
+.frase h3{font-family:var(--body);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--oro);font-weight:600}
+.frase pre{white-space:pre-wrap;overflow-wrap:anywhere;font:400 14px/1.6 var(--body);margin:8px 0 12px;color:var(--fg)}
+.frase .n{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--grad);color:#120a1c;font-size:12px;margin-right:6px;letter-spacing:0}
+.tip{margin-top:12px;padding:10px 12px;border-radius:12px;background:#17302a;color:var(--menta);font-size:13px;font-weight:500}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.chip{border:1px solid var(--line);background:var(--card2);color:var(--fg);border-radius:99px;padding:8px 13px;font:500 13px var(--body);cursor:pointer;transition:transform .15s,background .2s}
+.chip[aria-pressed="true"]{background:var(--lila);color:#120a1c;border-color:var(--lila)}
+.chip:active{transform:scale(.94)}
+.cam{display:block;margin-top:14px;font-size:13px;font-weight:500}
+input.in,textarea.in{width:100%;margin-top:6px;padding:11px 12px;border-radius:12px;border:1px solid var(--line);background:var(--card2);color:var(--fg);font:400 15px var(--body)}
+textarea.in{min-height:84px;resize:vertical;line-height:1.5}
+input.in:focus,textarea.in:focus{outline:2px solid var(--lila);outline-offset:1px}
+.fila{display:flex;gap:8px;margin-top:10px}
+.fila input{flex:1;min-width:0;margin-top:0}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.tab{border:1px solid var(--line);background:var(--card2);color:var(--fg);border-radius:12px;padding:9px 13px;font:600 13px var(--body);cursor:pointer}
+.tab[aria-selected="true"]{background:var(--grad);color:#120a1c;border-color:transparent}
+.vacio{margin-top:12px;padding:14px;border-radius:14px;border:1px dashed var(--line);color:var(--muted);font-size:14px;text-align:center}
+.por3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:12px}
+.por3 div{padding:10px 6px;border-radius:12px;background:var(--card2);border:1px solid var(--line);text-align:center;font-size:12px;color:var(--muted)}
+.por3 b{display:block;font-size:22px}
+.por3 .si{border-color:var(--menta);color:var(--fg)}
+footer{margin-top:34px;text-align:center;color:var(--muted);font-size:13px}
+.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,120px);background:var(--fg);color:#120a1c;font-weight:600;font-size:14px;padding:11px 18px;border-radius:99px;z-index:60;transition:transform .35s cubic-bezier(.3,1.4,.5,1);max-width:calc(100% - 32px);text-align:center}
+.toast.on{transform:translate(-50%,0)}
+.chispa{position:fixed;width:8px;height:8px;border-radius:50%;pointer-events:none;z-index:50;animation:vuela .8s ease-out forwards}
+@keyframes vuela{to{transform:translate(var(--x),var(--y)) scale(.2);opacity:0}}
+.js .rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+.js .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<div class="barra" role="status" aria-live="polite"><div class="in"><span aria-hidden="true">🔎</span><div class="pista" aria-hidden="true"><i id="fill"></i></div><span class="pct" id="pct">0 %</span></div></div>
+<main class="app">
+
+<header class="hero rv">
+  <div class="eyebrow">Regalo del taller · Cliente ideal con IA</div>
+  <h1>Escuchá a tu clienta <span class="g">con sus propias palabras</span></h1>
+  <p class="muted">Las páginas que venden no inventan: repiten lo que la clienta ya dice. Acá vas a investigar <b>2 o 3 temas posibles</b> para <b>llegar a la clase con datos reales</b>. No tenés que decidir tu producto: eso lo hacemos juntas, en vivo.</p>
+  <div class="por3">
+    <div><b>1</b>Elegís 2 o 3 temas</div>
+    <div><b>2</b>Juntás frases reales</div>
+    <div><b>3</b>Llegás con tu ficha</div>
+  </div>
+  <div class="sello"><span class="flota">📅</span> Taller en vivo: <b>martes 8/12 · 20 h de Uruguay</b></div>
+</header>
+
+<!-- Temas -->
+<section class="card paso rv" data-paso>
+  <div class="cab"><div class="num">🎯</div><div><div class="eyebrow">Paso 1</div><h2>Tus 2 o 3 temas para investigar</h2></div></div>
+  <p class="por">Elegí temas que te tienten, aunque no estés segura. La investigación te va a mostrar cuál tiene más fuerza. Podés elegir hasta 3.</p>
+  <div class="chips" id="temasChips"></div>
+  <div class="fila"><input class="in" id="temaOtro" placeholder="Otro tema (escribilo y tocá Sumar)" maxlength="60"><button class="b s" type="button" id="temaSumar">Sumar</button></div>
+  <label class="chk"><input type="checkbox" data-k="t1"><span class="box"></span><span class="txt">Elegí <b>2 o 3 temas</b>. Las frases de más abajo se completan solas con el tema que marques.</span></label>
+  <div class="tip">💡 Un buen tema para investigar junta tres cosas: algo que te duele o te dolió a vos, algo de lo que la gente te pide ayuda y algo de lo que podrías hablar horas.</div>
+</section>
+
+<!-- Método -->
+<section class="card paso rv" data-paso>
+  <div class="cab"><div class="num">🧭</div><div><div class="eyebrow">Paso 2</div><h2>Tu hipótesis con Claude</h2></div></div>
+  <p class="por">Antes de salir a buscar, dejá por escrito lo que creés que le pasa a tu clienta. Después la investigación te va a confirmar o a sorprender.</p>
+  <label class="chk"><input type="checkbox" data-k="h1"><span class="box"></span><span class="txt">Abrí Claude de escritorio, entrá a <b>«Mi producto»</b> y empezá un chat nuevo <b>por cada tema</b>.</span></label>
+  <label class="chk"><input type="checkbox" data-k="h2"><span class="box"></span><span class="txt">Pegá la frase <b>1 (La entrevista de hipótesis)</b> y la <b>2 (El mapa de búsqueda)</b>. Guardá lo que te dé.</span></label>
+</section>
+
+<section class="card paso rv" data-paso>
+  <div class="cab"><div class="num">💬</div><div><div class="eyebrow">Paso 3</div><h2>Comentarios de Instagram</h2></div></div>
+  <p class="por">En los comentarios la gente cuenta su vida sin filtro. Ahí están las palabras exactas que después van en tu página.</p>
+  <label class="chk"><input type="checkbox" data-k="i1"><span class="box"></span><span class="txt">En la lupa de Instagram buscá tu tema y también palabras de dolor (por ejemplo «ansiedad», «no tengo tiempo», «mi hijo no duerme»). Abrí <b>3 cuentas grandes</b> del tema.</span></label>
+  <label class="chk"><input type="checkbox" data-k="i2"><span class="box"></span><span class="txt">Entrá a los posts y reels con <b>más comentarios</b> (no con más «me gusta»).</span></label>
+  <label class="chk"><input type="checkbox" data-k="i3"><span class="box"></span><span class="txt">Copiá <b>20 comentarios textuales</b> por tema: los que cuentan algo de su vida, preguntan o se quejan. Salteá los «qué lindo» y los emojis solos.</span></label>
+  <label class="chk"><input type="checkbox" data-k="i4"><span class="box"></span><span class="txt">Pegalos en Claude con la frase <b>3 (Los comentarios)</b>.</span></label>
+</section>
+
+<section class="card paso rv" data-paso>
+  <div class="cab"><div class="num">⭐</div><div><div class="eyebrow">Paso 4</div><h2>Reseñas de 3 estrellas en Amazon</h2></div></div>
+  <p class="por">Las de 5 estrellas solo aplauden y las de 1 se enojan. Las de <b>3 estrellas</b> dicen exactamente qué le faltó al libro: eso es lo que tu producto puede dar.</p>
+  <label class="chk"><input type="checkbox" data-k="a1"><span class="box"></span><span class="txt">Entrá a <b>amazon.com</b> (o amazon.es) y buscá «libro» + tu tema, en español y también en inglés.</span></label>
+  <label class="chk"><input type="checkbox" data-k="a2"><span class="box"></span><span class="txt">Abrí 2 o 3 libros con <b>muchas reseñas</b>. Bajá hasta las calificaciones y tocá la barra de <b>«3 estrellas»</b>.</span></label>
+  <label class="chk"><input type="checkbox" data-k="a3"><span class="box"></span><span class="txt">Copiá <b>10 reseñas</b> por tema y pegalas en Claude con la frase <b>4 (Las 3 estrellas)</b>.</span></label>
+</section>
+
+<section class="card paso rv" data-paso>
+  <div class="cab"><div class="num">🧵</div><div><div class="eyebrow">Paso 5</div><h2>Conversaciones en Reddit</h2></div></div>
+  <p class="por">Reddit es un foro gigante donde la gente pregunta lo que no se anima a preguntar en otro lado. Casi todo está en inglés: no importa, Claude te lo traduce.</p>
+  <label class="chk"><input type="checkbox" data-k="r1"><span class="box"></span><span class="txt">Entrá a <b>reddit.com</b> y buscá tu tema en inglés (la frase 2 te da las palabras exactas).</span></label>
+  <label class="chk"><input type="checkbox" data-k="r2"><span class="box"></span><span class="txt">Abrí las conversaciones con <b>más comentarios</b> y copiá la pregunta y las 10 respuestas más votadas.</span></label>
+  <label class="chk"><input type="checkbox" data-k="r3"><span class="box"></span><span class="txt">Pegalas en Claude con la frase <b>5 (Reddit)</b>.</span></label>
+</section>
+
+<section class="card paso rv" data-paso>
+  <div class="cab"><div class="num">📚</div><div><div class="eyebrow">Paso 6</div><h2>Biblioteca de anuncios de Meta</h2></div></div>
+  <p class="por">Es la vidriera pública de todos los anuncios de Facebook e Instagram. Si un anuncio lleva <b>meses activo</b>, probablemente le está funcionando a alguien: es la mejor señal de que ese dolor se paga.</p>
+  <label class="chk"><input type="checkbox" data-k="b1"><span class="box"></span><span class="txt">Abrí la Biblioteca, elegí tu país (o «Todos») y en categoría <b>«Todos los anuncios»</b>.</span></label>
+  <label class="chk"><input type="checkbox" data-k="b2"><span class="box"></span><span class="txt">Buscá palabras de tu tema como las diría tu clienta (por ejemplo «journal», «guía», «ebook» + el tema). Dejá el filtro en <b>anuncios activos</b>.</span></label>
+  <label class="chk"><input type="checkbox" data-k="b3"><span class="box"></span><span class="txt">Mirá la fecha <b>«Comenzó a circular el…»</b>: anotá los que llevan <b>más de 30 días</b>. Si un mismo anunciante tiene muchas versiones del anuncio, mejor señal todavía.</span></label>
+  <label class="chk"><input type="checkbox" data-k="b4"><span class="box"></span><span class="txt">De <b>5 a 10 anuncios</b> por tema, anotá: el texto, el formato (video, imagen, carrusel), la promesa y qué venden. Pegalo en Claude con la frase <b>6 (La Biblioteca)</b>.</span></label>
+  <div class="links"><a class="b p" href="https://www.facebook.com/ads/library" target="_blank" rel="noopener">Abrir la Biblioteca de anuncios ↗</a></div>
+</section>
+
+<section class="card paso rv" data-paso>
+  <div class="cab"><div class="num">🪞</div><div><div class="eyebrow">Paso 7</div><h2>Hablá con ella y armá la ficha</h2></div></div>
+  <p class="por">Con todo lo que juntaste, Claude puede «hacer de tu clienta» para que le preguntes lo que quieras. Después completás su ficha, una por tema.</p>
+  <label class="chk"><input type="checkbox" data-k="f1"><span class="box"></span><span class="txt">Usá las frases <b>7 a 10</b> (juego de roles, un día en su vida, escalera del dolor y objeciones).</span></label>
+  <label class="chk"><input type="checkbox" data-k="f2"><span class="box"></span><span class="txt">Completá la <b>ficha de clienta</b> de cada tema (acá abajo) con la frase <b>11</b>.</span></label>
+  <label class="chk"><input type="checkbox" data-k="f3"><span class="box"></span><span class="txt">Guardá cada investigación como archivo en «Mi producto» con la frase <b>15</b>.</span></label>
+</section>
+
+<section class="card paso rv" data-paso>
+  <div class="cab"><div class="num">⚖️</div><div><div class="eyebrow">Paso 8</div><h2>Compará y llevalo a la clase</h2></div></div>
+  <p class="por">No elijas todavía. Ordená lo que encontraste para que en la clase decidamos con datos y no con miedo.</p>
+  <label class="chk"><input type="checkbox" data-k="c1"><span class="box"></span><span class="txt">Pedile a Claude la comparación de tus temas con las frases <b>12 y 13</b>.</span></label>
+  <label class="chk"><input type="checkbox" data-k="c2"><span class="box"></span><span class="txt">Armá tu hoja para el taller con la frase <b>14</b> y tenela abierta el martes.</span></label>
+</section>
+
+<!-- Ficha -->
+<section class="card paso rv" id="ficha">
+  <div class="cab"><div class="num">📝</div><div><div class="eyebrow">Tu ficha</div><h2>Ficha de clienta por tema</h2></div></div>
+  <p class="por">Se guarda sola en este dispositivo. Usá sus palabras, no las tuyas. Cuando la termines, copiala y guardala en tu cuaderno de Claude.</p>
+  <div class="tabs" id="fichaTabs" role="tablist"></div>
+  <div id="fichaCuerpo"></div>
+</section>
+
+<!-- Frases -->
+<section class="card paso rv" id="frases">
+  <div class="cab"><div class="num">✨</div><div><div class="eyebrow">Para pegar en Claude</div><h2>15 frases de investigación</h2></div></div>
+  <p class="por">Usalas dentro de «Mi producto», en Claude de escritorio. Elegí con qué tema estás trabajando y las frases se completan solas. Donde dice [pegá…], pegás lo que juntaste.</p>
+  <div class="cam">Estoy investigando:</div>
+  <div class="tabs" id="fraseTabs" role="tablist"></div>
+  <div id="listaFrases"></div>
+</section>
+
+<footer>Hecho con 🤍 por Romi · Taller intensivo De la idea a tu app</footer>
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+document.documentElement.classList.add("js");
+var CLAVE="romi-taller-cliente-ideal";
+var QUIETO=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+function leer(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}}
+function guardar(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+var $=function(s){return document.querySelector(s)};
+var $$=function(s){return Array.prototype.slice.call(document.querySelectorAll(s))};
+function esc(t){return String(t).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+
+var tT;
+function aviso(t){var el=$("#toast");el.textContent=t;el.classList.add("on");clearTimeout(tT);tT=setTimeout(function(){el.classList.remove("on")},2200)}
+var COLS=["#f0a3c4","#b49be8","#e6c06a","#6fdcb0","#fbf8ff"];
+function chispas(x,y,n){
+  if(QUIETO)return;
+  for(var i=0;i<n;i++){
+    var s=document.createElement("span");s.className="chispa";
+    var a=Math.random()*Math.PI*2,r=40+Math.random()*(n>20?160:70);
+    s.style.left=x+"px";s.style.top=y+"px";s.style.background=COLS[i%COLS.length];
+    s.style.setProperty("--x",Math.cos(a)*r+"px");s.style.setProperty("--y",Math.sin(a)*r+"px");
+    document.body.appendChild(s);setTimeout(function(el){return function(){el.remove()}}(s),850);
+  }
+}
+function copiar(txt,btn){
+  var orig=btn.textContent;
+  function ok(){btn.textContent="✓ ¡Copiado!";aviso("Copiado. Ahora pegalo en Claude 💜");var r=btn.getBoundingClientRect();chispas(r.left+r.width/2,r.top+r.height/2,10);setTimeout(function(){btn.textContent=orig},1800)}
+  function plan(){var t=document.createElement("textarea");t.value=txt;t.setAttribute("readonly","");t.style.position="fixed";t.style.opacity="0";document.body.appendChild(t);t.select();try{document.execCommand("copy");ok()}catch(e){aviso("Mantené apretado el texto para copiarlo")}t.remove()}
+  if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(txt).then(ok,plan)}else plan();
+}
+
+/* estado */
+var E=leer(CLAVE,{marcas:{},temas:[],activo:0,fichas:{}});
+E.marcas=E.marcas||{};E.temas=E.temas||[];E.fichas=E.fichas||{};E.activo=E.activo||0;
+function salvar(){guardar(CLAVE,E)}
+
+/* casillas */
+var cajas=$$("input[data-k]");
+cajas.forEach(function(c){c.checked=!!E.marcas[c.dataset.k]});
+function progreso(fiesta){
+  var n=cajas.filter(function(c){return c.checked}).length,p=Math.round(n/cajas.length*100);
+  $("#fill").style.width=p+"%";$("#pct").textContent=p+" %";
+  $$("[data-paso]").forEach(function(s){var cs=s.querySelectorAll("input[data-k]");s.classList.toggle("lista",cs.length>0&&Array.prototype.every.call(cs,function(c){return c.checked}))});
+  if(p===100&&fiesta){chispas(window.innerWidth/2,window.innerHeight/2,40);aviso("¡Investigación completa! Llegás a la clase con datos 🎉")}
+}
+cajas.forEach(function(c){c.addEventListener("change",function(){
+  E.marcas[c.dataset.k]=c.checked;salvar();
+  if(c.checked){var r=c.nextElementSibling.getBoundingClientRect();chispas(r.left+r.width/2,r.top+r.height/2,14)}
+  progreso(c.checked);
+})});
+
+/* temas */
+var SUG=["emociones y autoestima","ansiedad y calma","maternidad y crianza","hábitos y organización","espiritualidad y manifestación","pareja y vínculos","dinero y ahorro","cocina y recetas","bienestar y cuerpo","manualidades","duelo y cambios de vida","algo de mi trabajo"];
+function pintarTemas(){
+  var todos=SUG.concat(E.temas.filter(function(t){return SUG.indexOf(t)<0}));
+  $("#temasChips").innerHTML=todos.map(function(t){return'<button class="chip" type="button" aria-pressed="'+(E.temas.indexOf(t)>-1)+'">'+esc(t)+'</button>'}).join("");
+  if(E.activo>=E.temas.length)E.activo=0;
+  pintarFicha();pintarFrases();
+}
+$("#temasChips").addEventListener("click",function(ev){
+  var b=ev.target.closest(".chip");if(!b)return;var t=b.textContent,i=E.temas.indexOf(t);
+  if(i>-1)E.temas.splice(i,1);else{if(E.temas.length>=3){aviso("Hasta 3 temas: destildá uno para sumar otro");return}E.temas.push(t)}
+  salvar();pintarTemas();
+});
+function sumarOtro(){var v=$("#temaOtro").value.trim().toLowerCase();if(!v)return;if(E.temas.indexOf(v)>-1)return;if(E.temas.length>=3){aviso("Hasta 3 temas: destildá uno para sumar otro");return}E.temas.push(v);$("#temaOtro").value="";salvar();pintarTemas()}
+$("#temaSumar").addEventListener("click",sumarOtro);
+$("#temaOtro").addEventListener("keydown",function(e){if(e.key==="Enter")sumarOtro()});
+
+function tabs(cont){
+  cont.innerHTML=E.temas.length?E.temas.map(function(t,i){return'<button class="tab" type="button" role="tab" data-i="'+i+'" aria-selected="'+(i===E.activo)+'">'+esc(t)+'</button>'}).join(""):"";
+}
+function cambiarActivo(ev){var b=ev.target.closest(".tab");if(!b)return;E.activo=+b.dataset.i;salvar();pintarFicha();pintarFrases()}
+$("#fichaTabs").addEventListener("click",cambiarActivo);
+$("#fraseTabs").addEventListener("click",cambiarActivo);
+
+/* ficha */
+var CAMPOS=[
+ ["edad","¿Qué edad tiene más o menos?","chips",["18 a 25","25 a 35","35 a 45","45 a 55","55 o más"]],
+ ["momento","¿En qué momento de su vida está?","area","Ej.: mamá primeriza que volvió a trabajar"],
+ ["dolor","Su dolor, con sus palabras textuales","area","Copiá frases tal cual las escribió ella"],
+ ["probo","Lo que ya probó y no le funcionó","area",""],
+ ["desea","Lo que desea (cómo sería su vida resuelta)","area",""],
+ ["miedos","Sus dudas o miedos para comprar","area",""],
+ ["donde","¿Dónde la encontraste?","chips",["Instagram","TikTok","YouTube","Amazon","Reddit","Biblioteca de anuncios","Grupos de Facebook"]],
+ ["senales","Señales de que este tema se vende","chips",["Anuncios activos hace más de 30 días","Varios vendedores distintos","Reseñas que piden más","Muchas preguntas en comentarios","Gente que ya paga por cursos o libros"]],
+ ["energia","¿Cuántas ganas tenés de hablar de esto todos los días?","chips",["😐 Pocas","🙂 Algunas","😊 Bastantes","😍 Muchísimas"]]
+];
+function pintarFicha(){
+  tabs($("#fichaTabs"));
+  var c=$("#fichaCuerpo");
+  if(!E.temas.length){c.innerHTML='<div class="vacio">Primero elegí tus temas en el paso 1 y acá aparece una ficha por cada uno.</div>';return}
+  var t=E.temas[E.activo],f=E.fichas[t]||{};
+  var h="";
+  CAMPOS.forEach(function(k){
+    h+='<div class="cam">'+k[1]+'</div>';
+    if(k[2]==="chips"){var sel=f[k[0]]||[];h+='<div class="chips" data-campo="'+k[0]+'"'+(k[0]==="edad"||k[0]==="energia"?' data-uno':'')+'>'+k[3].map(function(o){return'<button class="chip" type="button" aria-pressed="'+(sel.indexOf(o)>-1)+'">'+esc(o)+'</button>'}).join("")+'</div>'}
+    else h+='<textarea class="in" data-campo="'+k[0]+'" placeholder="'+esc(k[3])+'">'+esc(f[k[0]]||"")+'</textarea>';
+  });
+  h+='<div class="links"><button class="b p" type="button" id="copiarFicha">📋 Copiar ficha de «'+esc(t)+'»</button></div>';
+  c.innerHTML=h;
+}
+function fichaActual(){var t=E.temas[E.activo];if(!E.fichas[t])E.fichas[t]={};return E.fichas[t]}
+$("#fichaCuerpo").addEventListener("input",function(ev){var a=ev.target;if(!a.dataset.campo)return;fichaActual()[a.dataset.campo]=a.value;salvar()});
+$("#fichaCuerpo").addEventListener("click",function(ev){
+  if(ev.target.id==="copiarFicha"){copiar(textoFicha(),ev.target);return}
+  var b=ev.target.closest(".chip");if(!b)return;var g=b.parentNode,k=g.dataset.campo,f=fichaActual(),l=f[k]||[],i=l.indexOf(b.textContent);
+  if(g.hasAttribute("data-uno"))l=i>-1?[]:[b.textContent];else{if(i>-1)l.splice(i,1);else l.push(b.textContent)}
+  f[k]=l;salvar();
+  Array.prototype.forEach.call(g.querySelectorAll(".chip"),function(x){x.setAttribute("aria-pressed",l.indexOf(x.textContent)>-1)});
+});
+function textoFicha(){
+  var t=E.temas[E.activo],f=E.fichas[t]||{},s="FICHA DE CLIENTA · Tema: "+t+"\n";
+  CAMPOS.forEach(function(k){var v=f[k[0]];v=Array.isArray(v)?v.join(", "):(v||"");s+="\n"+k[1]+"\n"+(v.trim()?v.trim():"(sin completar)")+"\n"});
+  return s;
+}
+
+/* frases */
+var FR=[
+ ["La entrevista de hipótesis","Quiero investigar a la posible clienta de un producto digital sobre {T}. Todavía no decidí nada: solo quiero entenderla.\n\nEntrevistame para sacar lo que ya sé sin darme cuenta:\n1. Haceme 8 preguntas, de a una, sobre quién creo que es ella, qué le pasa, cuándo le pasa y por qué yo la entiendo. Esperá cada respuesta.\n2. Si respondo en general, pedime un ejemplo concreto de alguien que conozco o de mi propia vida.\n3. Al final armá 3 perfiles posibles de clienta para {T}. De cada uno: edad aproximada, momento de vida, dolor principal, lo que desea y lo que la frena.\n4. Marcá qué cosas de cada perfil son suposiciones mías que tengo que confirmar en la investigación."],
+ ["El mapa de búsqueda","Ayudame a salir a buscar a mi posible clienta de {T} en internet. Armame:\n1. 15 palabras o frases que ella escribiría en el buscador de Instagram o de TikTok cuando le pasa el problema (en español, como habla de verdad, no como experta).\n2. 10 búsquedas en inglés y 10 en español para Amazon (libros que compraría).\n3. 10 búsquedas en inglés para Reddit y, si los conocés, los nombres de foros de Reddit sobre el tema. Si no estás segura de que uno existe, no lo inventes: dame solo la búsqueda.\n4. 10 palabras para la Biblioteca de anuncios de Meta que usaría alguien que vende algo sobre {T}.\nPresentalo en una tabla por lugar, para que yo lo vaya tildando."],
+ ["Los comentarios","Te pego comentarios textuales de Instagram sobre {T}:\n\n[pegá acá los 20 comentarios]\n\n1. Clasificá cada comentario en: dolor, deseo, miedo, duda o lo que ya probó. Armá una tabla con la frase textual, su categoría y qué tan intensa suena del 1 al 5.\n2. Decime qué palabras o expresiones se repiten.\n3. Elegí las 5 frases más fuertes, sin cambiarles ni una palabra.\n4. Decime qué te sorprendió comparado con mi hipótesis y qué pregunta me conviene investigar ahora."],
+ ["Las 3 estrellas","Te pego reseñas de 3 estrellas de libros sobre {T}:\n\n[pegá acá las reseñas]\n\n1. Armá una lista de lo que esas lectoras esperaban encontrar y no encontraron.\n2. Otra lista de lo que sí les gustó.\n3. Con eso, escribí «Lo que un producto sobre {T} tendría que tener» (8 puntos) y «Lo que tendría que evitar» (5 puntos).\n4. Si las reseñas están en inglés, citá las frases clave en inglés y traducidas al español."],
+ ["Reddit","Te pego conversaciones de Reddit sobre {T} (pueden estar en inglés):\n\n[pegá acá las conversaciones]\n\n1. Resumí en español qué le pasa a la persona que pregunta y qué le responden.\n2. Sacá las frases textuales más reveladoras, en el idioma original y traducidas.\n3. Detectá las preguntas que se repiten y en qué momento aparece el problema (hora del día, situación, qué lo dispara).\n4. Decime qué cosa aparece acá que no aparecía en Instagram."],
+ ["La Biblioteca","Anoté anuncios activos de la Biblioteca de anuncios de Meta sobre {T}:\n\n[pegá por cada anuncio: el texto, hace cuántos días está activo, el formato y qué vende]\n\n1. Armá una tabla con: promesa principal, a quién le habla, formato del producto que venden y ángulo (miedo, deseo, curiosidad, identidad…).\n2. Decime qué promesas y ángulos se repiten en los que llevan más tiempo activos.\n3. Decime qué dolor de los que encontré en comentarios y reseñas NADIE está usando en estos anuncios.\n4. Con esto, ¿te parece que hay gente pagando por soluciones de {T}? Respondé solo con lo que muestran los datos."],
+ ["Juego de roles","Con todo lo que te pasé sobre {T} en este chat y en los archivos del proyecto, quiero que hagas de mi posible clienta. Reglas:\n1. Respondé como ella, en primera persona y con sus palabras, basándote SOLO en lo investigado. Si te pregunto algo que los datos no responden, decí «eso no lo sé» en vez de inventar.\n2. Yo te voy a hacer preguntas como si estuviéramos tomando un café.\n3. Cuando escriba «fin», salí del personaje y decime las 5 cosas más importantes que aprendí de ella y qué dato me falta conseguir."],
+ ["Un día en su vida","Con lo investigado sobre {T}, describí un día cualquiera de mi posible clienta, de que se levanta hasta que se acuesta.\n1. Marcá con 🔴 los momentos en que aparece el problema y qué siente ahí.\n2. Marcá con 📱 los momentos en que está en el celular y qué mira.\n3. Al final decime en qué momento del día estaría más abierta a descubrir una solución y por qué.\nNo inventes datos: si algo es una suposición, marcalo con (suposición)."],
+ ["La escalera del dolor","Ordená los dolores que encontramos sobre {T} en 4 escalones, de la superficie a lo más profundo:\n1. Lo que dice en voz alta.\n2. Lo que siente pero no dice.\n3. Lo que le da miedo que pase si nada cambia.\n4. Lo que desea en secreto.\nEn cada escalón poné 3 frases textuales de la investigación que lo muestren. Si en algún escalón no hay frases reales, decímelo para que siga investigando."],
+ ["Las objeciones","Pensá como mi posible clienta de {T}. Haceme una lista de las 10 razones por las que NO compraría un producto digital sobre este tema (plata, tiempo, desconfianza, «ya probé de todo»…).\nPara cada una:\n1. Citá, si existe, una frase real de la investigación que la muestre.\n2. Decime qué tendría que ver o entender para animarse, sin promesas exageradas.\nOrdenalas de la más fuerte a la más débil."],
+ ["La ficha","Vamos a completar juntas la ficha de mi posible clienta de {T}. Los campos son: edad aproximada, momento de vida, su dolor con sus palabras textuales, lo que ya probó, lo que desea, sus dudas para comprar, dónde la encontré, señales de que el tema se vende y cuántas ganas tengo yo de hablar de esto.\n1. Completá cada campo con lo que ya investigamos, citando frases reales.\n2. Preguntame de a uno los campos en los que te falte información.\n3. Al final dame la ficha completa en un solo bloque para copiar."],
+ ["El puntaje del tema","Puntuá el tema {T} del 1 al 5 en estos criterios:\n1. Qué tan intenso es el dolor.\n2. Si ya hay gente pagando por soluciones (anuncios activos hace tiempo, libros con muchas reseñas).\n3. Qué tan fácil es encontrar a estas personas en redes.\n4. Qué tanto sé o viví de este tema.\n5. Cuántas ganas tengo de hablar de esto todos los días.\nJustificá cada número con evidencia concreta de lo investigado. Si un criterio no tiene evidencia, poné «sin datos» y decime qué buscar para completarlo."],
+ ["Comparar mis temas","Estoy investigando estos temas: {TODOS}. Ya tenés en este proyecto lo que junté de cada uno.\n1. Armá una tabla comparando los temas con los 5 criterios del puntaje (dolor, gente que ya paga, fácil de encontrar, lo que sé, mis ganas).\n2. Debajo, en 3 líneas por tema: lo más prometedor y lo que más me preocupa.\n3. No elijas por mí: todavía no decido. Decime qué dato me falta de cada tema para llegar al taller con todo."],
+ ["Mi hoja para el taller","Armame una hoja para llevar al taller en vivo «De la idea a tu app». Para cada uno de mis temas ({TODOS}):\n• Quién es la clienta en 2 líneas.\n• Sus 3 frases textuales más fuertes.\n• Lo que ya se vende sobre ese tema (según la Biblioteca y Amazon).\n• Lo que nadie está ofreciendo todavía.\n• El puntaje de los 5 criterios.\nAl final, 3 preguntas que me conviene hacer en la clase para decidir. Que entre en una sola página."],
+ ["Guardar en el cuaderno","Escribime un archivo llamado «Investigación: {T}» para guardar en este proyecto. Que tenga: las palabras que usa mi posible clienta, sus dolores, deseos, miedos y objeciones con frases textuales, lo que ya se vende y lo que falta, y el puntaje del tema. Ordenado con títulos, sin repetir y sin agregar nada que no hayamos investigado. Dámelo en un solo bloque para copiar."]
+];
+function pintarFrases(){
+  tabs($("#fraseTabs"));
+  var t=E.temas.length?E.temas[E.activo]:"[tu tema]";
+  var todos=E.temas.length?E.temas.join(", "):"[tus 2 o 3 temas]";
+  if(!E.temas.length)$("#fraseTabs").innerHTML='<div class="vacio" style="width:100%">Elegí tus temas en el paso 1 y las frases se completan solas.</div>';
+  $("#listaFrases").innerHTML=FR.map(function(f,i){
+    var tx=f[1].split("{T}").join(t).split("{TODOS}").join(todos);
+    return'<div class="frase"><h3><span class="n">'+(i+1)+'</span>'+esc(f[0])+'</h3><pre id="fr'+i+'">'+esc(tx)+'</pre><button class="b s" type="button" data-copiar="fr'+i+'">📋 Copiar</button></div>';
+  }).join("");
+}
+$("#listaFrases").addEventListener("click",function(ev){var b=ev.target.closest("[data-copiar]");if(b)copiar(document.getElementById(b.dataset.copiar).textContent,b)});
+
+pintarTemas();
+progreso(false);
+
+if("IntersectionObserver" in window&&!QUIETO){
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.05});
+  $$(".rv").forEach(function(el){io.observe(el)});
+}else $$(".rv").forEach(function(el){el.classList.add("in")});
+</script>
+</body>
+</html>

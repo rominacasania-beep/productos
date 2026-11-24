@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#120a1c">
+<title>Plan de 30 días · De la idea a tu app</title>
+<style>html,body{margin:0;background:#120a1c}</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Poppins:wght@300;400;500;600&display=swap">
+<style>
+:root{
+  --bg:#120a1c; --card:#231638; --card2:#1a1029; --fg:#fbf8ff; --muted:#b9aed0; --line:rgba(255,255,255,.1);
+  --lila:#b49be8; --rosa:#f0a3c4; --oro:#e6c06a; --menta:#6fdcb0;
+  --grad:linear-gradient(100deg,#f0a3c4,#b49be8 50%,#e6c06a);
+  --display:"Cormorant Garamond",Georgia,serif; --body:"Poppins",system-ui,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-weight:300;line-height:1.6;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(500px 360px at 90% -5%,rgba(230,192,106,.16),transparent 70%),radial-gradient(420px 320px at -10% 35%,rgba(180,155,232,.18),transparent 70%),radial-gradient(420px 320px at 110% 85%,rgba(240,163,196,.12),transparent 70%)}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(1.5px 1.5px at 12% 18%,#fff8,transparent),radial-gradient(1px 1px at 78% 12%,#fff9,transparent),radial-gradient(1.5px 1.5px at 40% 70%,#e6c06a99,transparent),radial-gradient(1px 1px at 88% 58%,#fff7,transparent),radial-gradient(1.5px 1.5px at 22% 88%,#f0a3c499,transparent),radial-gradient(1px 1px at 60% 34%,#fff6,transparent);animation:titila 5s ease-in-out infinite alternate}
+@keyframes titila{to{opacity:.35}}
+a{color:var(--rosa)}
+.app{position:relative;z-index:1;max-width:560px;margin:0 auto;padding:18px 16px 60px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;line-height:1.08;text-wrap:balance}
+.g{font-style:italic;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--oro);font-weight:600}
+.muted{color:var(--muted);font-size:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;box-shadow:0 24px 50px -24px rgba(0,0,0,.8)}
+.barra{position:sticky;top:0;z-index:20;background:rgba(18,10,28,.88);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.barra .in{max-width:560px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:12px}
+.pista{flex:1;height:10px;border-radius:99px;background:#2c1d44;overflow:hidden}
+.pista i{display:block;height:100%;width:0;background:var(--grad);border-radius:99px;transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.pct{font-weight:600;font-size:13px;min-width:54px;text-align:right;font-variant-numeric:tabular-nums}
+.hero{text-align:center;padding:26px 4px 8px}
+.hero h1{font-size:44px;margin-top:8px}
+.hero p{margin:12px auto 0;max-width:430px}
+.flota{display:inline-block;animation:flota 3s ease-in-out infinite}
+@keyframes flota{50%{transform:translateY(-6px)}}
+.resumen{margin-top:18px;padding:20px 18px;display:flex;gap:16px;align-items:center;border:2px solid transparent;background:linear-gradient(#231638,#231638) padding-box,var(--grad) border-box}
+.ring{flex:none;width:112px;height:112px;position:relative}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring .bgc{fill:none;stroke:#2c1d44;stroke-width:10}
+.ring .fgc{fill:none;stroke:url(#gr);stroke-width:10;stroke-linecap:round;transition:stroke-dashoffset 1.2s cubic-bezier(.2,.8,.2,1)}
+.ring .mid{position:absolute;inset:0;display:grid;place-content:center;text-align:center}
+.ring b{font-family:var(--display);font-size:38px;line-height:.9;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.ring small{font-size:11px;color:var(--muted)}
+.resumen h2{font-size:24px}
+.resumen p{margin:6px 0 10px;font-size:13px;color:var(--muted)}
+.b{border:0;border-radius:999px;padding:11px 16px;font:600 14px var(--body);cursor:pointer;transition:transform .15s;text-decoration:none;display:inline-flex;gap:8px;align-items:center;justify-content:center;color:var(--fg)}
+.b:active{transform:scale(.95)}
+.b.p{background:var(--grad);color:#120a1c}
+.b.s{background:var(--card2);border:1px solid var(--line)}
+.b:focus-visible,.chip:focus-visible,.dc:focus-visible{outline:3px solid var(--oro);outline-offset:2px}
+.aviso{margin-top:14px;padding:12px 14px;border-radius:14px;background:#17302a;color:var(--menta);font-size:13px;font-weight:500}
+.fases{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 8px;margin:16px -16px 0;padding-left:16px;padding-right:16px;scrollbar-width:none}
+.fases::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1px solid var(--line);background:var(--card2);color:var(--fg);border-radius:99px;padding:8px 13px;font:500 13px var(--body);cursor:pointer;white-space:nowrap}
+.chip[aria-pressed="true"]{background:var(--lila);color:#120a1c;border-color:var(--lila)}
+.dia{margin-top:12px}
+.dc{width:100%;text-align:left;color:inherit;font:inherit;display:flex;gap:12px;align-items:center;padding:14px 14px;cursor:pointer;background:var(--card);border:1px solid var(--line);border-radius:18px;transition:transform .2s,border-color .2s}
+.dc:hover{transform:translateX(3px);border-color:rgba(180,155,232,.5)}
+.dnum{flex:none;width:46px;height:46px;border-radius:14px;display:grid;place-content:center;text-align:center;background:var(--card2);border:1px solid var(--line);line-height:1}
+.dnum small{font-size:9px;color:var(--muted);letter-spacing:.1em}
+.dnum b{font-family:var(--display);font-size:22px}
+.dia.hecho .dnum{background:var(--menta);border-color:var(--menta);color:#120a1c}
+.dia.hecho .dnum small{color:#120a1c}
+.dia.proximo .dc{border-color:rgba(240,163,196,.7);box-shadow:0 0 26px -10px rgba(240,163,196,.6)}
+.dtit{flex:1;min-width:0}
+.dtit .fase{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--oro);font-weight:600}
+.dtit h3{font-size:21px}
+.flecha{flex:none;color:var(--muted);transition:transform .3s}
+.dia.open .flecha{transform:rotate(90deg)}
+.det{overflow:hidden;max-height:0;transition:max-height .5s ease}
+.dia.open .det{max-height:9000px}
+.det .in{padding:6px 4px 4px}
+.tarea{margin-top:10px;font-size:14px}
+.tarea ol{margin:6px 0 0;padding-left:20px}
+.tarea li{margin-top:5px}
+.frase{margin-top:12px;border-radius:16px;border:1px dashed rgba(230,192,106,.55);background:#1d1230;padding:14px}
+.frase h4{margin:0;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--oro);font-weight:600}
+.frase pre{white-space:pre-wrap;overflow-wrap:anywhere;font:400 14px/1.6 var(--body);margin:8px 0 12px;color:var(--fg)}
+.chk{display:flex;gap:12px;align-items:center;padding:12px;margin-top:12px;border-radius:14px;background:var(--card2);border:1px solid var(--line);cursor:pointer;font-size:14px;font-weight:500}
+.chk input{position:absolute;opacity:0;width:1px;height:1px}
+.box{flex:none;width:26px;height:26px;border-radius:8px;border:2px solid var(--lila);display:grid;place-items:center;transition:transform .25s cubic-bezier(.3,1.6,.5,1),background .2s}
+.box::after{content:"✓";font-weight:700;font-size:16px;color:#120a1c;transform:scale(0);transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
+.chk input:checked+.box{background:var(--menta);border-color:var(--menta);transform:scale(1.08)}
+.chk input:checked+.box::after{transform:scale(1)}
+.chk input:focus-visible+.box{outline:3px solid var(--oro);outline-offset:2px}
+footer{margin-top:34px;text-align:center;color:var(--muted);font-size:13px}
+.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,120px);background:var(--fg);color:#120a1c;font-weight:600;font-size:14px;padding:11px 18px;border-radius:99px;z-index:60;transition:transform .35s cubic-bezier(.3,1.4,.5,1);max-width:calc(100% - 32px);text-align:center}
+.toast.on{transform:translate(-50%,0)}
+.chispa{position:fixed;width:8px;height:8px;border-radius:50%;pointer-events:none;z-index:50;animation:vuela .8s ease-out forwards}
+@keyframes vuela{to{transform:translate(var(--x),var(--y)) scale(.2);opacity:0}}
+.js .rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+.js .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<div class="barra" role="status" aria-live="polite"><div class="in"><span aria-hidden="true">🗓️</span><div class="pista" aria-hidden="true"><i id="fill"></i></div><span class="pct" id="pct">0/30</span></div></div>
+<main class="app">
+
+<header class="hero rv">
+  <div class="eyebrow">Regalo del taller · Plan de acción</div>
+  <h1>Tus <span class="g">30 días</span> de la idea a tus primeras ventas</h1>
+  <p class="muted">Una tarea por día y 2 frases para Claude en cada una. Hoy te sirve para <b>prepararte para la clase</b> y ver el camino completo. <b>El producto lo creamos juntas en vivo</b>: después del taller, este plan te acompaña día por día a terminarlo y lanzarlo.</p>
+</header>
+
+<section class="card resumen rv">
+  <div class="ring" aria-hidden="true">
+    <svg viewBox="0 0 120 120"><defs><linearGradient id="gr" x1="0" x2="1"><stop offset="0" stop-color="#f0a3c4"/><stop offset=".5" stop-color="#b49be8"/><stop offset="1" stop-color="#e6c06a"/></linearGradient></defs><circle class="bgc" cx="60" cy="60" r="50"/><circle class="fgc" id="arco" cx="60" cy="60" r="50" stroke-dasharray="314.16" stroke-dashoffset="314.16"/></svg>
+    <div class="mid"><b id="nHechos">0</b><small>de 30</small></div>
+  </div>
+  <div>
+    <h2 id="resTit">Tu camino empieza acá</h2>
+    <p id="resTxt">Tildá cada día cuando lo termines. Se guarda en este dispositivo.</p>
+    <button class="b p" type="button" id="irProximo">Ir a mi próximo día →</button>
+  </div>
+</section>
+
+<div class="aviso rv">💡 Trabajá siempre en <b>Claude de escritorio</b>, dentro de tu proyecto <b>«Mi producto»</b>: así Claude ya tiene a mano lo que guardaste. Si un día no llegás, no pasa nada: seguí al otro día desde donde quedaste.</div>
+
+<nav class="fases" id="fases" aria-label="Filtrar por etapa"></nav>
+<div id="dias"></div>
+
+<footer>Hecho con 🤍 por Romi · Taller intensivo De la idea a tu app</footer>
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+document.documentElement.classList.add("js");
+var CLAVE="romi-taller-plan-30";
+var QUIETO=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+function leer(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}}
+function guardar(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+var $=function(s){return document.querySelector(s)};
+var $$=function(s){return Array.prototype.slice.call(document.querySelectorAll(s))};
+function esc(t){return String(t).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+var tT;
+function aviso(t){var el=$("#toast");el.textContent=t;el.classList.add("on");clearTimeout(tT);tT=setTimeout(function(){el.classList.remove("on")},2400)}
+var COLS=["#f0a3c4","#b49be8","#e6c06a","#6fdcb0","#fbf8ff"];
+function chispas(x,y,n){
+  if(QUIETO)return;
+  for(var i=0;i<n;i++){
+    var s=document.createElement("span");s.className="chispa";
+    var a=Math.random()*Math.PI*2,r=40+Math.random()*(n>20?170:80);
+    s.style.left=x+"px";s.style.top=y+"px";s.style.background=COLS[i%COLS.length];
+    s.style.setProperty("--x",Math.cos(a)*r+"px");s.style.setProperty("--y",Math.sin(a)*r+"px");
+    document.body.appendChild(s);setTimeout(function(el){return function(){el.remove()}}(s),850);
+  }
+}
+function copiar(txt,btn){
+  var orig=btn.textContent;
+  function ok(){btn.textContent="✓ ¡Copiado!";aviso("Copiado. Ahora pegalo en Claude 💜");var r=btn.getBoundingClientRect();chispas(r.left+r.width/2,r.top+r.height/2,10);setTimeout(function(){btn.textContent=orig},1800)}
+  function plan(){var t=document.createElement("textarea");t.value=txt;t.setAttribute("readonly","");t.style.position="fixed";t.style.opacity="0";document.body.appendChild(t);t.select();try{document.execCommand("copy");ok()}catch(e){aviso("Mantené apretado el texto para copiarlo")}t.remove()}
+  if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(txt).then(ok,plan)}else plan();
+}
+
+/* Cada día: f etapa, e emoji, t título, p pasos, fr 2 frases [título, texto] */
+var D=[
+/* IDEA */
+{f:"Idea",e:"💡",t:"Tu decisión, en limpio",p:["Releé tus notas del taller y lo que armamos en vivo.","Con la primera frase, dejá por escrito tu decisión: tema, clienta y promesa.","Guardala en «Mi producto» como archivo «Mi decisión»."],
+fr:[["Mi decisión en limpio","En el taller elegí el tema de mi producto digital. Quiero dejarlo claro antes de seguir.\n1. Haceme 6 preguntas, de a una, sobre lo que decidí: para quién es, qué problema le resuelve, qué va a tener en sus manos al final y por qué yo soy la indicada para hacerlo.\n2. Si alguna respuesta es vaga, repreguntame hasta que sea concreta.\n3. Al final escribí el archivo «Mi decisión» con: tema, clienta en 3 líneas, promesa en una frase y 3 cosas que este producto NO es."],
+["La prueba del ascensor","Con mi decisión, escribí 10 formas distintas de explicar mi producto en una sola frase, como si se lo contara a una amiga en un ascensor. Que cada una use un ángulo distinto: el dolor, el deseo, el resultado, la rapidez, la identidad, la sorpresa… Después decime cuáles 3 suenan más a las palabras reales de mi clienta y por qué."]]},
+{f:"Idea",e:"🔍",t:"Validá con lo que ya se vende",p:["Abrí la Biblioteca de anuncios y buscá 5 anuncios activos nuevos de tu tema.","Anotá promesa, formato y hace cuánto están activos.","Pasaselo a Claude con las dos frases."],
+fr:[["Lo que ya funciona","Te pego 5 anuncios activos de la Biblioteca de anuncios sobre mi tema:\n\n[pegá texto, días activos, formato y qué venden]\n\n1. Decime qué tienen en común los que llevan más tiempo activos.\n2. Compará esas promesas con la mía (está en «Mi decisión»): ¿qué me parezco y en qué me diferencio?\n3. Proponeme 3 maneras de hacer mi producto distinto sin dejar de lado lo que ya demuestra que se vende."],
+["Abogada del diablo","Hacé de abogada del diablo con mi idea. Dame las 7 razones más fuertes por las que este producto podría NO venderse. Para cada una, decime cómo lo podría comprobar esta semana y qué cambiaría en el producto si resulta cierta. Sé honesta, no me quieras dejar contenta."]]},
+{f:"Idea",e:"📐",t:"El formato que ella va a usar",p:["Decidí si es journal (para completar) o guía (para leer y aplicar), o una mezcla.","Imaginá a tu clienta usándolo: ¿cuándo, dónde, cuánto tiempo?","Guardá la decisión en «Mi decisión»."],
+fr:[["Journal o guía","Según mi clienta y mi promesa, comparame 3 formatos posibles para mi producto: journal para completar, guía práctica para leer y aplicar, y una mezcla de las dos. En una tabla, para cada formato: cómo lo usaría ella en su día, cuánto tiempo le llevaría, qué tan rápido siente un resultado y qué tan fácil es para mí crearlo. No elijas por mí: decime qué pregunta me tengo que hacer para decidir."],
+["La experiencia de uso","Describí, paso a paso, la primera semana de mi clienta usando mi producto: el momento en que lo abre, qué hace el día 1, qué siente el día 3 y qué cambió el día 7. Marcá los momentos en que podría abandonarlo y proponé qué agregar en el producto para que no pase."]]},
+/* CLIENTA */
+{f:"Clienta",e:"🪞",t:"Actualizá tu ficha",p:["Abrí tu ficha de clienta de la guía de investigación.","Sumá lo que aprendiste en el taller.","Reemplazá el archivo en «Mi producto»."],
+fr:[["La ficha al día","En los archivos de este proyecto está la ficha de mi clienta. Releela y entrevistame para actualizarla con lo que aprendí en el taller: haceme una pregunta por vez sobre cada campo que haya cambiado o esté flojo. Al final dame la ficha nueva completa, marcando con ✨ lo que cambió."],
+["Lo que dice y lo que siente","Armá una tabla de dos columnas sobre mi clienta: «lo que dice en voz alta» y «lo que siente pero no dice». 10 filas, usando frases textuales de mi investigación cuando existan. Después decime cuál de los «no dichos» es el más poderoso para la portada y la página de venta, y por qué."]]},
+{f:"Clienta",e:"🗣️",t:"Hablá con 3 personas reales",p:["Elegí 3 personas que se parezcan a tu clienta (conocidas o seguidoras de Instagram).","Escribiles por mensaje privado o hablales en persona: no para vender, para escuchar.","Pegá sus respuestas en Claude."],
+fr:[["Mi guion de conversación","Quiero conversar con 3 personas parecidas a mi clienta, sin venderles nada. Escribime:\n1. Un mensaje corto y cálido para pedirles 10 minutos de charla, que no suene a venta.\n2. 6 preguntas abiertas para entender su problema (cuándo le pasa, qué probó, qué le gustaría), sin preguntarle si compraría.\n3. 2 repreguntas para cuando responda corto."],
+["Lo que escuché","Te pego lo que me respondieron 3 personas parecidas a mi clienta:\n\n[pegá las respuestas]\n\n1. Sacá las frases textuales más fuertes.\n2. Decime qué confirma y qué contradice lo que tenía en mi ficha.\n3. Proponeme qué cambiar en mi producto o en mi promesa según lo que escuché."]]},
+{f:"Clienta",e:"📒",t:"Tu banco de palabras",p:["Juntá en un solo lugar todas las frases textuales de tu clienta.","Ordenalas con Claude.","Guardalo como archivo «Banco de palabras»."],
+fr:[["Ordenar el banco","Juntá todas las frases textuales de mi clienta que hay en este proyecto y en este chat. Ordenalas en: dolores, deseos, miedos, objeciones y momentos del día. Sin cambiar ni una palabra. Al final dame el archivo «Banco de palabras» listo para guardar, con las 10 más fuertes arriba de todo."],
+["Ganchos con sus palabras","Con mi banco de palabras, escribí 15 frases de apertura para contenido o anuncios, cada una construida con una expresión real de mi clienta. Variá el tipo: pregunta, confesión, «si te pasa esto…», número, contradicción. No prometas resultados exagerados. Marcá las 5 que más se parecen a cómo habla ella."]]},
+/* NOMBRE */
+{f:"Nombre",e:"✍️",t:"20 nombres posibles",p:["Pedile a Claude nombres con criterios claros.","Leelos en voz alta.","Quedate con 5 favoritos."],
+fr:[["Generador de nombres","Ayudame a nombrar mi producto. Antes de proponer, preguntame 3 cosas: qué sensación quiero que transmita, si prefiero un nombre que explique o uno que intrigue, y palabras que me encantan o que odio. Después proponé 20 nombres en 4 grupos (descriptivos, emocionales, de transformación, cortos y sonoros), cada uno con un subtítulo que explique qué es."],
+["El ranking","Estos son mis 5 nombres favoritos: [pegá tus 5]. Puntuá cada uno del 1 al 5 en: se entiende qué es, se recuerda fácil, suena a mi clienta, se puede decir en voz alta sin deletrear, y funciona como nombre de página. Justificá cada número y decime cuál es el más fuerte y cuál le sigue."]]},
+{f:"Nombre",e:"🗳️",t:"Que tu comunidad elija",p:["Subí una encuesta a tus historias de Instagram con los 2 nombres finalistas.","Mirá también qué te responden por privado.","Decidí y guardalo en «Mi decisión»."],
+fr:[["La encuesta","Escribime 3 historias de Instagram para que mi comunidad me ayude a elegir entre estos 2 nombres: [pegá los 2]. La primera cuenta que estoy creando algo para [mi clienta], la segunda tiene la encuesta y la tercera agradece e invita a escribirme por privado. Que suene a mí, cercana, sin vender todavía."],
+["Que no esté usado","Elegí este nombre: [tu nombre]. Decime qué tengo que buscar (en Google, Instagram, Amazon y dominios web) para comprobar que nadie lo esté usando para algo parecido, escribime las búsquedas exactas y armame 3 variantes por si ya existe."]]},
+/* ÍNDICE */
+{f:"Índice",e:"🗂️",t:"El índice desde la transformación",p:["Pensá el antes y el después de tu clienta.","Armá el índice con Claude como un camino de pasos.","Guardalo como archivo «Índice»."],
+fr:[["Del antes al después","Quiero armar el índice de mi producto como un camino. Primero describí en 5 líneas cómo está mi clienta ANTES y cómo queda DESPUÉS de usarlo. Después proponé 3 índices posibles, cada uno con sus secciones y lo que logra ella al terminar cada una. Que cada sección sea un paso chico y alcanzable."],
+["El índice contra sus objeciones","Revisá el índice que elegí: [pegá tu índice]. Cruzalo con las objeciones y miedos de mi clienta que están en el proyecto. Decime qué objeción no está respondida por ninguna sección, qué sección sobra o se repite y qué cambio haría que se sienta más completo sin hacerlo más largo."]]},
+{f:"Índice",e:"🌟",t:"Tu sección estrella",p:["Elegí la sección que más va a impactar a tu clienta.","Definí qué va a tener adentro (ejercicios, preguntas, ejemplos).","Esa es la que vas a mostrar en tu página de venta."],
+fr:[["Encontrar la estrella","De mi índice, decime cuál es la sección que más deseo genera en mi clienta y por qué, usando frases de mi banco de palabras. Después armá el detalle de esa sección: qué explica, qué ejercicios o preguntas tiene, qué ejemplo usa y con qué se queda ella al terminar."],
+["El mapa de cada sección","Para cada sección de mi índice armá una ficha corta: objetivo, idea principal, 1 ejercicio o pregunta para completar, 1 ejemplo de la vida real y una frase de cierre. Presentalo como tabla para que lo use de guía mientras escribo."]]},
+/* ESCRIBIR */
+{f:"Escribir",e:"🤗",t:"La bienvenida",p:["Escribí la primera página que va a leer tu clienta.","Leela en voz alta: ¿suena a vos?","Guardala en tu cuaderno."],
+fr:[["Escribir la bienvenida","Escribí la bienvenida de mi producto con mi voz (está en mis instrucciones). Que tenga: por qué lo creé (preguntame mi historia si no la tenés), qué va a encontrar, cómo usarlo en el día a día y una frase que la abrace. Antes de escribir, preguntame si quiero que se note mi cara y mi historia o que sea más impersonal."],
+["Que suene a mí","Te paso 3 textos escritos por mí: [pegá mensajes, posts o mails tuyos]. Analizá mi forma de escribir (largo de frases, palabras, humor, emojis). Después reescribí la bienvenida para que suene igual a esos textos y marcá los 5 cambios que hiciste."]]},
+{f:"Escribir",e:"📝",t:"Primera sección",p:["Escribí la primera sección siguiendo su ficha.","Pedile a Claude el borrador y corregilo con tus palabras.","Guardala."],
+fr:[["Escribimos juntas","Vamos a escribir la sección 1 de mi índice. Trabajemos así: 1) proponeme la estructura en 5 puntos y esperá mi OK; 2) escribí el primer punto y esperá mis cambios; 3) seguí punto por punto. Usá ejemplos de la vida real de mi clienta y frases de mi banco de palabras. Nada de relleno."],
+["La lectora exigente","Leé la sección 1 como si fueras mi clienta, cansada, con 10 minutos libres. Marcá: dónde te aburriste, dónde no entendiste, dónde sentiste «esto es para mí» y qué ejercicio te dio ganas de hacer. Después proponé los arreglos concretos."]]},
+{f:"Escribir",e:"📝",t:"Segunda sección",p:["Misma dinámica que ayer, con la sección 2.","Sumá al menos un ejercicio práctico.","Guardala."],
+fr:[["Sección 2 paso a paso","Escribamos la sección 2 de mi índice con la misma dinámica: estructura primero, después punto por punto esperando mi OK. Sumá al menos un ejercicio para completar con espacios y preguntas guía, pensado para hacerse en 10 minutos."],
+["Conectar secciones","Revisá cómo termina la sección 1 y cómo empieza la 2. Escribime una transición que haga que ella quiera seguir, y decime si hay ideas que se repiten entre las dos para sacarlas."]]},
+{f:"Escribir",e:"📝",t:"Tercera sección y ejercicios",p:["Escribí la sección 3 (o las que te queden).","Revisá que cada sección tenga algo para hacer, no solo para leer.","Guardala."],
+fr:[["Sección 3 y siguientes","Sigamos con la sección 3 de mi índice (y las que falten), con la misma dinámica. En cada una, cerrá con un mini desafío de 1 día para que mi clienta sienta un avance concreto."],
+["Banco de ejercicios","Repasá todas las secciones que escribimos. Armame un banco de 10 ejercicios extra (preguntas para escribir, listas, mini rituales, tablas para completar) que refuercen lo que enseño. Decime en qué sección iría cada uno."]]},
+{f:"Escribir",e:"🎁",t:"El cierre y un extra",p:["Escribí la página final: qué logró y qué sigue.","Pensá un extra chico que sume valor (una lista, una plantilla, un calendario).","Guardalos."],
+fr:[["El cierre","Escribí el cierre de mi producto: que celebre lo que ella hizo, le recuerde cómo estaba al principio, le dé 3 hábitos para sostenerlo y la invite a escribirme para contarme cómo le fue. Cálido y concreto, con mi voz."],
+["Ideas de extras","Proponeme 8 extras chiquitos que podría sumar a mi producto (plantillas, listas, calendarios, frases para imprimir…). Para cada uno: qué es, por qué lo valoraría mi clienta y cuánto me llevaría hacerlo con tu ayuda. Ordenalos de más valor y menos esfuerzo a menos valor y más esfuerzo."]]},
+{f:"Escribir",e:"🔎",t:"Revisión completa",p:["Leé todo el producto de punta a punta, en voz alta.","Pasale el texto completo a Claude para revisar.","Dejá la versión final guardada."],
+fr:[["Revisión de editora","Te paso el texto completo de mi producto: [pegá o subí el texto]. Hacé de editora: 1) errores de ortografía y tipeo; 2) frases largas o confusas, con su versión mejorada; 3) partes que se repiten; 4) lugares donde prometo algo que el producto no cumple. Mostrame cada cambio antes de aplicarlo."],
+["La prueba de la clienta","Leé mi producto completo como mi clienta. Contame qué sentiste al terminar, qué te quedó dando vueltas, qué no usarías y qué te faltó. Después decime las 3 mejoras que más subirían su valor sin hacerlo más largo."]]},
+/* DISEÑO */
+{f:"Diseño",e:"🎨",t:"Tu estilo visual",p:["Ahora sí: decidí si tu marca muestra tu cara o es sin cara.","Elegí colores y letras con Claude.","Guardalo como archivo «Mi estilo»."],
+fr:[["Con cara o sin cara","Ayudame a decidir si mi producto se presenta con mi cara y mi historia (marca personal) o como una marca sin cara. Haceme 5 preguntas, de a una, sobre mi tiempo, cuánto me gusta mostrarme, mi clienta y mis planes. Después compará las dos opciones para mi caso y decime qué cambiaría en la portada, la página y el contenido según cada una."],
+["Mi estilo","Según mi clienta y mi decisión de marca, proponé 3 estilos visuales posibles. De cada uno: nombre del estilo, 5 colores con su código, 2 tipografías gratuitas de Google Fonts (títulos y texto), el tipo de imágenes y 3 palabras que lo definen. Explicá por qué cada uno le hablaría a mi clienta."]]},
+{f:"Diseño",e:"📕",t:"Portada y PDF",p:["Armá la portada con lo que vimos en la clase (Claude + Canva).","Pasá el texto a un PDF prolijo con tu estilo.","Revisalo en el celular: ahí lo va a leer ella."],
+fr:[["Ideas de portada","Proponeme 5 ideas de portada para mi producto con mi estilo: qué imagen, dónde va el nombre, qué subtítulo y qué sensación transmite cada una. Que se lea bien en chiquito, como se ve en el celular. Decime cuál usarías para una clienta que lo ve por primera vez en una historia de Instagram."],
+["Revisión del PDF","Te describo (o te subo capturas de) mi PDF: [subí capturas]. Revisalo como diseñadora: legibilidad en el celular, espacios, jerarquía de títulos, coherencia de colores y si los ejercicios tienen lugar suficiente para completar. Dame una lista de arreglos ordenada por importancia."]]},
+/* PÁGINA */
+{f:"Página de venta",e:"🧱",t:"La estructura y el titular",p:["Armá la estructura de tu página con Claude.","Elegí el titular usando las palabras de tu clienta.","Guardalo en el cuaderno."],
+fr:[["La estructura","Armame la estructura de mi página de venta, sección por sección, de arriba hacia abajo. Para cada sección decime qué pregunta de mi clienta responde y qué parte de mi investigación uso ahí. No escribas el texto todavía: solo el esqueleto, para que yo lo apruebe."],
+["20 titulares","Escribí 20 titulares para mi página, usando expresiones de mi banco de palabras. Variá los ángulos: dolor, deseo, curiosidad, resultado, identidad. Sin promesas exageradas ni números inventados. Marcá los 3 más fuertes y explicá por qué."]]},
+{f:"Página de venta",e:"🖋️",t:"El texto completo",p:["Escribí toda la página, sección por sección.","Asegurate de mostrar qué tiene el producto por dentro.","Revisá que cada parte hable de ella, no de vos."],
+fr:[["Sección por sección","Escribamos mi página de venta siguiendo la estructura aprobada. Escribí una sección por vez y esperá mi OK antes de la siguiente. Usá mi voz y frases reales de mi clienta. No inventes testimonios, cifras ni resultados: si una sección los necesita, dejá un espacio marcado para cuando tenga opiniones reales."],
+["Ella lee la página","Leé mi página completa como mi clienta que llega desde Instagram con 30 segundos de atención. Decime en qué parte la entendiste, en qué parte dudaste, qué pregunta te quedó sin responder y qué te haría tocar el botón. Después dame los arreglos."]]},
+{f:"Página de venta",e:"🚀",t:"Publicá tu página",p:["Armá y publicá la página como lo hicimos en la clase.","Abrila en tu celular y en la compu.","Pasale el enlace a 2 personas de confianza para que te digan qué entendieron."],
+fr:[["Lista de control","Antes de publicar mi página, armame una lista de control con todo lo que tengo que revisar: textos, enlaces, botón de compra, cómo se ve en el celular, velocidad, ortografía, datos de contacto. Agrupala por prioridad y explicá cómo comprobar cada punto."],
+["Lo que entendieron","Le mostré mi página a 2 personas y esto me dijeron: [pegá sus respuestas]. Decime qué partes se entienden y cuáles no, comparando lo que entendieron con lo que yo quería decir. Proponeme los cambios concretos para que la próxima persona la entienda en 10 segundos."]]},
+/* APP */
+{f:"App",e:"📲",t:"El contenido de tu app",p:["Definí qué va a ver tu clienta al entrar a la app de entrega.","Escribí la bienvenida y las instrucciones de uso.","Armala como en la clase."],
+fr:[["La experiencia dentro de la app","Ayudame a pensar la app de entrega de mi producto. Describí, pantalla por pantalla, qué ve mi clienta desde que entra: bienvenida, cómo abre su producto, cómo encuentra los extras y a quién escribir si algo no funciona. Que sea tan simple que la use alguien que nunca usó una app."],
+["Textos de la app","Escribí todos los textos cortos de mi app: mensaje de bienvenida, títulos de cada botón, instrucciones de uso en 3 pasos, mensaje si algo falla y una frase motivadora para cada día de la primera semana. Con mi voz, cortos y claros."]]},
+{f:"App",e:"🧪",t:"Probala como clienta",p:["Entrá a tu app como si fueras una clienta nueva, desde el celular.","Anotá todo lo que te trabe o te confunda.","Arreglalo con Claude."],
+fr:[["Guion de prueba","Armame un guion de prueba de mi app con 12 pasos, como si fuera una clienta nueva: desde que recibe el acceso hasta que abre el último extra. Para cada paso: qué hacer, qué debería pasar y qué anotar si no pasa."],
+["Arreglar lo que trabó","Probé mi app y esto me trabó o me confundió: [pegá tus notas]. Ordená los problemas por gravedad y, para cada uno, decime cómo arreglarlo paso a paso, de a una cosa por vez."]]},
+/* COBRO */
+{f:"Cobro",e:"🏷️",t:"Precio y oferta",p:["Definí el precio mirando lo que ya se vende en tu tema.","Armá la oferta: qué incluye y cómo se presenta.","Escribila en tu página."],
+fr:[["Pensar el precio","Ayudame a definir el precio de mi producto. Preguntame primero: a qué precios vi productos parecidos en la Biblioteca y en Amazon, en qué país está mi clienta y qué incluye mi producto. Después proponé 3 opciones de precio con sus pros y contras para mi caso. No decidas por mí."],
+["Armar la oferta","Con el precio que elegí, armame la presentación de la oferta para la página: qué incluye (producto + extras), por qué vale más de lo que cuesta (sin exagerar ni inventar), cómo lo recibe y qué pasa después de pagar. Escribila en 3 versiones: corta, media y larga."]]},
+{f:"Cobro",e:"💳",t:"Conectá el cobro",p:["Dejá funcionando el cobro como lo vimos en la clase.","Recorré el camino completo: página → pago → mail → app.","Corregí lo que no fluya."],
+fr:[["El camino de la compra","Describí paso a paso el camino completo de mi clienta: ve el contenido, entra a la página, toca el botón, paga, recibe el mail y entra a la app. En cada paso decime qué podría salir mal y cómo lo compruebo antes de lanzar."],
+["Los mails de la compra","Escribí los mails que recibe mi clienta después de comprar: confirmación con el acceso, un mail al día siguiente para ayudarla a empezar y uno a la semana preguntándole cómo va. Cortos, cálidos, con mi voz y con una sola acción por mail."]]},
+/* CONTENIDO */
+{f:"Contenido",e:"🎬",t:"Tu plan de contenido",p:["Armá con Claude 7 días de contenido para contar que viene tu producto.","Elegí formatos simples que puedas sostener.","Agendalo."],
+fr:[["7 días de contenido","Armame un plan de contenido de 7 días para Instagram, antes de lanzar mi producto. Cada día: formato (historia, reel o post), idea, gancho de apertura con palabras de mi clienta y qué tiene que sentir ella al verlo. La semana tiene que ir de «esto te pasa» a «estoy creando algo para vos»."],
+["Guiones","Escribí los guiones de los 3 contenidos más importantes del plan. Para cada reel: los primeros 3 segundos, el desarrollo en frases cortas y el cierre con una invitación suave. Que se pueda grabar con el celular en 15 minutos."]]},
+{f:"Contenido",e:"📸",t:"Grabá y publicá",p:["Grabá los primeros 3 contenidos.","Publicá el primero hoy, aunque no sea perfecto.","Anotá qué te comentan."],
+fr:[["Antes de grabar","Voy a grabar mi primer reel. Dame una guía simple: dónde ponerme con la luz, cómo sostener el celular, qué decir en los primeros 3 segundos y cómo cortar los silencios. Y 3 errores comunes de la primera vez para evitarlos."],
+["Leer las respuestas","Publiqué mis primeros contenidos y esto me comentaron o respondieron: [pegá comentarios y mensajes]. Decime qué interesó más, qué palabras nuevas de mi clienta aparecieron y qué contenido conviene hacer mañana según esto."]]},
+/* VENTAS */
+{f:"Primeras ventas",e:"💌",t:"Tus primeras 30 personas",p:["Hacé una lista de 30 personas que podrían necesitar tu producto (seguidoras, conocidas, clientas anteriores).","Escribí mensajes personales, uno por uno.","Mandalos por privado de Instagram o por mail."],
+fr:[["Mi lista","Ayudame a armar la lista de mis primeras 30 personas. Haceme preguntas para recordar: quién me pidió ayuda con este tema, quién comenta mis publicaciones, quién me compró algo antes. Armá una tabla con nombre, por qué podría interesarle y cómo la contacto (privado de Instagram o mail)."],
+["Mensajes personales","Escribime 3 versiones de un mensaje personal para contarle a alguien que lancé mi producto: una para alguien cercana, una para una seguidora y una para alguien que me pidió ayuda con el tema. Que no suene a publicidad, que invite a mirar la página y que se pueda personalizar con su nombre."]]},
+{f:"Primeras ventas",e:"🎉",t:"Lanzamiento",p:["Contá en historias y en un post que tu producto ya está.","Fijá el enlace en tu perfil.","Respondé cada mensaje con cariño."],
+fr:[["El día del lanzamiento","Armame el día de lanzamiento en Instagram: 8 historias repartidas en el día (con su texto y qué mostrar), el texto del post principal y qué escribir en la biografía. Que cuente la historia de por qué lo creé y muestre qué tiene por dentro, sin presión."],
+["Responder dudas","Estas son las preguntas y dudas que me llegaron: [pegá los mensajes]. Escribime respuestas cálidas y claras para cada una, con mi voz. Y decime qué pregunta frecuente debería sumar a mi página de venta."]]},
+{f:"Primeras ventas",e:"🌱",t:"Opiniones reales y mes 2",p:["Escribile a tus primeras compradoras para saber cómo les va.","Pedí su opinión real y su permiso antes de mostrarla.","Planeá el mes que viene."],
+fr:[["Pedir opiniones de verdad","Escribime un mensaje para mis primeras compradoras: que les pregunte cómo les va con el producto, qué les gustó, qué mejorarían y si me dan permiso para compartir su opinión con su nombre o sin él. Que sea cálido, corto y sin presión. Recordame no publicar nada sin su permiso."],
+["Mi mes 2","Revisemos mis 30 días. Haceme 6 preguntas, de a una: qué terminé, qué me costó, cuántas personas vieron mi página, qué preguntaron, qué vendí y cómo me sentí. Con eso armá mi plan para el mes 2: 3 prioridades, lo que dejo de hacer y una tarea por semana."]]}
+];
+
+var FASES=["Todas"];D.forEach(function(d){if(FASES.indexOf(d.f)<0)FASES.push(d.f)});
+var E=leer(CLAVE,{h:{},fase:"Todas"});E.h=E.h||{};E.fase=E.fase||"Todas";
+function salvar(){guardar(CLAVE,E)}
+function proximo(){for(var i=0;i<D.length;i++)if(!E.h[i])return i;return -1}
+
+function pintarFases(){
+  $("#fases").innerHTML=FASES.map(function(f){return'<button class="chip" type="button" aria-pressed="'+(E.fase===f)+'">'+esc(f)+'</button>'}).join("");
+}
+$("#fases").addEventListener("click",function(ev){var b=ev.target.closest(".chip");if(!b)return;E.fase=b.textContent;salvar();pintarFases();pintarDias()});
+
+function pintarDias(){
+  var px=proximo(),h="";
+  D.forEach(function(d,i){
+    if(E.fase!=="Todas"&&d.f!==E.fase)return;
+    var hecho=!!E.h[i];
+    h+='<div class="dia rv in'+(hecho?' hecho':'')+(i===px?' proximo':'')+'" id="d'+i+'" data-i="'+i+'">'+
+      '<button class="dc" type="button" aria-expanded="false"><span class="dnum"><small>DÍA</small><b>'+(i+1)+'</b></span><span class="dtit"><span class="fase">'+esc(d.e+" "+d.f)+(hecho?' · hecho ✓':'')+'</span><h3>'+esc(d.t)+'</h3></span><span class="flecha" aria-hidden="true">›</span></button>'+
+      '<div class="det"><div class="in"><div class="tarea"><b>Tu tarea de hoy</b><ol>'+d.p.map(function(x){return"<li>"+esc(x)+"</li>"}).join("")+'</ol></div>'+
+      d.fr.map(function(f,j){return'<div class="frase"><h4>Frase '+(j+1)+' · '+esc(f[0])+'</h4><pre id="f'+i+'_'+j+'">'+esc(f[1])+'</pre><button class="b s" type="button" data-copiar="f'+i+'_'+j+'">📋 Copiar</button></div>'}).join("")+
+      '<label class="chk"><input type="checkbox" data-dia="'+i+'"'+(hecho?' checked':'')+'><span class="box"></span><span>Terminé el día '+(i+1)+'</span></label></div></div></div>';
+  });
+  $("#dias").innerHTML=h;
+}
+function abrir(i,scroll){
+  var el=document.getElementById("d"+i);
+  if(!el){E.fase="Todas";salvar();pintarFases();pintarDias();el=document.getElementById("d"+i)}
+  el.classList.add("open");el.querySelector(".dc").setAttribute("aria-expanded","true");
+  if(scroll)el.scrollIntoView({behavior:QUIETO?"auto":"smooth",block:"start"});
+}
+$("#dias").addEventListener("click",function(ev){
+  var c=ev.target.closest("[data-copiar]");if(c){copiar(document.getElementById(c.dataset.copiar).textContent,c);return}
+  var b=ev.target.closest(".dc");if(!b)return;var d=b.parentNode,o=!d.classList.contains("open");
+  d.classList.toggle("open",o);b.setAttribute("aria-expanded",o?"true":"false");
+});
+$("#dias").addEventListener("change",function(ev){
+  var c=ev.target;if(!c.dataset||c.dataset.dia===undefined)return;
+  var i=+c.dataset.dia;E.h[i]=c.checked;salvar();
+  if(c.checked){var r=c.nextElementSibling.getBoundingClientRect();chispas(r.left+r.width/2,r.top+r.height/2,18)}
+  var n=resumen(c.checked);
+  pintarDias();
+  if(c.checked&&n<30){var px=proximo();aviso("¡Día "+(i+1)+" hecho! 🌟");if(px>-1)abrir(px,false)}
+});
+function resumen(fiesta){
+  var n=0;for(var i=0;i<D.length;i++)if(E.h[i])n++;
+  $("#fill").style.width=Math.round(n/30*100)+"%";$("#pct").textContent=n+"/30";
+  $("#nHechos").textContent=n;$("#arco").style.strokeDashoffset=314.16*(1-n/30);
+  var px=proximo();
+  if(n===30){$("#resTit").innerHTML='¡Lo <span class="g">lograste</span>!';$("#resTxt").textContent="30 días, de la idea a tus primeras ventas. Mirá todo lo que creaste.";$("#irProximo").style.display="none";
+    if(fiesta){chispas(window.innerWidth/2,window.innerHeight/2,60);aviso("¡30 de 30! 🎉 Sos dueña de tu producto")}}
+  else{$("#irProximo").style.display="";$("#resTit").textContent=n===0?"Tu camino empieza acá":n<15?"¡Vas avanzando!":"¡Ya pasaste la mitad!";$("#resTxt").textContent="Tu próximo día: "+(px+1)+" · "+D[px].t+".";}
+  return n;
+}
+$("#irProximo").addEventListener("click",function(){var px=proximo();if(px>-1)abrir(px,true)});
+
+pintarFases();pintarDias();resumen(false);
+var px0=proximo();if(px0>-1&&document.getElementById("d"+px0))abrir(px0,false);
+
+if("IntersectionObserver" in window&&!QUIETO){
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.05});
+  $$("header.rv,section.rv,.aviso.rv").forEach(function(el){io.observe(el)});
+}else $$(".rv").forEach(function(el){el.classList.add("in")});
+</script>
+</body>
+</html>
