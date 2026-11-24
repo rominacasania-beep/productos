@@ -478,7 +478,7 @@ if($("#oferta").getBoundingClientRect().top<innerHeight)abrirSolo();
 addEventListener("scroll",()=>{const h=document.documentElement;$("#prog").style.width=(scrollY/(h.scrollHeight-innerHeight)*100)+"%";
  const t=$("#tandas").getBoundingClientRect();$("#fija").classList.toggle("on",scrollY>innerHeight*.8&&(t.top>innerHeight*.6||t.bottom<0))},{passive:true});
 
-$$("button.comprar").forEach(b=>b.addEventListener("click",e=>{chispas(e.clientX,e.clientY,36);setTimeout(()=>{location.href="https://journal-de-escritura-terapeutica-y-creativa.impultienda.ar/o/masterclass-de-la-idea-a-tu-app"},300)}));
+$$("button.comprar").forEach(b=>b.addEventListener("click",e=>{chispas(e.clientX,e.clientY,36);setTimeout(()=>{location.href="https://masterclass.romimanfiesta.com/checkout"},300)}));
 $$("a.btn").forEach(a=>a.addEventListener("click",e=>chispas(e.clientX,e.clientY,16)));
 const bfT=["🖤 Black Friday","Taller intensivo + 9 regalos a 67 USD","Solo hasta el lunes 30/11","Después sube a 87","Pago único · sin mensualidades"];
 document.getElementById("bf").innerHTML=[...bfT,...bfT,...bfT,...bfT].map(t=>"<span>"+t+"  ✦</span>").join("");
