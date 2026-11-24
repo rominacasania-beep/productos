@@ -1,12 +1,12 @@
-/* Orden de la página de productos (24/11): arriba Taller + Journal + Kit; el resto adentro de «Ver todos mis productos».
+/* Orden de la página de productos (24/11): arriba Taller + De 0 a 100 + Journal + Kit; el resto adentro de «Ver todos mis productos».
    Solo CSS (order) + un botón; no mueve el HTML original. Para volver atrás: borrar este archivo y su <script> en index.html */
 (function () {
   if (location.pathname !== "/" && location.pathname !== "/index.html") return;
-  var G = "#lz,#mas,#emprender,#peques,main>section:has(#evidencias)";
+  var G = "#mas,#emprender,#peques,main>section:has(#evidencias)";
   var css = "main.romi-universe{display:flex;flex-direction:column}main.romi-universe>*{order:50}"
-    + "main.romi-universe>header{order:0}#tz{order:1}#journal{order:2}#manifestacion{order:3}#vt{order:4}"
-    + G + "{order:5}"
-    + "main>section:has(a[href='/un-poquito-mas-de-mi']){order:6}#regalitos{order:7}main>section:has(a[href*='instagram.com/romimanifiesta']){order:8}main.romi-universe>footer{order:9}"
+    + "main.romi-universe>header{order:0}#tz{order:1}#lz{order:2}#journal{order:3}#manifestacion{order:4}#vt{order:5}"
+    + G + "{order:6}"
+    + "main>section:has(a[href='/un-poquito-mas-de-mi']){order:7}#regalitos{order:8}main>section:has(a[href*='instagram.com/romimanifiesta']){order:9}main.romi-universe>footer{order:10}"
     + "#empezar{display:none}"
     + "body:not(.vt-abierto) :is(" + G + "){display:none}"
     + "#vt{position:relative;z-index:20;text-align:center;padding:10px 16px 46px}"
