@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#120a1c">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Mi camino">
-<title>Mi camino a la clase</title>
+<title>Mi camino al taller</title>
 <style>html,body{margin:0;background:#120a1c}</style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Poppins:wght@300;400;500;600&display=swap">
 <style>
@@ -114,12 +114,12 @@ h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;line-height:1.05;te
 <body>
 <canvas id="cielo" aria-hidden="true"></canvas>
 <div class="app">
-  <div class="eyebrow">De la idea a tu app · Masterclass</div>
+  <div class="eyebrow">De la idea a tu app · Taller intensivo</div>
   <div class="hola" style="margin-top:6px">Hola, <span class="g">futura creadora</span> 🤍</div>
   <p class="muted" style="margin:4px 0 0">Tu lugar está confirmado. Todo lo de la clase te llega acá.</p>
 
   <div class="card cuenta">
-    <div class="eyebrow">Faltan para la clase en vivo</div>
+    <div class="eyebrow">Faltan para el taller intensivo</div>
     <div class="ring">
       <svg viewBox="0 0 200 200" aria-hidden="true"><defs><linearGradient id="gr" x1="0" x2="1"><stop offset="0" stop-color="#f0a3c4"/><stop offset=".5" stop-color="#b49be8"/><stop offset="1" stop-color="#e6c06a"/></linearGradient></defs><circle class="bgc" cx="100" cy="100" r="88"/><circle class="fgc" id="arco" cx="100" cy="100" r="88"/></svg>
       <div class="mid"><div class="dias" id="dias">0</div><div class="muted" id="diasTxt">días</div></div>
@@ -274,7 +274,7 @@ $("#pqEnviar").addEventListener("click",async ev=>{const q=$("#pqQ").value.trim(
  catch(x){err.textContent="No se pudo enviar. Revisá tu conexión y probá de nuevo."}
  b.disabled=false;b.textContent="Enviar mi pregunta"});
 $("#pqQ").addEventListener("input",()=>$("#pqErr").textContent="");
-const gcal="https://calendar.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent("Masterclass «De la idea a tu app» con Romi")+"&dates=20261208/20261209&details="+encodeURIComponent("Clase en vivo. El link del Zoom está en tu app: "+location.href);
+const gcal="https://calendar.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent("Taller intensivo «De la idea a tu app» con Romi")+"&dates=20261208/20261209&details="+encodeURIComponent("Clase en vivo. El link del Zoom está en tu app: "+location.href);
 $("#agendar").href=gcal;
 
 const clase=Date.UTC(2026,11,8,3,0,0),ini=new Date(est.inicio+"T03:00:00Z").getTime();
