@@ -88,6 +88,19 @@ h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;line-height:1.05;te
 .cand{display:inline-block;animation:sac 3.5s infinite}
 @keyframes sac{0%,85%,100%{transform:rotate(0)}90%{transform:rotate(-14deg)}95%{transform:rotate(10deg)}}
 .final{margin-top:24px;padding:22px;text-align:center}
+.regalos{margin-top:16px;padding:18px}
+.rg{display:flex;gap:12px;align-items:center;padding:12px;border-radius:16px;background:var(--card2);border:1px solid var(--line);margin-top:10px}
+.rg .ic{font-size:26px;flex:none}
+.rg .tx{flex:1;min-width:0}
+.rg .tx b{display:block;font-weight:600}
+.rg .tx span{font-size:12px;color:var(--muted)}
+.rg .b{padding:9px 14px;font-size:13px;flex:none}
+.rg .pronto{font-size:12px;color:var(--oro);flex:none;text-align:right;max-width:96px}
+.preg{margin-top:16px;padding:18px}
+.preg textarea,.preg input{width:100%;background:var(--card2);border:1px solid var(--line);border-radius:14px;color:var(--fg);font:400 15px var(--body);padding:12px;margin-top:10px}
+.preg textarea{min-height:96px;resize:vertical}
+.preg .err{color:#ff9bb0;font-size:13px;min-height:1.2em;margin-top:6px}
+.clase2{margin-top:16px;padding:20px;text-align:center;border:1px dashed var(--lila)}
 .anclar{position:fixed;left:0;right:0;bottom:0;z-index:5;padding:12px max(16px,env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:rgba(18,10,28,.94);backdrop-filter:blur(10px);border-top:1px solid var(--line);text-align:center}
 .anclar .b{width:100%;max-width:448px}
 .hoja{display:none;margin:10px auto 0;max-width:448px;text-align:left;font-size:13px;color:var(--muted)}
@@ -123,6 +136,29 @@ h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;line-height:1.05;te
     <div class="zoom" id="zoom"></div>
   </div>
 
+  <div class="card clase2">
+    <div class="eyebrow">Clase 2 · en vivo</div>
+    <h3 style="font-size:28px;margin-top:6px">Preguntas y respuestas</h3>
+    <p class="muted" style="margin:6px 0 0">Martes 15 de diciembre · <span id="hora2">la hora te la aviso acá</span>. Una semana después, cuando ya empezaste a aplicar.</p>
+    <div style="margin-top:12px"><a class="b s" id="agendar2" target="_blank" rel="noopener">📅 Agendar la clase 2</a></div>
+  </div>
+
+  <div class="card regalos">
+    <div class="eyebrow">🎁 Tus 9 regalos</div>
+    <p class="muted" style="margin:6px 0 0">Acá los descargás. Los que todavía no están se habilitan antes de la clase.</p>
+    <div id="regalos"></div>
+  </div>
+
+  <div class="card preg" id="preguntas">
+    <div class="eyebrow">📨 Tus preguntas para Romi</div>
+    <p class="muted" style="margin:6px 0 0">Mandame todas las dudas que te vayan surgiendo. Las respondo en vivo en las clases.</p>
+    <input id="pqN" placeholder="Tu nombre" maxlength="40" autocomplete="given-name">
+    <input id="pqE" type="email" placeholder="Tu mail (el de tu compra)" maxlength="120" autocomplete="email">
+    <textarea id="pqQ" placeholder="¿Cómo elijo el nombre de mi producto?" maxlength="1500"></textarea>
+    <div class="err" id="pqErr" role="alert"></div>
+    <button class="b p" id="pqEnviar" style="width:100%">Enviar mi pregunta</button>
+  </div>
+
   <div class="stats">
     <div class="card stat"><b id="sHechas">0</b><small>misiones hechas</small></div>
     <div class="card stat"><b><span class="fuego" aria-hidden="true">🔥</span><span id="sRacha">0</span></b><small>días seguidos</small></div>
@@ -155,6 +191,19 @@ const AVISOS=[
  ["🔗","Antes del 8/12","El link del Zoom aparece en esta sala antes de la clase. Agendá la clase en tu calendario para que te avise."]
 ];
 const HORA="";        /* ej: "20:00 (Uruguay)" */
+const HORA2="";       /* hora de la clase 2 (15/12) */
+/* Regalos: cuando un regalo esté listo, poné su link en la 4.ª posición */
+const REGALOS=[
+ ["💬","Preguntas y respuestas en vivo","Clase 2, martes 15/12","#preguntas","Abajo"],
+ ["📲","App «Mi camino a la clase»","Es esta app: ya la tenés","","Ya la tenés"],
+ ["🧰","Kit de arranque","Instalá Claude y abrí tus cuentas","","Antes del 1/12"],
+ ["📘","«Tu producto de cero»","Pedidos para que Claude escriba y diseñe tu producto","","Antes del 8/12"],
+ ["🖼️","Kit de portadas y mockups","Para que tu producto se vea de marca grande","","Antes del 8/12"],
+ ["🛍️","Estructura de página de venta","La que uso yo, y cómo publicarla","","Antes del 8/12"],
+ ["✨","«Tu app paso a paso»","Tu compradora entra con su mail y ve lo que compró","","Antes del 8/12"],
+ ["🔎","Investigación de cliente ideal con IA","Encontrá lo que le duele a tu clienta","","Antes del 8/12"],
+ ["🗓️","Plan de acción de 30 días","Una tarea por día y 60 frases para Claude","","En la clase"]
+];
 const ZOOM="";        /* ej: "https://zoom.us/j/..." */
 /* ============================================================ */
 const M=[
@@ -171,7 +220,7 @@ const M=[
  ["🎨","Tus colores","Guardá 10 imágenes que te gusten y elegí 3 colores y una letra para tu marca.","Te describo el estilo que me gusta: [describilo o pegá fotos]. Proponeme 3 combinaciones de colores con su código y 2 tipografías de Google Fonts que combinen."],
  ["✍️","La primera página","Escribí con Claude la primera página de tu producto. Solo una.","Escribí la primera página de mi producto [nombre], con mi voz: cercana y simple. Que le dé la bienvenida a [tu clienta] y le explique qué va a lograr."],
  ["💻","Prepará tu compu","Tené a mano tu cuenta de Claude, tu mail y un cuaderno.","Haceme una lista de verificación para tener todo listo para una clase en vivo donde voy a crear mi producto, mi página de venta y mi app."],
- ["❓","Tus preguntas","Anotá las 3 preguntas que querés traer a la clase. Y descansá.","Ayudame a ordenar mis dudas sobre crear y vender mi producto en 3 preguntas claras para llevar a la clase."]
+ ["❓","Tus preguntas","Escribí las 3 preguntas que querés traer a la clase y mandámelas desde «Tus preguntas para Romi», acá en la app. Y descansá.","Ayudame a ordenar mis dudas sobre crear y vender mi producto en 3 preguntas claras para llevar a la clase."]
 ];
 const CLASE="2026-12-08";
 const KEY="camino-clase-v2";let est={hechas:[],inicio:null};
@@ -213,6 +262,18 @@ function stats(){const h=est.hechas.length;$("#sHechas").textContent=h;$("#sPct"
 $("#avisos").innerHTML=AVISOS.map((a,i)=>'<div class="aviso'+(i===AVISOS.length-1?' nuevo':'')+'"><span class="ic">'+a[0]+'</span><div><div class="muted" style="font-size:12px">'+a[1]+'</div><div>'+a[2]+'</div></div></div>').join("");
 $("#zoom").innerHTML=ZOOM?'<div class="eyebrow">Link de la clase</div><a class="b p" style="margin-top:10px" href="'+ZOOM+'" target="_blank" rel="noopener">🎥 Entrar al Zoom</a>':'<div style="font-size:26px" aria-hidden="true">🎥</div><div style="font-weight:600;margin-top:4px">El link del Zoom aparece acá</div><div class="muted">antes de la clase del 8 de diciembre</div>';
 if(HORA)$("#hora").textContent=HORA;
+if(HORA2)$("#hora2").textContent=HORA2;
+$("#agendar2").href="https://calendar.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent("Clase 2 · Preguntas y respuestas con Romi")+"&dates=20261215/20261216&details="+encodeURIComponent("Clase en vivo. El link está en tu app: "+location.href);
+$("#regalos").innerHTML=REGALOS.map(r=>'<div class="rg"><span class="ic">'+r[0]+'</span><div class="tx"><b>'+r[1]+'</b><span>'+r[2]+'</span></div>'+(r[3]?'<a class="b p" href="'+r[3]+'"'+(r[3][0]==="#"?'':' target="_blank" rel="noopener"')+'>'+(r[3][0]==="#"?'Ir':'Descargar')+'</a>':'<span class="pronto">'+r[4]+'</span>')+'</div>').join("");
+$("#pqEnviar").addEventListener("click",async ev=>{const q=$("#pqQ").value.trim(),e=$("#pqE").value.trim(),n=$("#pqN").value.trim(),err=$("#pqErr");err.textContent="";
+ if(q.length<5){err.textContent="Escribí tu pregunta primero";return}
+ if(e&&!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e)){err.textContent="Revisá tu mail";return}
+ const b=$("#pqEnviar");b.disabled=true;b.textContent="Enviando…";
+ try{const r=await fetch("https://cumple-romi.diario21.workers.dev/api/preguntas",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({n,e,q})});const j=await r.json();
+  if(j.ok){$("#pqQ").value="";chispas(ev.clientX,ev.clientY);aviso("¡Pregunta enviada! 💌 La respondo en vivo")}else err.textContent=j.error||"No se pudo enviar. Probá de nuevo."}
+ catch(x){err.textContent="No se pudo enviar. Revisá tu conexión y probá de nuevo."}
+ b.disabled=false;b.textContent="Enviar mi pregunta"});
+$("#pqQ").addEventListener("input",()=>$("#pqErr").textContent="");
 const gcal="https://calendar.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent("Masterclass «De la idea a tu app» con Romi")+"&dates=20261208/20261209&details="+encodeURIComponent("Clase en vivo. El link del Zoom está en tu app: "+location.href);
 $("#agendar").href=gcal;
 
