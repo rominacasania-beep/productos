@@ -22,10 +22,16 @@
     + "#tz .sp{position:absolute;color:#e6c06a;animation:tzt 2.4s ease-in-out infinite;pointer-events:none}"
     + "@keyframes tzf{50%{transform:translateY(-9px) rotate(-1deg)}}@keyframes tzp{50%{opacity:.3}}@keyframes tzb{50%{transform:scale(1.03)}}@keyframes tzs{0%{left:-60%}60%,100%{left:130%}}@keyframes tzt{0%,100%{opacity:.2;transform:scale(.7)}50%{opacity:1;transform:scale(1.15)}}"
     + "@media(max-width:700px){#tz .in{flex-direction:column-reverse;text-align:center;gap:20px}#tz img{max-width:78%;width:270px}#tz p{margin-left:auto;margin-right:auto}#tz .ch,#tz .rl,#tz .pz{justify-content:center}#tz a.bt{display:block}}"
-    + "@media(prefers-reduced-motion:reduce){#tz img,#tz .ey i,#tz a.bt,#tz a.bt:after,#tz .sp{animation:none}}";
+    + "#tz .in{position:relative;z-index:2}#tz .fx{position:absolute;inset:0;pointer-events:none;z-index:1}#tz .fx b{position:absolute;bottom:-40px;opacity:0;animation:tzr linear infinite;font-weight:400}"
+    + "@keyframes tzr{0%{transform:translateY(0) rotate(0);opacity:0}10%{opacity:.85}80%{opacity:.6}100%{transform:translateY(-760px) rotate(200deg);opacity:0}}"
+    + "#tz h2 .k{display:block;font-family:Poppins,system-ui,sans-serif;font-size:clamp(.95rem,3.6vw,1.2rem);font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:#f6e2a6;margin:0 0 10px;text-shadow:0 0 18px rgba(230,192,106,.7);animation:tzg 2.4s ease-in-out infinite}"
+    + "@keyframes tzg{50%{text-shadow:0 0 6px rgba(230,192,106,.3)}}"
+    + "#tz{padding-top:40px;padding-bottom:44px;border-top:3px solid #e6c06a;border-bottom:3px solid #e6c06a}"
+    + "@media(prefers-reduced-motion:reduce){#tz img,#tz .ey i,#tz a.bt,#tz a.bt:after,#tz .sp,#tz .fx b,#tz h2 .k{animation:none}#tz .fx{display:none}}";
   var html = '<span class="sp" style="top:14px;left:5%;font-size:22px">✦</span><span class="sp" style="top:45%;right:3%;font-size:16px;animation-delay:.8s">✦</span><span class="sp" style="bottom:16px;left:40%;font-size:14px;animation-delay:1.4s">✦</span>'
-    + '<div class="in"><div class="tx"><span class="ey"><i></i>Taller en vivo · 8/12</span>'
-    + '<h2>De la idea <em>a tu app</em></h2>'
+    + '<div class="fx" aria-hidden="true">' + (function () { var e = ["✨", "💜", "🚀", "💻", "🎁", "⭐", "📲", "✦"], s = ""; for (var i = 0; i < 18; i++) s += '<b style="left:' + (i * 5.6 + 1) + '%;font-size:' + (14 + (i * 7) % 14) + 'px;animation-duration:' + (6 + (i * 3) % 6) + 's;animation-delay:-' + ((i * 1.3) % 8).toFixed(1) + 's">' + e[i % e.length] + '</b>'; return s; })() + '</div>'
+    + '<div class="in"><div class="tx"><span class="ey"><i></i>Nuevo · En vivo · 8/12</span>'
+    + '<h2><span class="k">Taller intensivo</span>De la idea <em>a tu app</em></h2>'
     + '<p>Creamos juntas, con inteligencia artificial, tu producto digital desde cero, con su página de venta y su propia app. Sirve si empezás de cero y también si ya vendés.</p>'
     + '<ul class="ch"><li>🗓️ Martes 8/12 · 20 h (Uruguay)</li><li>🎁 9 regalos</li><li>💬 Preguntas en vivo</li></ul>'
     + '<div class="rl" aria-label="Tiempo que queda a 67 USD"><div><b data-t="d">0</b><span>días</span></div><div><b data-t="h">0</b><span>horas</span></div><div><b data-t="m">0</b><span>min</span></div><div><b data-t="s">0</b><span>seg</span></div></div>'
