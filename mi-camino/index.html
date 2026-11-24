@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mi camino a la clase</title>
+<meta name="description" content="Tu cuenta regresiva y una misión por día para llegar a la masterclass con tu idea lista.">
+<meta property="og:title" content="Mi camino a la clase">
+<meta property="og:description" content="Tu cuenta regresiva y una misión por día para llegar a la masterclass con tu idea lista.">
+<meta property="og:type" content="website">
+<style>html,body{margin:0}img{max-width:100%}</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600&display=swap">
+<style>
+/* Layout: app de celular, una columna; arriba la cuenta regresiva con un anillo de progreso, abajo el camino de misiones que se desbloquean por día */
+:root{
+  --bg:#f7f2fc; --card:#ffffff; --fg:#2a2133; --muted:#6e6280; --line:#e6dcf1;
+  --lila:#8a63b8; --lila-d:#5f3f8c; --lila-s:#ece2f8; --rosa:#d96b8f; --oro:#c49a3a; --oro-s:#f6edd6; --ok:#2f8f5b; --ok-s:#dff1e6;
+  --display:"Cormorant Garamond",Georgia,serif; --body:"Poppins",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17121e;--card:#251d30;--fg:#f2ecf8;--muted:#b6a8c8;--line:#3a2f48;--lila:#c4a4ea;--lila-d:#ddc7f7;--lila-s:#33284a;--rosa:#ec93b1;--oro:#e2bd63;--oro-s:#3a3020;--ok:#5cc58d;--ok-s:#1f3a2a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#17121e;--card:#251d30;--fg:#f2ecf8;--muted:#b6a8c8;--line:#3a2f48;--lila:#c4a4ea;--lila-d:#ddc7f7;--lila-s:#33284a;--rosa:#ec93b1;--oro:#e2bd63;--oro-s:#3a3020;--ok:#5cc58d;--ok-s:#1f3a2a;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-weight:300;line-height:1.55;overflow-x:hidden}
+.app{max-width:480px;margin:0 auto;padding-block:24px 110px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;line-height:1.05;text-wrap:balance}
+.eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--lila);font-weight:500}
+.muted{color:var(--muted);font-size:14px}
+.top{display:flex;justify-content:space-between;align-items:center}
+.hola{font-family:var(--display);font-size:28px;font-weight:700}
+.hola span{font-style:italic;color:var(--lila)}
+.star{position:absolute;color:var(--oro);animation:tw 3s ease-in-out infinite;pointer-events:none}
+@keyframes tw{50%{opacity:.2;transform:scale(.6) rotate(40deg)}}
+
+.cuenta{position:relative;margin-top:18px;background:var(--card);border:1px solid var(--line);border-radius:28px;padding:26px 20px;text-align:center;overflow:hidden}
+.ring{width:190px;height:190px;margin:6px auto 0;position:relative}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring .bgc{fill:none;stroke:var(--lila-s);stroke-width:12}
+.ring .fgc{fill:none;stroke:var(--lila);stroke-width:12;stroke-linecap:round;transition:stroke-dashoffset 1.4s cubic-bezier(.2,.8,.2,1)}
+.ring .mid{position:absolute;inset:0;display:grid;place-content:center}
+.ring .dias{font-family:var(--display);font-size:72px;font-weight:700;line-height:.9;animation:pop .8s cubic-bezier(.3,1.6,.5,1) both}
+@keyframes pop{from{transform:scale(.4)}}
+.hms{display:flex;gap:8px;justify-content:center;margin-top:14px}
+.hms div{background:var(--lila-s);border-radius:12px;padding:6px 10px;min-width:58px}
+.hms b{display:block;font-family:var(--display);font-size:24px;font-variant-numeric:tabular-nums;line-height:1}
+.hms small{font-size:10px;color:var(--muted)}
+
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:14px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px;text-align:center}
+.stat b{display:block;font-family:var(--display);font-size:28px;line-height:1}
+.stat small{font-size:11px;color:var(--muted)}
+.fuego{display:inline-block;animation:llama 1.2s ease-in-out infinite}
+@keyframes llama{50%{transform:scale(1.15) rotate(-6deg)}}
+
+.camino{position:relative;margin-top:26px;padding-left:28px}
+.camino::before{content:"";position:absolute;left:13px;top:8px;bottom:8px;width:3px;border-radius:3px;background:var(--line)}
+.camino .linea{position:absolute;left:13px;top:8px;width:3px;border-radius:3px;background:linear-gradient(var(--lila),var(--rosa));transition:height 1s}
+.mision{position:relative;margin-bottom:14px}
+.mision .pt{position:absolute;left:-28px;top:16px;width:29px;height:29px;border-radius:50%;background:var(--card);border:3px solid var(--line);display:grid;place-items:center;font-size:13px;z-index:1;transition:all .4s}
+.mision.hoy .pt{border-color:var(--rosa);animation:anillo 1.6s infinite}
+@keyframes anillo{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--rosa) 55%,transparent)}100%{box-shadow:0 0 0 14px transparent}}
+.mision.hecha .pt{background:var(--ok);border-color:var(--ok);color:#fff}
+.mc{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 16px;cursor:pointer;transition:transform .25s,border-color .25s;width:100%;text-align:left;color:inherit;font:inherit;display:block}
+.mc:hover{transform:translateX(4px)}
+.mision.hoy .mc{border:2px solid var(--rosa)}
+.mision.lock .mc{opacity:.55;cursor:default}
+.mision.lock .mc:hover{transform:none}
+.mc .f{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+.mc h3{font-size:22px;margin-top:2px}
+.tag{display:inline-block;font-size:11px;font-weight:500;padding:2px 9px;border-radius:999px;margin-left:6px;vertical-align:middle}
+.tag.h{background:var(--rosa);color:#fff}.tag.ok{background:var(--ok-s);color:var(--ok)}
+.det{overflow:hidden;max-height:0;transition:max-height .5s ease}
+.mision.open .det{max-height:640px}
+.det p{margin:10px 0 0;font-size:14px}
+.frase{margin-top:10px;background:var(--lila-s);border-radius:12px;padding:10px 12px;font-size:13px;position:relative}
+.frase b{font-weight:500;display:block;font-size:11px;color:var(--lila-d);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+.acciones{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.b{border:0;border-radius:999px;padding:10px 16px;font:500 14px var(--body);cursor:pointer;transition:transform .15s}
+.b:active{transform:scale(.95)}
+.b.p{background:var(--lila-d);color:#fff}
+:root[data-theme="dark"] .b.p{color:#1b1424}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .b.p{color:#1b1424}}
+.b.s{background:var(--card);border:1px solid var(--line);color:var(--fg)}
+.b:focus-visible,.mc:focus-visible{outline:3px solid var(--rosa);outline-offset:2px}
+.cand{display:inline-block;animation:sac 3.5s infinite}
+@keyframes sac{0%,85%,100%{transform:rotate(0)}90%{transform:rotate(-14deg)}95%{transform:rotate(10deg)}}
+
+.final{margin-top:10px;border-radius:22px;padding:20px;text-align:center;background:var(--oro-s);border:1px dashed var(--oro)}
+.anclar{position:fixed;left:0;right:0;bottom:0;padding:12px max(16px,env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:var(--card);border-top:1px solid var(--line);text-align:center;z-index:10}
+.anclar .b{width:100%;max-width:448px}
+.hoja{display:none;margin:10px auto 0;max-width:448px;text-align:left;font-size:13px}
+.hoja.on{display:block}
+.toast{position:fixed;left:50%;top:calc(16px + env(safe-area-inset-top,0px));transform:translate(-50%,-30px);opacity:0;background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:12px;font-size:14px;transition:all .35s;z-index:30}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.chispa{position:fixed;width:9px;height:9px;border-radius:2px;pointer-events:none;z-index:40}
+.vista{font-size:12px;color:var(--muted);text-align:center;margin-top:18px}
+.vista button{background:none;border:0;color:var(--lila);text-decoration:underline;cursor:pointer;font:inherit}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="top">
+    <div class="hola">Hola, <span>futura creadora</span></div>
+    <span style="font-size:26px" aria-hidden="true">🤍</span>
+  </div>
+  <p class="muted" style="margin:4px 0 0">Tu lugar en «De la idea a tu app» está confirmado.</p>
+
+  <div class="cuenta">
+    <span class="star" style="top:14px;left:18px">✦</span>
+    <span class="star" style="top:40px;right:26px;animation-delay:-1s">✦</span>
+    <span class="star" style="bottom:22px;left:30px;animation-delay:-2s">✧</span>
+    <div class="eyebrow">Faltan para la clase en vivo</div>
+    <div class="ring">
+      <svg viewBox="0 0 200 200" aria-hidden="true"><circle class="bgc" cx="100" cy="100" r="88"/><circle class="fgc" id="arco" cx="100" cy="100" r="88"/></svg>
+      <div class="mid"><div class="dias" id="dias">0</div><div class="muted" id="diasTxt">días</div></div>
+    </div>
+    <div class="hms" id="hms"></div>
+    <p class="muted" style="margin:12px 0 0">Martes 8 de diciembre · hora a confirmar</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><b id="sHechas">0</b><small>misiones hechas</small></div>
+    <div class="stat"><b><span class="fuego" aria-hidden="true">🔥</span><span id="sRacha">0</span></b><small>días seguidos</small></div>
+    <div class="stat"><b id="sPct">0%</b><small>de tu idea lista</small></div>
+  </div>
+
+  <h2 style="margin-top:28px;font-size:30px">Tu camino a la clase</h2>
+  <p class="muted" style="margin:4px 0 0">Una misión por día. Cada una te acerca a llegar con tu idea lista.</p>
+
+  <div class="camino" id="camino"><div class="linea" id="linea"></div></div>
+
+  <div class="final">
+    <div style="font-size:34px" aria-hidden="true">🎁</div>
+    <h3 style="font-size:24px;margin-top:4px">El martes 15/12</h3>
+    <p class="muted" style="margin:6px 0 0">Preguntas y respuestas en vivo, después de aplicar una semana.</p>
+  </div>
+  
+</div>
+
+<div class="anclar">
+  <button class="b p" id="btnAnclar">📲 Poner en mi pantalla de inicio</button>
+  <div class="hoja" id="hoja"><b style="font-weight:500">En iPhone:</b> tocá el botón de compartir (el cuadrado con la flecha) y elegí «Agregar a inicio».<br><b style="font-weight:500">En Android:</b> tocá los tres puntos y elegí «Agregar a la pantalla principal».</div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+const $=s=>document.querySelector(s);
+const M=[
+ ["2026-11-24","🌱","Tu porqué","Antes de crear nada: escribí por qué querés tu propio negocio y cómo querés que sea tu semana dentro de un año.","Ayudame a escribir mi porqué. Haceme 5 preguntas, de a una, sobre por qué quiero mi propio negocio digital y cómo quiero vivir dentro de un año. Después resumilo en 3 frases."],
+ ["2026-11-25","🤖","Instalá a Claude","Abrí tu cuenta y mandale tu primer mensaje. Con el kit de arranque lo hacés en 10 minutos.","Hola Claude. Soy [tu nombre] y quiero crear mi primer producto digital. Contame en 5 pasos simples cómo me podés ayudar, como si fuera la primera vez que uso inteligencia artificial."],
+ ["2026-11-26","🌀","Tus veinte mil funciones","Hacé la lista de todo lo que hacés en una semana. Todo, hasta lo más chiquito.","Te paso la lista de todo lo que hago en una semana: [pegá tu lista]. Separala en 3 columnas: lo hago yo, me puede ayudar la IA, lo puedo dejar de hacer."],
+ ["2026-11-27","💬","Lo que ya sabés","Anotá 10 cosas que la gente te pregunta o te pide. Ahí está tu producto escondido.","Estas son 10 cosas que me preguntan seguido: [pegá tu lista]. ¿Qué productos digitales podría crear con eso? Dame 10 ideas con su nombre y para quién son."],
+ ["2026-11-28","👩","Tu clienta","Describí a la persona que querés ayudar: qué le pasa, qué le duele, qué sueña.","Ayudame a conocer a mi clienta ideal. Haceme preguntas de a una y al final escribí: quién es, qué le duele en sus propias palabras, qué sueña y qué ya probó."],
+ ["2026-11-29","🔎","Espiá lo que ya se vende","Buscá 3 productos o cuentas que te inspiren y anotá qué venden y cómo lo muestran.","Te paso 3 productos o cuentas que me inspiran: [nombres o links]. ¿Qué tienen en común? ¿Qué podría hacer yo distinto y mejor?"],
+ ["2026-11-30","✨","Tus 3 ideas","Con todo lo que juntaste, elegí 3 ideas de producto posibles.","Con mi porqué, mi clienta y lo que ya sé, ayudame a elegir 3 ideas de producto digital. Para cada una: nombre, qué incluye y por qué mi clienta lo compraría."],
+ ["2026-12-01","🗳️","Que tu comunidad vote","Subí una encuesta en historias con tus 2 ideas favoritas y mirá cuál eligen.","Escribime el texto de 3 historias de Instagram para que mi comunidad vote entre estas 2 ideas: [idea 1] y [idea 2]. Que suene cercano, como hablo yo."],
+ ["2026-12-02","🏷️","El nombre","Pedile a Claude 10 nombres y quedate con el que te haga sonreír.","Dame 10 nombres para mi producto: [describilo]. Que sean cortos, fáciles de recordar y que digan la promesa. Explicame por qué funciona cada uno."],
+ ["2026-12-03","📑","El índice","Armá el índice de tu producto: qué va primero, qué después.","Armame el índice de mi producto [nombre], pensado para [tu clienta]. Que cada parte resuelva un paso y que al final ella tenga un resultado concreto."],
+ ["2026-12-04","🎨","Tus colores","Guardá 10 imágenes que te gusten y elegí 3 colores y una letra para tu marca.","Te describo el estilo que me gusta: [describilo o pegá fotos]. Proponeme 3 combinaciones de colores con su código y 2 tipografías de Google Fonts que combinen."],
+ ["2026-12-05","✍️","La primera página","Escribí con Claude la primera página de tu producto. Solo una.","Escribí la primera página de mi producto [nombre], con mi voz: cercana y simple. Que le dé la bienvenida a [tu clienta] y le explique qué va a lograr."],
+ ["2026-12-06","💻","Prepará tu compu","Tené a mano tu cuenta de Claude, tu mail y un cuaderno. Mañana se descansa.","Haceme una lista de verificación para tener todo listo para una clase en vivo donde voy a crear mi producto, mi página de venta y mi app."],
+ ["2026-12-07","❓","Tus preguntas","Anotá las 3 preguntas que querés traer a la clase. Hoy descansás.","Ayudame a ordenar mis dudas sobre crear y vender mi producto en 3 preguntas claras para llevar a la clase."],
+ ["2026-12-08","🚀","¡Hoy es la clase!","Llegás con tu porqué, tu clienta, tu idea, su nombre, su índice y tus colores. Hoy la convertimos en tu app.",""]
+];
+const KEY="camino-clase-v1";let est={hechas:[],todas:false};
+try{const g=localStorage.getItem(KEY);if(g)est=Object.assign(est,JSON.parse(g))}catch(e){}
+const guardar=()=>{try{localStorage.setItem(KEY,JSON.stringify(est))}catch(e){}};
+const hoyUY=()=>new Intl.DateTimeFormat("en-CA",{timeZone:"America/Montevideo"}).format(new Date());
+const nomF=f=>{const d=new Date(f+"T12:00:00Z");return new Intl.DateTimeFormat("es",{weekday:"long",day:"numeric",month:"long",timeZone:"UTC"}).format(d)};
+
+function pintar(){
+ const hoy=hoyUY();
+ const cam=$("#camino");cam.querySelectorAll(".mision").forEach(n=>n.remove());
+ M.forEach((m,i)=>{
+  const abierta=est.todas||m[0]<=hoy, hecha=est.hechas.includes(i), esHoy=m[0]===hoy;
+  const d=document.createElement("div");
+  d.className="mision"+(hecha?" hecha":"")+(esHoy?" hoy":"")+(abierta?"":" lock");
+  d.innerHTML='<span class="pt">'+(hecha?"✓":(abierta?m[1]:'<span class="cand">🔒</span>'))+'</span>'+
+   '<button class="mc" '+(abierta?'':'aria-disabled="true"')+'><span class="f">'+nomF(m[0])+'</span><h3>'+m[2]+(esHoy?'<span class="tag h">hoy</span>':'')+(hecha?'<span class="tag ok">hecha</span>':'')+'</h3>'+
+   (abierta?'<div class="det"><p>'+m[3]+'</p>'+(m[4]?'<div class="frase"><b>Frase para Claude</b>'+m[4]+'</div><div class="acciones"><span class="b s copiar" role="button" tabindex="0">Copiar la frase</span><span class="b p hecho" role="button" tabindex="0">'+(hecha?'Desmarcar':'¡Hecha!')+'</span></div>':'')+'</div>':'<p class="muted" style="margin:6px 0 0">Se abre ese día</p>')+'</button>';
+  if(abierta){
+   d.querySelector(".mc").addEventListener("click",ev=>{
+    if(ev.target.closest(".copiar")){copiar(m[4]);return}
+    if(ev.target.closest(".hecho")){marcar(i,ev);return}
+    d.classList.toggle("open")});
+  }
+  cam.appendChild(d);
+ });
+ const hoyEl=cam.querySelector(".mision.hoy");if(hoyEl)hoyEl.classList.add("open");
+ stats();
+}
+function copiar(t){const ok=()=>aviso("Frase copiada. Pegala en Claude 🤍");
+ if(navigator.clipboard)navigator.clipboard.writeText(t).then(ok,()=>aviso("Mantené apretada la frase para copiarla"));else aviso("Mantené apretada la frase para copiarla")}
+function marcar(i,ev){const k=est.hechas.indexOf(i);
+ if(k<0){est.hechas.push(i);chispas(ev.clientX,ev.clientY);aviso(["¡Una menos! 🎉","Vas muy bien ✨","Tu idea está tomando forma 🌱"][est.hechas.length%3])}
+ else est.hechas.splice(k,1);
+ guardar();pintar();const n=document.querySelectorAll(".mision")[i];if(n)n.classList.add("open")}
+function stats(){
+ const total=M.length-1,h=est.hechas.filter(i=>i<total).length;
+ $("#sHechas").textContent=h;$("#sPct").textContent=Math.round(h/total*100)+"%";
+ let r=0;const hoy=hoyUY();for(let i=M.length-1;i>=0;i--){if(M[i][0]>hoy)continue;if(est.hechas.includes(i))r++;else if(M[i][0]<hoy)break;}
+ $("#sRacha").textContent=r;
+ const ms=[...document.querySelectorAll(".mision")];const ult=ms.filter(x=>x.classList.contains("hecha")).pop();
+ $("#linea").style.height=ult?(ult.offsetTop+20)+"px":"0";
+}
+const clase=Date.UTC(2026,11,8,3,0,0),inicio=Date.UTC(2026,10,24,3,0,0);
+const C=2*Math.PI*88;$("#arco").style.strokeDasharray=C;
+function reloj(){const ms=Math.max(0,clase-Date.now());const d=Math.floor(ms/864e5),h=Math.floor(ms/36e5)%24,m=Math.floor(ms/6e4)%60,s=Math.floor(ms/1e3)%60;
+ $("#dias").textContent=d;$("#diasTxt").textContent=d===1?"día":"días";
+ $("#hms").innerHTML=[[h,"horas"],[m,"min"],[s,"seg"]].map(x=>'<div><b>'+String(x[0]).padStart(2,"0")+'</b><small>'+x[1]+'</small></div>').join("");
+ const p=Math.min(1,Math.max(0,(Date.now()-inicio)/(clase-inicio)));$("#arco").style.strokeDashoffset=C*(1-Math.max(.03,p));}
+function aviso(t){const e=$("#toast");e.textContent=t;e.classList.add("on");clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove("on"),2200)}
+function chispas(x,y){const c=["#8a63b8","#d96b8f","#c49a3a","#2f8f5b"];for(let i=0;i<28;i++){const d=document.createElement("i");d.className="chispa";d.style.background=c[i%4];d.style.left=x+"px";d.style.top=y+"px";document.body.appendChild(d);
+ const a=Math.random()*Math.PI*2,v=50+Math.random()*130;d.animate([{transform:"translate(0,0)",opacity:1},{transform:"translate("+Math.cos(a)*v+"px,"+(Math.sin(a)*v+90)+"px) rotate("+Math.random()*600+"deg)",opacity:0}],{duration:900+Math.random()*500,easing:"cubic-bezier(.2,.8,.2,1)"}).onfinish=()=>d.remove()}}
+$("#btnAnclar").addEventListener("click",()=>$("#hoja").classList.toggle("on"));
+pintar();reloj();setInterval(reloj,1000);addEventListener("resize",stats);
+</script>
+</body>
+</html>
