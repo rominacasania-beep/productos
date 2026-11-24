@@ -106,5 +106,17 @@
   "boton_texto": "Sí, quiero mi lugar",
   "boton_link": "https://masterclass.romimanfiesta.com/?utm_source=hotmart_send&utm_medium=email&utm_campaign=taller-30nov-pm",
   "html": "<p>Te escribo por última vez sobre esto.</p><p>En 3 horas, a las <strong>23:59 de Uruguay</strong>, cierra la primera tanda del taller «De la idea a tu app». Mañana pasa a 87 USD.</p><p>Si lo venís pensando toda la semana, ya tenés todo lo que necesitás para decidir. Si es sí, este es el momento.</p><p><strong>67 USD · pago único, sin mensualidades.</strong></p><p>[BOTON]</p><p>Romi</p><p>RomiManifiesta</p><p>P.D. Y si hoy no es, está bien. Te espero en la próxima.</p>"
+ },
+ {
+  "n": 10,
+  "titulo": "OPCIONAL C · Lunes 30/11 · 23:05 (pedido por Romi)",
+  "nombre": "Taller Lunes 30/11 23:05 (pedido por Romi)",
+  "cuando": "2026-11-30 23:05",
+  "asunto": "queda menos de una hora",
+  "vista": "A las 23:59 de Uruguay el taller pasa a 87 USD.",
+  "banner": "https://productos.romimanfiesta.com/mail-banners/30-lun.png",
+  "boton_texto": "Entrar ahora a 67",
+  "boton_link": "https://masterclass.romimanfiesta.com/?utm_source=hotmart_send&utm_medium=email&utm_campaign=taller-30nov-ultima",
+  "html": "<p>Queda menos de una hora.</p><p>A las <strong>23:59 de Uruguay</strong> se cierra la primera tanda del taller «De la idea a tu app». Después, 87 USD.</p><p>Si lo tenías en la cabeza, este es el último ratito para entrar a <strong>67 USD, pago único, sin mensualidades.</strong></p><p>[BOTON]</p><p>Nos vemos el martes 8/12 a las 20 h.</p><p>Romi</p><p>RomiManifiesta</p>"
  }
 ]
