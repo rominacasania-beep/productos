@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#120a1c">
+<title>Kit Marca Personal · De la idea a tu app</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;1,600&family=DM+Serif+Display&family=Fraunces:wght@600&family=Lora:wght@600&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+:root{--bg:#120a1c;--card:#231638;--card2:#1a1029;--fg:#fbf8ff;--muted:#b9aed0;--line:rgba(255,255,255,.1);--lila:#b49be8;--rosa:#f0a3c4;--oro:#e6c06a;--menta:#6fdcb0;--grad:linear-gradient(100deg,#f0a3c4,#b49be8 50%,#e6c06a);--display:"Cormorant Garamond",Georgia,serif;--body:"Poppins",system-ui,sans-serif;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-weight:300;line-height:1.6;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(500px 360px at 90% -5%,rgba(180,155,232,.22),transparent 70%),radial-gradient(420px 320px at -10% 35%,rgba(240,163,196,.14),transparent 70%)}
+.app{position:relative;max-width:720px;margin:0 auto;padding:22px 16px 80px}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.1;margin:0}
+h1{font-size:clamp(34px,8vw,48px);margin:8px 0 10px}
+h2{font-size:30px;margin-bottom:6px}
+h3{font-size:21px}
+.g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-style:italic}
+.eyebrow{letter-spacing:.2em;text-transform:uppercase;font-size:11px;font-weight:600;color:var(--oro)}
+.muted{color:var(--muted)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px;margin:16px 0}
+.hero{text-align:center;padding:14px 0 4px}
+.tabs{position:sticky;top:0;z-index:5;display:flex;gap:8px;overflow-x:auto;padding:10px 2px;margin:0 -16px;padding-left:16px;padding-right:16px;background:linear-gradient(var(--bg) 70%,transparent);scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:none;padding:9px 14px;border-radius:999px;background:var(--card2);border:1px solid var(--line);color:var(--fg);font:500 13px var(--body);text-decoration:none;white-space:nowrap}
+.tab.on{background:var(--grad);color:#120a1c;border-color:transparent}
+label.l{display:block;font-size:12px;color:var(--muted);margin:12px 0 5px}
+input.in,textarea.in{width:100%;padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:var(--card2);color:var(--fg);font:400 15px var(--body)}
+textarea.in{min-height:70px;resize:vertical}
+.fila{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}
+@media (max-width:520px){.fila{grid-template-columns:1fr}}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:8px 13px;border-radius:999px;border:1px solid var(--line);background:var(--card2);color:var(--fg);font:400 13px var(--body);cursor:pointer}
+.chip[aria-pressed=true]{background:var(--grad);color:#120a1c;font-weight:600;border-color:transparent}
+.b{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:12px 18px;border-radius:999px;border:none;font:600 14px var(--body);cursor:pointer;text-decoration:none}
+.b.p{background:var(--grad);color:#120a1c}
+.b.s{background:rgba(255,255,255,.08);color:var(--fg);border:1px solid var(--line)}
+pre.out{white-space:pre-wrap;background:var(--card2);border:1px dashed var(--lila);border-radius:14px;padding:14px;font:400 14px/1.6 var(--body);margin:12px 0 8px}
+.sec{scroll-margin-top:60px;padding-top:10px}
+.sec>.cab{display:flex;gap:12px;align-items:center;margin:26px 0 4px}
+.sec>.cab .num{width:46px;height:46px;border-radius:14px;background:var(--card2);display:grid;place-items:center;font-size:24px;flex:none}
+/* logo */
+.logos{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px}
+.logo{width:150px;height:150px;border-radius:50%;display:grid;place-items:center;text-align:center;padding:16px}
+.logo .m{font-size:54px;line-height:1}
+.logo .n{font-size:15px;letter-spacing:.14em;text-transform:uppercase;line-height:1.2}
+.logo.c{border-radius:28px}
+/* 30 días */
+.prog{display:flex;align-items:center;gap:10px;margin:8px 0 14px}
+.prog .pista{flex:1;height:10px;border-radius:9px;background:var(--card2);overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:var(--grad);transition:width .4s}
+.dias{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.dia{background:var(--card2);border:1px solid var(--line);border-radius:16px;padding:12px 14px;cursor:pointer;position:relative;transition:transform .15s}
+.dia:active{transform:scale(.98)}
+.dia .d{font-family:var(--display);font-size:26px;color:var(--oro);line-height:1}
+.dia .f{position:absolute;top:12px;right:12px;font-size:11px;padding:3px 9px;border-radius:999px;background:rgba(255,255,255,.08)}
+.dia b{display:block;font-weight:500;font-size:14px;margin:6px 0 4px}
+.dia small{color:var(--muted)}
+.dia.hecho{border-color:var(--menta);opacity:.6}
+.dia.hecho .d::after{content:" ✓";color:var(--menta)}
+/* plantillas */
+.plantillas{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-top:14px}
+.pl{background:var(--card2);border-radius:16px;padding:10px}
+.ver{width:100%;aspect-ratio:9/16;position:relative;overflow:hidden;border-radius:10px}
+.ver>.esc{position:absolute;left:0;top:0;transform-origin:0 0}
+.pl .b{width:100%;margin-top:8px;padding:10px}
+.hist{width:1080px;height:1920px;position:relative;overflow:hidden;background:var(--hF);color:var(--hT);font-family:var(--hC)}
+.hist [contenteditable]{outline:none}
+.hist .tit{font-family:var(--hL)}
+.hist .firma{position:absolute;left:0;right:0;top:1560px;text-align:center;font-size:40px;letter-spacing:.12em;opacity:.8}
+.foto{background:var(--hA) center/cover no-repeat}
+#taller{position:fixed;left:-30000px;top:0}
+.modal{position:fixed;inset:0;background:#000c;display:none;align-items:center;justify-content:center;flex-direction:column;gap:12px;padding:16px;z-index:20}
+.modal.on{display:flex}
+.modal img{max-width:100%;max-height:74vh;border-radius:10px}
+.modal p{margin:0;text-align:center;font-size:14px}
+/* listas */
+.chk{display:flex;gap:12px;align-items:flex-start;padding:11px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.chk input{width:20px;height:20px;accent-color:var(--menta);flex:none;margin-top:3px}
+details.reel{background:var(--card2);border:1px solid var(--line);border-radius:16px;margin-bottom:10px;padding:2px 16px}
+details.reel summary{cursor:pointer;padding:12px 0;font-weight:500;list-style:none}
+details.reel summary::-webkit-details-marker{display:none}
+details.reel summary::before{content:"🎬 ";}
+details.reel ol{margin:0 0 8px;padding-left:20px}
+.gancho{color:var(--oro);font-style:italic}
+.serie{background:var(--card2);border-radius:16px;padding:14px 16px;margin-bottom:10px}
+.serie ul{margin:8px 0 0;padding-left:18px}
+.toast{position:fixed;left:50%;top:16px;transform:translate(-50%,-30px);opacity:0;background:var(--oro);color:#120a1c;padding:10px 16px;border-radius:12px;font-weight:500;transition:.3s;z-index:30}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+footer{text-align:center;color:var(--muted);font-size:13px;margin-top:40px}
+.rv{animation:sube .6s both}
+@keyframes sube{from{opacity:0;transform:translateY(16px)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main class="app">
+  <header class="hero rv">
+    <div class="eyebrow">Regalo del taller · Kit Marca Personal · vender con tu nombre</div>
+    <h1>Tu marca personal, <span class="g">contada por vos</span></h1>
+    <p class="muted">Todo lo que necesitás para vender con tu nombre y tu cara: tu historia, tu bio, 30 días de contenido, plantillas con tu foto listas para descargar, cómo grabarte con el celu y guiones de reels.</p>
+  </header>
+
+  <section class="card rv" id="datos">
+    <h3>✨ Contame 4 cosas y el kit se arma con lo tuyo</h3>
+    <p class="muted" style="font-size:14px;margin:6px 0 0">Todo lo que escribas se usa en las ideas, las plantillas y los guiones. Queda guardado en este dispositivo.</p>
+    <div class="fila">
+      <div><label class="l" for="dTema">Tu tema</label><input class="in" id="dTema" placeholder="ej.: ansiedad, maternidad, finanzas"></div>
+      <div><label class="l" for="dProd">Tu producto</label><input class="in" id="dProd" placeholder="ej.: el journal «Volver a mí»"></div>
+      <div><label class="l" for="dNom" id="lNom"></label><input class="in" id="dNom"></div>
+      <div><label class="l" for="dUser">Tu @ de Instagram</label><input class="in" id="dUser" placeholder="@tucuenta"></div>
+      <div><label class="l" for="dPal">Tu palabra clave</label><input class="in" id="dPal" placeholder="ej.: CALMA"></div>
+    </div>
+  </section>
+
+  <nav class="tabs" id="tabs"></nav>
+
+  <section class="sec" id="s-quien"></section>
+  <section class="sec" id="s-dias"></section>
+  <section class="sec" id="s-plant"></section>
+  <section class="sec" id="s-grabar"></section>
+  <section class="sec" id="s-reels"></section>
+  <section class="sec" id="s-vender"></section>
+
+  <footer>Hecho con 🤍 por Romi · Taller intensivo De la idea a tu app</footer>
+</main>
+<div id="taller" aria-hidden="true"></div>
+<div class="modal" id="modal"><img id="mImg" alt="Tu imagen"><p>Si no se descargó sola: mantené apretada la imagen → «Guardar imagen» (o clic derecho → «Guardar imagen como»).</p><button class="b p" type="button" id="mOk">Listo</button></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const KIT = {"slug": "taller-kit-marca-personal-p8m3", "titulo": "Kit Marca Personal", "eyebrow": "Kit Marca Personal · vender con tu nombre", "h1": "Tu marca personal, <span class=\"g\">contada por vos</span>", "intro": "Todo lo que necesitás para vender con tu nombre y tu cara: tu historia, tu bio, 30 días de contenido, plantillas con tu foto listas para descargar, cómo grabarte con el celu y guiones de reels.", "foto": true, "identidad": "persona", "dias": [["Reel", "Presentate: quién sos y a quién ayudás, en 15 segundos", "Hola, soy [tu nombre] y…"], ["Carrusel", "Tu historia en 5 láminas (mirá «Quién soy»)", "Hace un tiempo yo…"], ["Historia", "Tu cara + «¿Qué te gustaría que te cuente?» con caja de preguntas", "Te leo"], ["Post", "Foto tuya + 3 cosas que no sabés de mí", "Cosas que no sabés de mí"], ["Reel", "Hablá a cámara: el error más común en [tu tema]", "Si hacés esto, pará"], ["Carrusel", "3 cosas que aprendí de [tu tema]", "Lo que nadie me dijo"], ["Historia", "Tu día real: mate o café, escritorio, trabajando", "Un día conmigo"], ["Reel", "Respondé una pregunta que te hicieron", "Me preguntaron…"], ["Post", "Una frase tuya con tu foto", "Algo que me repito siempre"], ["Carrusel", "Paso a paso de algo que enseñás", "Guardalo para después"], ["Historia", "Encuesta sobre el problema que resolvés", "¿A vos también?"], ["Reel", "Contá por qué creaste [tu producto], mirando a cámara", "Por qué lo creé"], ["Post", "Antes y ahora de tu vida (foto vieja + foto actual)", "Esta era yo"], ["Carrusel", "Mito vs. verdad de [tu tema]", "Te dijeron que…"], ["Historia", "Mostrá [tu producto] en tu mano o en tu pantalla", "Mirá lo que armé"], ["Reel", "Tendencia del momento con tu cara, adaptada a [tu tema]", "Cuando por fin…"], ["Post", "Mensaje real de una clienta (con permiso, sin nombre)", "Me llegó esto y lloré"], ["Carrusel", "Lo que incluye [tu producto], una cosa por lámina", "Todo lo que hay adentro"], ["Historia", "Venta suave (mirá «Para vender»)", "Te cuento algo"], ["Reel", "3 consejos rápidos hablando a cámara", "Tres cosas para hoy"], ["Post", "Pregunta abierta para comentarios", "Te leo en comentarios"], ["Carrusel", "Lo que hacía antes vs. lo que hago ahora", "Lo que cambió todo"], ["Historia", "Palabra clave (mirá «Para vender»)", "Comentá y te lo mando"], ["Reel", "Mostrá cómo se recibe [tu producto]: mail y app", "Así te llega"], ["Post", "Tus valores: 3 cosas en las que creés", "En lo que creo"], ["Carrusel", "Preguntas frecuentes sobre [tu producto]", "Todo lo que me preguntan"], ["Historia", "Abrir conversación (mirá «Para vender»)", "¿Te pasa?"], ["Reel", "Un desafío de 7 días con tu producto", "Te desafío a…"], ["Post", "Agradecimiento a tu comunidad", "Gracias a vos"], ["Carrusel", "Resumen del mes: lo que más te gustó", "Por si te lo perdiste"]], "grabar": ["Ponete **de frente a una ventana**, de día. La luz te tiene que dar en la cara, nunca atrás.", "Celular **a la altura de los ojos** (apoyalo en libros o usá un trípode barato). Nunca desde abajo.", "Mirá **a la cámara**, no a la pantalla. Pegá un papelito al lado del lente para acordarte.", "Encuadre: de la cintura o el pecho para arriba, con un poquito de aire sobre la cabeza.", "Ropa lisa, colores que vayan con tu marca. Evitá rayas finitas.", "Grabá en un lugar con cortinas, almohadones o ropa: el sonido queda mucho mejor. O usá un micrófono de solapa.", "Arrancá **directo con el gancho**: nada de «hola, ¿cómo están?». Los primeros 2 segundos deciden todo.", "Si te trabás, no cortes: hacé una pausa y repetí la frase. Después cortás en la edición (CapCut o Instagram)."], "reels": [["Presentación", "«Hola, soy [tu nombre] y ayudo a…»", ["Quién sos en 1 frase", "A quién ayudás", "Cómo (con [tu producto])"], "Seguime si te pasa lo mismo"], ["Mi historia", "«Hace [tiempo] yo estaba…»", ["Cómo estabas", "Qué pasó", "Qué descubriste", "Cómo estás hoy"], "Por eso creé [tu producto]"], ["Error común", "«Si hacés esto, pará»", ["El error", "Por qué no funciona", "Qué hacer en cambio"], "Guardalo"], ["Pregunta frecuente", "«Me preguntaron…»", ["Leés la pregunta", "Respondés en 3 frases"], "¿Tenés otra? Dejala en comentarios"], ["3 consejos", "«Tres cosas para hoy»", ["Consejo 1", "Consejo 2", "Consejo 3"], "¿Con cuál arrancás?"], ["Por qué lo creé", "«Te cuento por qué hice esto»", ["El problema que viviste", "Lo que no encontrabas", "Lo que armaste"], "Link en la bio"], ["Mito vs. verdad", "«Te dijeron que…»", ["El mito", "La verdad", "Tu experiencia"], "Seguime para más"], ["Un día conmigo", "«Un día creando mi negocio»", ["Mañana", "Trabajando", "Algo lindo", "Cierre del día"], "¿Querés ver más de esto?"], ["Así lo recibís", "«Esto pasa cuando comprás»", ["Mostrás el pago", "El mail", "La app con el producto"], "Pago único, sin mensualidades"], ["Mensaje de clienta", "«Me escribieron esto…»", ["Mostrás el mensaje (sin nombre)", "Contás cómo te sentiste", "Qué cambió para ella"], "Si querés lo mismo, link en la bio"]]};
+const VENDER = [{"t": "🌸 Venta suave (5 historias)", "h": ["1 · Foto de tu día + «Hoy me pasó algo que te quiero contar…»", "2 · El problema que viven tus clientas, con sus palabras", "3 · Cómo lo resolviste vos (o cómo lo resuelve [tu producto])", "4 · Mostrá [tu producto] por dentro + sticker de link", "5 · «Si te pasa lo mismo, escribime» + caja de preguntas"]}, {"t": "🔑 Palabra clave (4 historias)", "h": ["1 · Una pregunta que duela: «¿Te pasa que…?»", "2 · «Armé algo para eso» + un adelanto de [tu producto]", "3 · «Comentá [PALABRA] y te lo mando por privado» (sticker de preguntas)", "4 · Recordatorio corto a la noche: «Últimas horas para pedirlo»"]}, {"t": "💬 Abrir conversación (3 historias)", "h": ["1 · Encuesta: «¿Te pasa [el problema]?» Sí / Mucho", "2 · «Contame cómo te pasa» con caja de preguntas", "3 · Respondé 2 o 3 respuestas (sin nombres) y al final: «Para esto creé [tu producto]»"]}];
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const CL = "romi-" + KIT.slug;
+const leer = (k, d) => { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch (e) { return d; } };
+const guardar = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
+const esc = t => String(t ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const md = t => esc(t).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>");
+let tT; const aviso = t => { const e = $("#toast"); e.textContent = t; e.classList.add("on"); clearTimeout(tT); tT = setTimeout(() => e.classList.remove("on"), 2000); };
+const MARCA = KIT.identidad === "marca";
+
+/* ---------- datos de la alumna ---------- */
+const D = leer(CL + "-datos", { tema:"", prod:"", nom:"", user:"", pal:"" });
+$("#lNom").textContent = MARCA ? "Nombre de tu marca (si ya lo tenés)" : "Tu nombre";
+$("#dNom").placeholder = MARCA ? "ej.: Casa Calma" : "ej.: Laura";
+[["#dTema","tema"],["#dProd","prod"],["#dNom","nom"],["#dUser","user"],["#dPal","pal"]].forEach(([s,k]) => {
+  $(s).value = D[k] || "";
+  $(s).addEventListener("input", e => { D[k] = e.target.value; guardar(CL + "-datos", D); pintarTodo(); });
+});
+const V = () => ({ tema: D.tema.trim() || "tu tema", prod: D.prod.trim() || "tu producto", nom: D.nom.trim() || (MARCA ? "Tu Marca" : "Tu Nombre"), user: D.user.trim() || "@tucuenta", pal: (D.pal.trim() || "QUIERO").toUpperCase() });
+const rel = t => { const v = V(); return String(t).replace(/\[tu tema\]/g, v.tema).replace(/\[tu producto\]/g, v.prod).replace(/\[tu nombre\]/g, v.nom).replace(/\[PALABRA\]/g, v.pal); };
+
+/* ---------- pestañas ---------- */
+const SECS = [["s-quien", MARCA ? "🏷️ Tu marca" : "🙋‍♀️ Quién soy"], ["s-dias","🗓️ 30 días"], ["s-plant","🖼️ Plantillas"], ["s-grabar", MARCA ? "📸 Fotos y videos" : "🎥 Cómo grabarte"], ["s-reels","🎬 Reels"], ["s-vender","💸 Para vender"]];
+$("#tabs").innerHTML = SECS.map(([id,t]) => `<a class="tab" href="#${id}" data-t="${id}">${t}</a>`).join("");
+if ("IntersectionObserver" in window) {
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) $$(".tab").forEach(t => t.classList.toggle("on", t.dataset.t === e.target.id)); }), { rootMargin:"-40% 0px -55% 0px" });
+  SECS.forEach(([id]) => io.observe(document.getElementById(id)));
+}
+const cab = (n, e, t, d) => `<div class="cab"><div class="num">${e}</div><div><div class="eyebrow">Parte ${n}</div><h2>${t}</h2></div></div><p class="muted">${d}</p>`;
+
+/* ---------- paletas ---------- */
+const PALETAS = [
+  { n:"Calma", f:"#f4efe6", t:"#3d3a2f", a:"#8a9a6b", c:"#dfe5cf" },
+  { n:"Rosa", f:"#fbf4f2", t:"#4a2d35", a:"#c98b98", c:"#f1dcdf" },
+  { n:"Noche", f:"#1f1630", t:"#f7f2ff", a:"#b49be8", c:"#3a2b55" },
+  { n:"Terracota", f:"#f7ede4", t:"#4b2a1e", a:"#c4683f", c:"#ecd2c2" },
+  { n:"Mar", f:"#eef5f6", t:"#1f3a44", a:"#4c8c9c", c:"#d3e6ea" },
+  { n:"Sol", f:"#fff8e8", t:"#3f3220", a:"#e0a32e", c:"#f6e3b4" }
+];
+const LETRAS = ["Cormorant Garamond","Playfair Display","DM Serif Display","Fraunces","Lora"];
+const E = leer(CL + "-estilo", { p:1, l:1, foto:"" });
+const P = () => PALETAS[E.p] || PALETAS[1];
+function varsHist(){ const p = P(); return `--hF:${p.f};--hT:${p.t};--hA:${p.a};--hC2:${p.c};--hL:'${LETRAS[E.l]}',Georgia,serif;--hC:'Poppins',Arial,sans-serif`; }
+
+/* ---------- 1 · Quién soy / Tu marca ---------- */
+const H = leer(CL + "-historia", { antes:"", quiebre:"", descubri:"", hoy:"", vos:"" });
+function nombresMarca(){
+  return ["Casa Calma", "Hola Raíz", "Luz Estudio", "Club Pausa", "Rincón Nido", "El Cuaderno de Alma", "Brote", "Abrazo Lento"];
+}
+function pintarQuien(){
+  const v = V(), el = $("#s-quien");
+  if (MARCA) {
+    el.innerHTML = cab(1, "🏷️", "Tu marca", "Nombre, colores, letras y logo. Elegí y se aplica a tus plantillas.") +
+      `<div class="card"><h3>Ideas de nombre</h3><p class="muted" style="font-size:14px">Ideas para inspirarte: tocá una para probarla en tu logo y tus plantillas, o escribí la tuya arriba. Antes de decidir, buscalo en Instagram para ver que esté libre.</p><div class="chips" id="nombres">${nombresMarca().map(n => `<button class="chip" type="button" aria-pressed="${n === D.nom}">${esc(n)}</button>`).join("")}</div></div>` +
+      `<div class="card"><h3>Tus colores</h3><div class="chips" id="paletas">${PALETAS.map((p,i) => `<button class="chip" type="button" data-i="${i}" aria-pressed="${i === E.p}"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:${p.a};margin-right:6px;vertical-align:-1px"></span>${p.n}</button>`).join("")}</div>
+       <h3 style="margin-top:16px">Tu letra</h3><div class="chips" id="letras">${LETRAS.map((l,i) => `<button class="chip" type="button" data-i="${i}" aria-pressed="${i === E.l}" style="font-family:'${l}'">${l}</button>`).join("")}</div>
+       <h3 style="margin-top:16px">Tu logo</h3><div class="logos" id="logos"></div></div>` +
+      `<div class="card"><h3>Tu bio de Instagram</h3><pre class="out" id="bio"></pre><button class="b s" type="button" data-copiar="bio">📋 Copiar bio</button></div>`;
+    $$("#nombres .chip").forEach(b => b.onclick = () => { D.nom = b.textContent; $("#dNom").value = D.nom; guardar(CL + "-datos", D); pintarTodo(); });
+  } else {
+    el.innerHTML = cab(1, "🙋‍♀️", "Quién soy", "Tu historia es lo que hace que te elijan a vos. Completá 5 partes cortas y se arman tu post de presentación y tu bio.") +
+      `<div class="card"><h3>Tu historia en 5 partes</h3>
+       ${[["antes","1 · Cómo estabas antes","ej.: vivía cansada, haciendo todo por todos"],["quiebre","2 · Qué pasó (el quiebre)","ej.: un día me di cuenta de que…"],["descubri","3 · Qué descubriste","ej.: empecé a escribir 10 minutos por día"],["hoy","4 · Cómo estás hoy","ej.: hoy me escucho y me elijo"],["vos","5 · Qué querés para ella","ej.: que vos también vuelvas a vos"]].map(([k,l,ph]) => `<label class="l" for="h-${k}">${l}</label><textarea class="in" id="h-${k}" placeholder="${ph}">${esc(H[k])}</textarea>`).join("")}
+       <h3 style="margin-top:16px">Tu post de presentación</h3><pre class="out" id="presenta"></pre><button class="b s" type="button" data-copiar="presenta">📋 Copiar</button></div>` +
+      `<div class="card"><h3>Tus colores para las plantillas</h3><div class="chips" id="paletas">${PALETAS.map((p,i) => `<button class="chip" type="button" data-i="${i}" aria-pressed="${i === E.p}"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:${p.a};margin-right:6px;vertical-align:-1px"></span>${p.n}</button>`).join("")}</div>
+       <h3 style="margin-top:16px">Tu letra</h3><div class="chips" id="letras">${LETRAS.map((l,i) => `<button class="chip" type="button" data-i="${i}" aria-pressed="${i === E.l}" style="font-family:'${l}'">${l}</button>`).join("")}</div></div>` +
+      `<div class="card"><h3>Tu bio de Instagram</h3><pre class="out" id="bio"></pre><button class="b s" type="button" data-copiar="bio">📋 Copiar bio</button></div>`;
+    ["antes","quiebre","descubri","hoy","vos"].forEach(k => $("#h-" + k).addEventListener("input", e => { H[k] = e.target.value; guardar(CL + "-historia", H); textos(); }));
+  }
+  $$("#paletas .chip").forEach(b => b.onclick = () => { E.p = +b.dataset.i; guardar(CL + "-estilo", E); pintarTodo(); });
+  $$("#letras .chip").forEach(b => b.onclick = () => { E.l = +b.dataset.i; guardar(CL + "-estilo", E); pintarTodo(); });
+  textos();
+}
+function textos(){
+  const v = V();
+  if (MARCA) {
+    $("#bio").textContent = `${v.nom}\n✨ Un lugar para vos, si estás atravesando ${v.tema === "tu tema" ? "[lo que viven tus clientas]" : v.tema}\n📘 ${v.prod}\n👇 Empezá hoy`;
+    const p = P(), ini = v.nom.split(/\s+/).map(x => x[0]).join("").slice(0, 2).toUpperCase(), L = LETRAS[E.l];
+    $("#logos").innerHTML = [
+      `<div class="logo" style="background:${p.a};color:${p.f}"><div><div class="m" style="font-family:'${L}'">${esc(ini)}</div></div></div>`,
+      `<div class="logo" style="background:${p.f};color:${p.t};border:3px solid ${p.a}"><div><div class="n" style="font-family:'${L}';letter-spacing:.06em;text-transform:none;font-size:22px">${esc(v.nom)}</div></div></div>`,
+      `<div class="logo c" style="background:${p.c};color:${p.t}"><div><div class="m" style="font-family:'${L}';color:${p.a}">${esc(ini)}</div><div class="n">${esc(v.nom)}</div></div></div>`
+    ].join("") + `<button class="b s" type="button" id="bajarLogo" style="align-self:center">⬇️ Descargar logos</button>`;
+    $("#bajarLogo").onclick = async ev => { const t = $("#taller"); t.innerHTML = `<div style="display:flex;gap:30px;padding:30px;background:${p.f}">${$("#logos").innerHTML.replace(/<button.*<\/button>/, "")}</div>`; await bajar(t.firstElementChild, "logos-marca", ev.target, 2); };
+  } else {
+    const h = H, ok = Object.values(h).some(x => x.trim());
+    $("#presenta").textContent = ok
+      ? `Hola, soy ${v.nom} 🤍\n\n${h.antes.trim() || "[cómo estabas antes]"}\n\n${h.quiebre.trim() || "[qué pasó]"}\n\n${h.descubri.trim() || "[qué descubriste]"}\n\n${h.hoy.trim() || "[cómo estás hoy]"}\n\nPor eso creé ${v.prod}: ${h.vos.trim() || "[qué querés para ella]"}.\n\nSi te pasa algo parecido, quedate: este lugar es para vos. Escribime «${v.pal}» y te cuento más.`
+      : "Completá las 5 partes de arriba y acá aparece tu post, listo para copiar.";
+    $("#bio").textContent = `${v.nom} 🤍\n✨ Te ayudo con ${v.tema}\n📘 Creé ${v.prod}\n👇 Empezá hoy`;
+  }
+}
+
+/* ---------- 2 · 30 días ---------- */
+const HECHOS = leer(CL + "-dias", []);
+function pintarDias(){
+  $("#s-dias").innerHTML = cab(2, "🗓️", "30 días de contenido", "Una idea por día, ya pensada. Tocá el día cuando lo publiques.") +
+    `<div class="prog"><div class="pista"><i id="pFill"></i></div><span id="pTxt"></span></div><div class="dias">${KIT.dias.map((d,i) => `<div class="dia${HECHOS.includes(i) ? " hecho" : ""}" data-i="${i}" role="button" tabindex="0"><div class="d">${i+1}</div><span class="f">${d[0]}</span><b>${esc(rel(d[1]))}</b><small>Gancho: <span class="gancho">«${esc(rel(d[2]))}»</span></small></div>`).join("")}</div>`;
+  const prog = () => { const n = HECHOS.length; $("#pFill").style.width = (n/30*100) + "%"; $("#pTxt").textContent = `${n} de 30`; };
+  $$(".dia").forEach(c => c.onclick = () => { const i = +c.dataset.i, k = HECHOS.indexOf(i); if (k > -1) HECHOS.splice(k,1); else { HECHOS.push(i); aviso(HECHOS.length === 30 ? "¡30 de 30! 🎉" : "¡Publicado! 💜"); } guardar(CL + "-dias", HECHOS); c.classList.toggle("hecho"); prog(); });
+  prog();
+}
+
+/* ---------- 3 · Plantillas ---------- */
+function plantillas(){
+  const v = V(), foto = E.foto ? `background-image:url('${E.foto}')` : "";
+  const firma = `<div class="firma">${esc(v.user)}</div>`;
+  const fotoVacia = E.foto ? "" : `<div style="position:absolute;inset:0;display:grid;place-items:center;color:var(--hF);font-size:44px;opacity:.85;text-align:center;padding:60px">${KIT.foto ? "📷 Tu foto acá<br><span style='font-size:32px'>(subila arriba)</span>" : "📷 Foto de tus manos o tu producto<br><span style='font-size:32px'>(opcional, subila arriba)</span>"}</div>`;
+  return [
+    ["Frase", `<div class="hist" style="display:flex;align-items:center;justify-content:center;text-align:center;padding:0 110px"><div><div style="font-size:130px;color:var(--hA);line-height:.6" class="tit">“</div><div class="tit" contenteditable style="font-size:92px;line-height:1.15">${esc(rel("Lo que escribís deja de dar vueltas en tu cabeza"))}</div></div>${firma}</div>`],
+    ["3 señales", `<div class="hist" style="padding:300px 100px 0"><div style="font-size:38px;letter-spacing:.2em;text-transform:uppercase;color:var(--hA);font-weight:600" contenteditable>${esc(v.tema)}</div><div class="tit" contenteditable style="font-size:96px;line-height:1.08;margin:24px 0 60px">3 señales de que necesitás un cambio</div>${[1,2,3].map(n => `<div style="display:flex;gap:34px;align-items:flex-start;margin-bottom:46px"><div style="flex:none;width:96px;height:96px;border-radius:50%;background:var(--hA);color:var(--hF);display:grid;place-items:center;font-size:48px;font-weight:600">${n}</div><div contenteditable style="font-size:50px;line-height:1.3;padding-top:12px">Escribí la señal ${n}</div></div>`).join("")}${firma}</div>`],
+    ["Pregunta", `<div class="hist" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 100px;background:linear-gradient(170deg,var(--hC2),var(--hF) 70%)"><div class="tit" contenteditable style="font-size:100px;line-height:1.1">${esc(rel("¿Qué es lo que más te cuesta de [tu tema]?"))}</div><div style="margin-top:80px;width:760px;height:330px;border:5px dashed var(--hA);border-radius:44px;display:grid;place-items:center;font-size:38px;opacity:.7">Poné acá el sticker de preguntas en Instagram</div>${firma}</div>`],
+    ["Tu producto", `<div class="hist" style="text-align:center;padding-top:290px"><div style="display:inline-block;padding:14px 40px;border-radius:999px;background:var(--hA);color:var(--hF);font-size:40px;font-weight:600;letter-spacing:.1em" contenteditable>NUEVO</div><div style="margin:70px auto 0;width:520px;height:780px;border-radius:10px 30px 30px 10px;background:linear-gradient(165deg,var(--hC2),var(--hF) 65%);box-shadow:40px 50px 80px rgba(0,0,0,.25);border:4px solid var(--hA);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:50px"><div class="tit" contenteditable style="font-size:84px;line-height:1.05">${esc(v.prod)}</div><div contenteditable style="font-size:34px;margin-top:24px;opacity:.75">${esc(v.nom)}</div></div><div contenteditable style="font-size:50px;margin-top:80px">Ya está disponible 💜</div>${firma}</div>`],
+    ["Palabra clave", `<div class="hist" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 100px"><div class="tit" contenteditable style="font-size:90px;line-height:1.12">¿Lo querés?</div><div contenteditable style="font-size:52px;margin:40px 0 70px;line-height:1.35">${esc(rel("Te mando [tu producto] por privado"))}</div><div style="padding:40px 80px;border-radius:999px;background:var(--hA);color:var(--hF);font-size:76px;font-weight:600">Comentá <span contenteditable>${esc(v.pal)}</span></div><div style="font-size:44px;margin-top:50px;opacity:.75">👇 en la caja de preguntas</div>${firma}</div>`],
+    [KIT.foto ? "Con tu foto" : "Con foto de producto", `<div class="hist"><div class="foto" style="position:absolute;left:0;right:0;top:0;height:1100px;${foto}">${fotoVacia}</div><div style="position:absolute;left:90px;right:90px;top:1170px"><div class="tit" contenteditable style="font-size:86px;line-height:1.1">${esc(KIT.foto ? "Hola, soy " + v.nom : rel("Así se ve [tu producto]"))}</div><div contenteditable style="font-size:46px;margin-top:22px;opacity:.8;line-height:1.35">${esc(rel(KIT.foto ? "Te ayudo con [tu tema]" : "Hecho con amor para vos"))}</div></div>${firma}</div>`]
+  ];
+}
+function pintarPlantillas(){
+  $("#s-plant").innerHTML = cab(3, "🖼️", "Plantillas de historias", "6 diseños con tus colores. <b>Tocá cualquier texto para cambiarlo</b> y después «Descargar».") +
+    `<div class="card" style="margin-top:10px"><div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center"><input type="file" id="fFoto" accept="image/*" hidden><button class="b s" type="button" id="bFoto">📷 ${KIT.foto ? "Subir tu foto" : "Subir foto de tu producto o manos"}</button>${E.foto ? '<button class="b s" type="button" id="bSinFoto">Quitar foto</button>' : ""}<span class="muted" style="font-size:13px">Los colores y la letra se eligen en la parte 1.</span></div></div>` +
+    `<div class="plantillas" id="plGrid"></div>`;
+  $("#plGrid").innerHTML = plantillas().map(([n, h], i) => `<div class="pl"><div class="ver"><div class="esc" style="${varsHist()}" data-i="${i}">${h}</div></div><button class="b p" type="button" data-bajar="${i}">⬇️ ${esc(n)}</button></div>`).join("");
+  ajustar();
+  $("#bFoto").onclick = () => $("#fFoto").click();
+  $("#fFoto").onchange = e => { const f = e.target.files[0]; if (!f) return; achicar(f, url => { E.foto = url; guardar(CL + "-estilo", E); pintarPlantillas(); }); };
+  if ($("#bSinFoto")) $("#bSinFoto").onclick = () => { E.foto = ""; guardar(CL + "-estilo", E); pintarPlantillas(); };
+  $$("[data-bajar]").forEach(b => b.onclick = async () => { const src = $(`.esc[data-i="${b.dataset.bajar}"]`), t = $("#taller"); t.innerHTML = ""; const c = src.cloneNode(true); c.style.transform = "none"; t.appendChild(c); await bajar(c, "historia-" + (+b.dataset.bajar + 1), b, 1); });
+}
+function achicar(f, cb){ const r = new FileReader(); r.onload = () => { const im = new Image(); im.onload = () => { const k = Math.min(1, 1400 / Math.max(im.width, im.height)), c = document.createElement("canvas"); c.width = im.width * k; c.height = im.height * k; c.getContext("2d").drawImage(im, 0, 0, c.width, c.height); cb(c.toDataURL("image/jpeg", .86)); }; im.src = r.result; }; r.readAsDataURL(f); }
+function ajustar(){ $$(".ver").forEach(v => { const e = v.firstElementChild; e.style.transform = `scale(${v.clientWidth / 1080})`; }); }
+addEventListener("resize", ajustar);
+async function bajar(nodo, nombre, btn, escala){
+  const txt = btn.textContent; btn.textContent = "⏳ Preparando…";
+  try {
+    await document.fonts.ready;
+    const c = await html2canvas(nodo, { scale: escala, useCORS: true, backgroundColor: null });
+    const url = c.toDataURL("image/png"), a = document.createElement("a");
+    a.href = url; a.download = nombre + ".png"; document.body.appendChild(a); a.click(); a.remove();
+    $("#mImg").src = url; $("#modal").classList.add("on");
+  } catch (e) { aviso("No se pudo crear la imagen. Probá de nuevo."); }
+  $("#taller").innerHTML = ""; btn.textContent = txt;
+}
+$("#mOk").onclick = () => $("#modal").classList.remove("on");
+
+/* ---------- 4 · Grabar ---------- */
+const G = leer(CL + "-grabar", []);
+function pintarGrabar(){
+  $("#s-grabar").innerHTML = cab(4, MARCA ? "📸" : "🎥", MARCA ? "Fotos y videos sin mostrarte" : "Cómo grabarte con el celu", "Lo que hace que se vea profesional sin equipos caros. Tildá lo que ya tenés resuelto.") +
+    `<div class="card">${KIT.grabar.map((g,i) => `<label class="chk"><input type="checkbox" data-g="${i}" ${G.includes(i) ? "checked" : ""}><span>${md(g)}</span></label>`).join("")}</div>`;
+  $$("[data-g]").forEach(c => c.onchange = () => { const i = +c.dataset.g, k = G.indexOf(i); if (c.checked && k < 0) G.push(i); if (!c.checked && k > -1) G.splice(k,1); guardar(CL + "-grabar", G); });
+}
+
+/* ---------- 5 · Reels ---------- */
+function pintarReels(){
+  $("#s-reels").innerHTML = cab(5, "🎬", "10 guiones de reels", MARCA ? "Con voz en off o texto en pantalla: no hace falta mostrarte." : "Para hablar a cámara. Cortos: de 15 a 30 segundos.") +
+    KIT.reels.map((r,i) => `<details class="reel"${i === 0 ? " open" : ""}><summary>${i+1} · ${esc(r[0])}</summary><p style="margin:0 0 8px"><b>Gancho:</b> <span class="gancho">${esc(rel(r[1]))}</span></p><ol>${r[2].map(x => `<li>${esc(rel(x))}</li>`).join("")}</ol><p style="margin:0 0 12px"><b>Cierre:</b> ${esc(rel(r[3]))}</p></details>`).join("");
+}
+
+/* ---------- 6 · Para vender ---------- */
+function pintarVender(){
+  $("#s-vender").innerHTML = cab(6, "💸", "Para vender", "3 series de historias que venden sin anuncios. Regla de oro: entre 3 y 7 historias, y el pedido siempre antes de la 5.") +
+    VENDER.map(s => `<div class="serie"><h3>${esc(s.t)}</h3><ul>${s.h.map(x => `<li>${esc(rel(x))}</li>`).join("")}</ul></div>`).join("") +
+    `<div class="card"><h3>¿Te escribieron y no sabés qué contestar?</h3><p class="muted">Tu asistente de Claude te arma la respuesta, los mails y más series, ${MARCA ? "firmado por tu marca" : "con tu voz"}.</p><a class="b p" href="/taller-mensajes-n6v2/">💬 Ir a Mensajes que venden</a></div>`;
+}
+
+/* copiar */
+document.addEventListener("click", e => { const b = e.target.closest("[data-copiar]"); if (!b) return; const t = document.getElementById(b.dataset.copiar).textContent; const ok = () => aviso("¡Copiado! 💜"); if (navigator.clipboard && isSecureContext) navigator.clipboard.writeText(t).then(ok, ok); else { const x = document.createElement("textarea"); x.value = t; document.body.appendChild(x); x.select(); document.execCommand("copy"); x.remove(); ok(); } });
+
+function pintarTodo(){ pintarQuien(); pintarDias(); pintarPlantillas(); pintarGrabar(); pintarReels(); pintarVender(); }
+pintarTodo();
+</script>
+</body>
+</html>
