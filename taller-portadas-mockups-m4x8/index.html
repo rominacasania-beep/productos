@@ -91,7 +91,7 @@ footer{margin-top:34px;text-align:center;color:var(--muted);font-size:13px}
   *,*::before,*::after{animation:none!important;transition:none!important}
   .js .rv{opacity:1;transform:none}
 }
-.lista{margin:6px 0 0;padding:0;list-style:none}.lista li{padding:9px 0 9px 30px;position:relative;border-bottom:1px solid var(--line)}.lista li::before{content:"✓";position:absolute;left:4px;color:var(--menta);font-weight:700}
+.lista{margin:6px 0 0;padding:0;list-style:none}.lista li{padding:9px 0 9px 30px;position:relative;border-bottom:1px solid var(--line)}.lista li::before{content:"✓";position:absolute;left:4px;color:var(--menta);font-weight:700}.chat{display:flex;flex-direction:column;gap:10px;margin:14px 0 8px}.bur{max-width:86%;padding:11px 14px;border-radius:18px;font-size:14.5px;line-height:1.45;opacity:0;transform:translateY(10px);animation:bur .5s forwards}.bur.ella{align-self:flex-end;background:var(--grad);color:#120a1c;font-weight:600;border-bottom-right-radius:6px;animation-delay:.4s}.bur.cl{align-self:flex-start;background:var(--card2);border:1px solid var(--line);border-bottom-left-radius:6px;animation-delay:1.6s}.bur.res{border-color:var(--oro);animation-delay:2.9s}@keyframes bur{to{opacity:1;transform:none}}
 </style>
 </head>
 <body>
@@ -100,49 +100,49 @@ footer{margin-top:34px;text-align:center;color:var(--muted);font-size:13px}
 <header class="hero rv">
   <div class="eyebrow">Regalo del taller · Kit de portadas y mockups</div>
   <h1>Tu portada y tus mockups, <span class="g">sin Canva</span></h1>
-  <p class="muted">Una skill para Claude que crea la tapa de tu producto y 4 fotos para venderlo (celular, tablet, libro y páginas abiertas), todo en una pantalla donde cambiás textos y colores y descargás cada imagen.</p>
-  <div class="sello"><span class="flota">✨</span> <span>La instalás <b>una sola vez</b> y Claude la usa siempre</span></div>
+  <p class="muted">Claude crea la tapa de tu producto y 4 fotos para venderlo, en una pantalla donde cambiás colores y descargás cada imagen.</p>
+  <div class="sello"><span class="flota">✨</span> <span>Una sola skill para los 4 regalos: <b>la instalás una vez</b></span></div>
+  <a class="b s" href="#hablale" style="margin-top:14px">¿Ya la instalaste? Saltá al último paso ↓</a>
 </header>
 
 <section class="card paso rv" data-paso>
-  <div class="cab"><div class="num">🎁</div><div><div class="eyebrow">Qué hace por vos</div><h2>Lo que Claude va a hacer solo</h2></div></div>
-  <p class="por">Vos le contás tu idea y respondés lo que te pregunta. Claude hace el resto:</p>
-  <ul class="lista"><li>Te propone 3 estilos (colores y letras) que van con tu tema y con vos.</li><li>Crea tu <b>portada</b> con 4 diseños para elegir: marco, arco, franja o con tu foto.</li><li>Arma tus <b>mockups</b>: celular, tablet, libro y páginas de adentro con frases reales.</li><li>Podés cambiar textos y colores y ver todo al instante.</li><li>Cada imagen tiene su botón <b>«Descargar PNG»</b>.</li></ul>
+  <div class="cab"><div class="num">👀</div><div><div class="eyebrow">Así se ve</div><h2>Vos escribís una frase. Claude hace el resto</h2></div></div>
+  <p class="por">No copiás ni pegás nada. Le hablás a Claude como a una amiga y él ya sabe qué hacer:</p>
+  <div class="chat" aria-hidden="true"><div class="bur ella">Creá mi portada</div><div class="bur cl">¡Dale! Te propongo 3 estilos para tu tapa. 1) Calma natural 2) Rosa empolvado 3) Noche lila. ¿Cuál te gusta?</div><div class="bur cl res">🖼️ <b>Tu portada + celular, tablet, libro y páginas</b>, cada una con «Descargar»</div></div>
+  <ul class="lista"><li>Te propone 3 estilos de colores y letras.</li><li>Crea tu <b>portada</b> (4 diseños, o con tu foto).</li><li>Arma <b>4 mockups</b>: celular, tablet, libro y páginas de adentro.</li><li>Cambiás textos y colores y ves todo al instante.</li><li>Cada imagen se descarga en PNG.</li></ul>
 </section>
 
 <section class="card paso rv" data-paso>
   <div class="cab"><div class="num">⚙️</div><div><div class="eyebrow">Paso 1 · Una sola vez</div><h2>Prepará Claude</h2></div></div>
   <p class="por">Las skills necesitan que Claude pueda crear archivos. Se activa una vez y queda para siempre.</p>
-  <label class="chk"><input type="checkbox" data-k="pm1-1"><span class="box"></span><span class="txt">En Claude (escritorio o claude.ai) tocá tu nombre abajo a la izquierda → <b>«Configuración»</b>.</span></label>
-  <label class="chk"><input type="checkbox" data-k="pm1-2"><span class="box"></span><span class="txt">Entrá a <b>«Capacidades»</b> y activá <b>«Ejecución de código y creación de archivos»</b>.</span></label>
+  <label class="chk"><input type="checkbox" data-k="pm1-1"><span class="box"></span><span class="txt">En Claude (escritorio o claude.ai) tocá tu nombre abajo a la izquierda → <b>«Configuración»</b> → <b>«Capacidades»</b> → activá <b>«Ejecución de código y creación de archivos»</b>.</span></label>
 </section>
 
 <section class="card paso rv" data-paso>
-  <div class="cab"><div class="num">⬇️</div><div><div class="eyebrow">Paso 2</div><h2>Descargá tu skill</h2></div></div>
-  <p class="por">Es un archivo .zip. <b>No lo abras ni lo descomprimas</b>: se sube así como baja.</p>
-  <label class="chk"><input type="checkbox" data-k="pm2-1"><span class="box"></span><span class="txt">Tocá el botón y guardá el archivo en tu compu (queda en «Descargas»).</span></label>
-  <div class="links"><a class="b p" href="mis-portadas.zip" download>⬇️ Descargar mis-portadas.zip</a></div>
+  <div class="cab"><div class="num">⬇️</div><div><div class="eyebrow">Paso 2 · Una sola vez</div><h2>Bajá «Mi negocio con Claude»</h2></div></div>
+  <p class="por">Es <b>un solo archivo</b> con los 4 regalos adentro: producto, portadas, página y app. <b>No lo abras ni lo descomprimas.</b></p>
+  <label class="chk"><input type="checkbox" data-k="pm2-1"><span class="box"></span><span class="txt">Tocá el botón y guardalo (queda en tu carpeta «Descargas»).</span></label>
+  <div class="links"><a class="b p" href="/taller-mi-negocio-k5h1/mi-negocio.zip" download>⬇️ Descargar mi-negocio.zip</a></div>
 </section>
 
 <section class="card paso rv" data-paso>
-  <div class="cab"><div class="num">📤</div><div><div class="eyebrow">Paso 3</div><h2>Subila a Claude</h2></div></div>
-  <p class="por">Tarda un minuto. Después aparece en tu lista de skills, encendida.</p>
-  <label class="chk"><input type="checkbox" data-k="pm3-1"><span class="box"></span><span class="txt">En <b>«Configuración»</b> → <b>«Capacidades»</b>, bajá hasta <b>«Skills»</b> (puede decir «Habilidades»).</span></label>
-  <label class="chk"><input type="checkbox" data-k="pm3-2"><span class="box"></span><span class="txt">Tocá <b>«Subir skill»</b> (o «+ Agregar») y elegí el archivo <b>mis-portadas.zip</b> de tu carpeta «Descargas».</span></label>
-  <label class="chk"><input type="checkbox" data-k="pm3-3"><span class="box"></span><span class="txt">Fijate que quede <b>encendida</b> (el interruptor en color).</span></label>
+  <div class="cab"><div class="num">📤</div><div><div class="eyebrow">Paso 3 · Una sola vez</div><h2>Subilo a Claude</h2></div></div>
+  <p class="por">Tarda un minuto. Después queda encendido para siempre.</p>
+  <label class="chk"><input type="checkbox" data-k="pm3-1"><span class="box"></span><span class="txt">En <b>«Configuración»</b> → <b>«Capacidades»</b>, bajá hasta <b>«Skills»</b> (puede decir «Habilidades») → <b>«Subir skill»</b> → elegí <b>mi-negocio.zip</b>.</span></label>
+  <label class="chk"><input type="checkbox" data-k="pm3-2"><span class="box"></span><span class="txt">Fijate que quede <b>encendida</b> (el interruptor en color). ¡Listo!</span></label>
 </section>
 
-<section class="card paso rv" data-paso>
-  <div class="cab"><div class="num">💬</div><div><div class="eyebrow">Paso 4</div><h2>Pedíselo con una frase</h2></div></div>
-  <p class="por">Abrí un chat dentro de tu proyecto «Mi producto» y escribí solamente esto:</p>
-  <label class="chk"><input type="checkbox" data-k="pm4-1"><span class="box"></span><span class="txt">Escribí la frase y mandala. Claude se da cuenta solo de que tiene que usar la skill.</span></label>
+<section class="card paso rv" data-paso id="hablale">
+  <div class="cab"><div class="num">💬</div><div><div class="eyebrow">Paso 4 · Cada vez que quieras</div><h2>Pedíselo con una frase</h2></div></div>
+  <p class="por">Abrí un chat nuevo en Claude (mejor dentro de tu proyecto «Mi producto») y escribí:</p>
+  <label class="chk"><input type="checkbox" data-k="pm4-1"><span class="box"></span><span class="txt">Escribí la frase, mandala y respondé lo que Claude te pregunte.</span></label>
   <div class="frase"><h3>Tu frase</h3><pre id="pmfrase">Creá mi portada</pre><button class="b s" type="button" data-copiar="pmfrase">📋 Copiar</button></div>
-  <p class="por" style="margin-top:12px">También funciona si lo decís con tus palabras: «haceme los mockups» · «quiero la tapa de mi producto» · «necesito imágenes de mi producto».</p>
+  <p class="por" style="margin-top:12px">También sirve con tus palabras: «haceme los mockups» · «quiero la tapa de mi producto». Y si escribís <b>«Hola, empecemos»</b>, Claude te muestra los 4 pasos.</p>
 </section>
 
 <section class="card paso rv" data-paso>
   <div class="cab"><div class="num">🧭</div><div><div class="eyebrow">Después</div><h2>Qué sigue</h2></div></div>
-  <p class="por">Usá la portada en tu PDF y en tu app, y los mockups en tu página de venta e Instagram. Siguiente: <b>«Estructura de página de venta»</b>.</p>
+  <p class="por">Usá la portada en tu PDF y los mockups en tu página. Siguiente: escribile <b>«Armá mi página de venta»</b>.</p>
 </section>
 
 <section class="card final rv" id="final">
@@ -191,7 +191,7 @@ function progreso(fiesta){
   $("#fill").style.width=p+"%";$("#pct").textContent=p+" %";
   $$("[data-paso]").forEach(function(s){var cs=s.querySelectorAll("input[data-k]"),ok=Array.prototype.every.call(cs,function(c){return c.checked});s.classList.toggle("lista",ok)});
   var f=$("#final");
-  if(p===100){f.classList.add("ok");$("#finalEmoji").textContent="🎉";$("#finalTit").innerHTML='¡Estás <span class="g">lista</span>!';$("#finalTxt").textContent="Tu skill está lista. Pedile a Claude «Creá mi portada» 💜";
+  if(p===100){f.classList.add("ok");$("#finalEmoji").textContent="🎉";$("#finalTit").innerHTML='¡Estás <span class="g">lista</span>!';$("#finalTxt").textContent="¡Listo! Escribile a Claude «Creá mi portada» 💜";
     if(fiesta){var r=f.getBoundingClientRect();chispas(window.innerWidth/2,Math.max(80,Math.min(window.innerHeight-80,r.top+60)),40);aviso("¡Listo! 🎉")}}
   else{f.classList.remove("ok");$("#finalEmoji").textContent=p>=50?"🌷":"🌱";$("#finalTit").textContent=p>=50?"¡Ya pasaste la mitad!":"Vas por buen camino";$("#finalTxt").textContent="Te faltan "+(cuentan.length-n)+" casillas para terminar."}
 }

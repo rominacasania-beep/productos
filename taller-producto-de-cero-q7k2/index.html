@@ -91,7 +91,7 @@ footer{margin-top:34px;text-align:center;color:var(--muted);font-size:13px}
   *,*::before,*::after{animation:none!important;transition:none!important}
   .js .rv{opacity:1;transform:none}
 }
-.lista{margin:6px 0 0;padding:0;list-style:none}.lista li{padding:9px 0 9px 30px;position:relative;border-bottom:1px solid var(--line)}.lista li::before{content:"✓";position:absolute;left:4px;color:var(--menta);font-weight:700}
+.lista{margin:6px 0 0;padding:0;list-style:none}.lista li{padding:9px 0 9px 30px;position:relative;border-bottom:1px solid var(--line)}.lista li::before{content:"✓";position:absolute;left:4px;color:var(--menta);font-weight:700}.chat{display:flex;flex-direction:column;gap:10px;margin:14px 0 8px}.bur{max-width:86%;padding:11px 14px;border-radius:18px;font-size:14.5px;line-height:1.45;opacity:0;transform:translateY(10px);animation:bur .5s forwards}.bur.ella{align-self:flex-end;background:var(--grad);color:#120a1c;font-weight:600;border-bottom-right-radius:6px;animation-delay:.4s}.bur.cl{align-self:flex-start;background:var(--card2);border:1px solid var(--line);border-bottom-left-radius:6px;animation-delay:1.6s}.bur.res{border-color:var(--oro);animation-delay:2.9s}@keyframes bur{to{opacity:1;transform:none}}
 </style>
 </head>
 <body>
@@ -100,49 +100,49 @@ footer{margin-top:34px;text-align:center;color:var(--muted);font-size:13px}
 <header class="hero rv">
   <div class="eyebrow">Regalo del taller · Tu producto de cero</div>
   <h1>Tu producto, <span class="g">de la idea al PDF</span></h1>
-  <p class="muted">Una skill para Claude que te acompaña de punta a punta: te conoce, elige la idea con vos, escribe con tu voz y te entrega tu producto en PDF, listo para vender.</p>
-  <div class="sello"><span class="flota">✨</span> <span>La instalás <b>una sola vez</b> y Claude la usa siempre</span></div>
+  <p class="muted">Claude te conoce, elige la idea con vos, escribe con tu voz y te entrega tu producto en PDF, listo para vender.</p>
+  <div class="sello"><span class="flota">✨</span> <span>Una sola skill para los 4 regalos: <b>la instalás una vez</b></span></div>
+  <a class="b s" href="#hablale" style="margin-top:14px">¿Ya la instalaste? Saltá al último paso ↓</a>
 </header>
 
 <section class="card paso rv" data-paso>
-  <div class="cab"><div class="num">🎁</div><div><div class="eyebrow">Qué hace por vos</div><h2>Lo que Claude va a hacer solo</h2></div></div>
-  <p class="por">Vos le contás tu idea y respondés lo que te pregunta. Claude hace el resto:</p>
-  <ul class="lista"><li>Te entrevista (8 preguntas, de a una) para conocer lo que sabés y viviste.</li><li>Te propone 5 ideas con un dolor real y elige con vos <b>una</b>.</li><li>Te arma la promesa, 8 nombres y el índice. Vos aprobás.</li><li>Escribe parte por parte <b>con tu voz</b> y te pregunta si suena a vos.</li><li>Revisa todo con 10 controles de calidad (nada inventado, nada copiado).</li><li>Diseña y te entrega el <b>PDF terminado</b>, con tapa, bienvenida, índice y cierre.</li></ul>
+  <div class="cab"><div class="num">👀</div><div><div class="eyebrow">Así se ve</div><h2>Vos escribís una frase. Claude hace el resto</h2></div></div>
+  <p class="por">No copiás ni pegás nada. Le hablás a Claude como a una amiga y él ya sabe qué hacer:</p>
+  <div class="chat" aria-hidden="true"><div class="bur ella">Creá mi producto</div><div class="bur cl">¡Qué lindo! Empecemos por conocerte. Primera pregunta: ¿qué te preguntan seguido tus amigas o tus seguidoras?</div><div class="bur cl res">📄 <b>Tu PDF terminado</b>, con tapa, bienvenida, índice y cierre</div></div>
+  <ul class="lista"><li>Te hace preguntas, de a una, para conocer lo que sabés y viviste.</li><li>Te propone 5 ideas y elige con vos <b>una</b>.</li><li>Te da nombres e índice. Vos aprobás.</li><li>Escribe <b>con tu voz</b> y te pregunta si suena a vos.</li><li>Te entrega el <b>PDF</b> diseñado.</li></ul>
 </section>
 
 <section class="card paso rv" data-paso>
   <div class="cab"><div class="num">⚙️</div><div><div class="eyebrow">Paso 1 · Una sola vez</div><h2>Prepará Claude</h2></div></div>
   <p class="por">Las skills necesitan que Claude pueda crear archivos. Se activa una vez y queda para siempre.</p>
-  <label class="chk"><input type="checkbox" data-k="pc1-1"><span class="box"></span><span class="txt">En Claude (escritorio o claude.ai) tocá tu nombre abajo a la izquierda → <b>«Configuración»</b>.</span></label>
-  <label class="chk"><input type="checkbox" data-k="pc1-2"><span class="box"></span><span class="txt">Entrá a <b>«Capacidades»</b> y activá <b>«Ejecución de código y creación de archivos»</b>.</span></label>
+  <label class="chk"><input type="checkbox" data-k="pc1-1"><span class="box"></span><span class="txt">En Claude (escritorio o claude.ai) tocá tu nombre abajo a la izquierda → <b>«Configuración»</b> → <b>«Capacidades»</b> → activá <b>«Ejecución de código y creación de archivos»</b>.</span></label>
 </section>
 
 <section class="card paso rv" data-paso>
-  <div class="cab"><div class="num">⬇️</div><div><div class="eyebrow">Paso 2</div><h2>Descargá tu skill</h2></div></div>
-  <p class="por">Es un archivo .zip. <b>No lo abras ni lo descomprimas</b>: se sube así como baja.</p>
-  <label class="chk"><input type="checkbox" data-k="pc2-1"><span class="box"></span><span class="txt">Tocá el botón y guardá el archivo en tu compu (queda en «Descargas»).</span></label>
-  <div class="links"><a class="b p" href="mi-producto.zip" download>⬇️ Descargar mi-producto.zip</a></div>
+  <div class="cab"><div class="num">⬇️</div><div><div class="eyebrow">Paso 2 · Una sola vez</div><h2>Bajá «Mi negocio con Claude»</h2></div></div>
+  <p class="por">Es <b>un solo archivo</b> con los 4 regalos adentro: producto, portadas, página y app. <b>No lo abras ni lo descomprimas.</b></p>
+  <label class="chk"><input type="checkbox" data-k="pc2-1"><span class="box"></span><span class="txt">Tocá el botón y guardalo (queda en tu carpeta «Descargas»).</span></label>
+  <div class="links"><a class="b p" href="/taller-mi-negocio-k5h1/mi-negocio.zip" download>⬇️ Descargar mi-negocio.zip</a></div>
 </section>
 
 <section class="card paso rv" data-paso>
-  <div class="cab"><div class="num">📤</div><div><div class="eyebrow">Paso 3</div><h2>Subila a Claude</h2></div></div>
-  <p class="por">Tarda un minuto. Después aparece en tu lista de skills, encendida.</p>
-  <label class="chk"><input type="checkbox" data-k="pc3-1"><span class="box"></span><span class="txt">En <b>«Configuración»</b> → <b>«Capacidades»</b>, bajá hasta <b>«Skills»</b> (puede decir «Habilidades»).</span></label>
-  <label class="chk"><input type="checkbox" data-k="pc3-2"><span class="box"></span><span class="txt">Tocá <b>«Subir skill»</b> (o «+ Agregar») y elegí el archivo <b>mi-producto.zip</b> de tu carpeta «Descargas».</span></label>
-  <label class="chk"><input type="checkbox" data-k="pc3-3"><span class="box"></span><span class="txt">Fijate que quede <b>encendida</b> (el interruptor en color).</span></label>
+  <div class="cab"><div class="num">📤</div><div><div class="eyebrow">Paso 3 · Una sola vez</div><h2>Subilo a Claude</h2></div></div>
+  <p class="por">Tarda un minuto. Después queda encendido para siempre.</p>
+  <label class="chk"><input type="checkbox" data-k="pc3-1"><span class="box"></span><span class="txt">En <b>«Configuración»</b> → <b>«Capacidades»</b>, bajá hasta <b>«Skills»</b> (puede decir «Habilidades») → <b>«Subir skill»</b> → elegí <b>mi-negocio.zip</b>.</span></label>
+  <label class="chk"><input type="checkbox" data-k="pc3-2"><span class="box"></span><span class="txt">Fijate que quede <b>encendida</b> (el interruptor en color). ¡Listo!</span></label>
 </section>
 
-<section class="card paso rv" data-paso>
-  <div class="cab"><div class="num">💬</div><div><div class="eyebrow">Paso 4</div><h2>Pedíselo con una frase</h2></div></div>
-  <p class="por">Abrí un chat dentro de tu proyecto «Mi producto» y escribí solamente esto:</p>
-  <label class="chk"><input type="checkbox" data-k="pc4-1"><span class="box"></span><span class="txt">Escribí la frase y mandala. Claude se da cuenta solo de que tiene que usar la skill.</span></label>
+<section class="card paso rv" data-paso id="hablale">
+  <div class="cab"><div class="num">💬</div><div><div class="eyebrow">Paso 4 · Cada vez que quieras</div><h2>Pedíselo con una frase</h2></div></div>
+  <p class="por">Abrí un chat nuevo en Claude (mejor dentro de tu proyecto «Mi producto») y escribí:</p>
+  <label class="chk"><input type="checkbox" data-k="pc4-1"><span class="box"></span><span class="txt">Escribí la frase, mandala y respondé lo que Claude te pregunte.</span></label>
   <div class="frase"><h3>Tu frase</h3><pre id="pcfrase">Creá mi producto</pre><button class="b s" type="button" data-copiar="pcfrase">📋 Copiar</button></div>
-  <p class="por" style="margin-top:12px">También funciona si lo decís con tus palabras: «quiero hacer mi journal» · «armemos mi guía» · «tengo una idea de producto».</p>
+  <p class="por" style="margin-top:12px">También sirve con tus palabras: «quiero hacer mi journal» · «armemos mi guía» · «tengo una idea». Y si escribís <b>«Hola, empecemos»</b>, Claude te muestra los 4 pasos.</p>
 </section>
 
 <section class="card paso rv" data-paso>
   <div class="cab"><div class="num">🧭</div><div><div class="eyebrow">Después</div><h2>Qué sigue</h2></div></div>
-  <p class="por">Con tu PDF listo, seguí con <b>«Kit de portadas y mockups»</b>, después <b>«Estructura de página de venta»</b> y por último <b>«Tu app paso a paso»</b>. Si cerrás el chat, no pasa nada: Claude guarda una ficha y retoma donde quedaste.</p>
+  <p class="por">Con tu PDF listo, escribile <b>«Creá mi portada»</b>. Si cerrás el chat, no pasa nada: Claude retoma donde quedaste.</p>
 </section>
 
 <section class="card final rv" id="final">
@@ -191,7 +191,7 @@ function progreso(fiesta){
   $("#fill").style.width=p+"%";$("#pct").textContent=p+" %";
   $$("[data-paso]").forEach(function(s){var cs=s.querySelectorAll("input[data-k]"),ok=Array.prototype.every.call(cs,function(c){return c.checked});s.classList.toggle("lista",ok)});
   var f=$("#final");
-  if(p===100){f.classList.add("ok");$("#finalEmoji").textContent="🎉";$("#finalTit").innerHTML='¡Estás <span class="g">lista</span>!';$("#finalTxt").textContent="Tu skill está lista. Pedile a Claude «Creá mi producto» 💜";
+  if(p===100){f.classList.add("ok");$("#finalEmoji").textContent="🎉";$("#finalTit").innerHTML='¡Estás <span class="g">lista</span>!';$("#finalTxt").textContent="¡Listo! Escribile a Claude «Creá mi producto» 💜";
     if(fiesta){var r=f.getBoundingClientRect();chispas(window.innerWidth/2,Math.max(80,Math.min(window.innerHeight-80,r.top+60)),40);aviso("¡Listo! 🎉")}}
   else{f.classList.remove("ok");$("#finalEmoji").textContent=p>=50?"🌷":"🌱";$("#finalTit").textContent=p>=50?"¡Ya pasaste la mitad!":"Vas por buen camino";$("#finalTxt").textContent="Te faltan "+(cuentan.length-n)+" casillas para terminar."}
 }
