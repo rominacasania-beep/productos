@@ -91,6 +91,7 @@ footer{margin-top:34px;text-align:center;color:var(--muted);font-size:13px}
   *,*::before,*::after{animation:none!important;transition:none!important}
   .js .rv{opacity:1;transform:none}
 }
+.lista{margin:6px 0 0;padding:0;list-style:none}.lista li{padding:9px 0 9px 30px;position:relative;border-bottom:1px solid var(--line)}.lista li::before{content:"✓";position:absolute;left:4px;color:var(--menta);font-weight:700}
 </style>
 </head>
 <body>
@@ -98,67 +99,50 @@ footer{margin-top:34px;text-align:center;color:var(--muted);font-size:13px}
 <main class="app">
 <header class="hero rv">
   <div class="eyebrow">Regalo del taller · Tu app paso a paso</div>
-  <h1>Tu app de entrega: <span class="g">entra con su mail</span></h1>
-  <p class="muted">Es lo que mostré en vivo: tu clienta abre un enlace, pone el mail con el que compró y ve su producto. Mucho más lindo que mandar un PDF suelto, y se pone en la pantalla del celular como una app.</p>
-  <div class="sello"><span class="flota">💜</span> <span>Todo se hace <b>dentro de tu proyecto «Mi producto»</b> en Claude de escritorio</span></div>
+  <h1>Tu app: <span class="g">entran con su mail</span></h1>
+  <p class="muted">Una skill para Claude que arma la app donde tu clienta pone el mail de su compra y ve sus productos. Lo que no compró aparece con candado y botón para comprarlo. Gratis, con tu cuenta de Google.</p>
+  <div class="sello"><span class="flota">✨</span> <span>La instalás <b>una sola vez</b> y Claude la usa siempre</span></div>
 </header>
 
 <section class="card paso rv" data-paso>
-  <div class="cab"><div class="num">🧭</div><div><div class="eyebrow">Paso 1</div><h2>Cómo funciona</h2></div></div>
-  <p class="por">Tres piezas, nada más. Leelas para entender qué vamos a armar.</p>
-  <label class="chk"><input type="checkbox" data-k="ap1-1"><span class="box"></span><span class="txt"><b>La lista de compradoras:</b> una planilla de Google con los mails de quienes compraron.</span></label>
-  <label class="chk"><input type="checkbox" data-k="ap1-2"><span class="box"></span><span class="txt"><b>La app:</b> una página con tus colores donde ella pone su mail; si está en la lista, ve su producto.</span></label>
-  <label class="chk"><input type="checkbox" data-k="ap1-3"><span class="box"></span><span class="txt"><b>El producto:</b> tu PDF (o tus PDF) guardado en Google Drive con un enlace para ver.</span></label>
+  <div class="cab"><div class="num">🎁</div><div><div class="eyebrow">Qué hace por vos</div><h2>Lo que Claude va a hacer solo</h2></div></div>
+  <p class="por">Vos le contás tu idea y respondés lo que te pregunta. Claude hace el resto:</p>
+  <ul class="lista"><li>Te muestra primero cómo va a quedar, con tus colores, para que la pruebes.</li><li>Te guía para subir tu producto a Google Drive.</li><li>Arma tu planilla de <b>compradoras</b> y <b>productos</b> (solo vos la ves).</li><li>Te da el código listo y te acompaña <b>clic por clic</b> para publicarla.</li><li>Incluye «frase del día», candados con botón de compra y «Poner en mi pantalla de inicio».</li><li>Te escribe el mail de entrega para tus clientas.</li></ul>
 </section>
 
 <section class="card paso rv" data-paso>
-  <div class="cab"><div class="num">📋</div><div><div class="eyebrow">Paso 2</div><h2>Tu lista de compradoras</h2></div></div>
-  <p class="por">La planilla es tu «portero»: solo entra quien está anotada.</p>
-  <label class="chk"><input type="checkbox" data-k="ap2-1"><span class="box"></span><span class="txt">Creá una planilla de Google llamada <b>Compradoras</b>, con las columnas <b>mail</b>, <b>nombre</b> y <b>fecha</b>.</span></label>
-  <label class="chk"><input type="checkbox" data-k="ap2-2"><span class="box"></span><span class="txt">Anotá tu propio mail en la primera fila para probar.</span></label>
-  <label class="chk"><input type="checkbox" data-k="ap2-3"><span class="box"></span><span class="txt">Subí tu PDF a Google Drive y, en «Compartir», poné «Cualquier persona con el enlace» puede ver. Copiá el enlace.</span></label>
-  <label class="chk"><input type="checkbox" data-k="ap2-4"><span class="box"></span><span class="txt">Pegá «Conectar mi planilla» en Claude y seguí sus pasos para conectarla a la app.</span></label>
-  <div class="frase">
-    <h3>Conectar mi planilla</h3>
-    <pre id="ap2f1">Quiero que mi app de entrega revise una planilla de Google con los mails de mis compradoras. Explicame paso a paso, como si nunca lo hubiera hecho, la forma más simple y gratis de que una página web pueda preguntar «¿este mail está en la lista?» sin que la lista quede a la vista de todos (por ejemplo con Google Apps Script). Dame el código completo para pegar y decime exactamente dónde hacer clic.</pre>
-    <button class="b s" type="button" data-copiar="ap2f1">📋 Copiar</button>
-  </div>
-  <div class="tip">💡 En la planilla nunca pongas contraseñas ni datos de tarjetas: solo mail, nombre y fecha.</div>
-  <div class="links"><a class="b p" href="https://sheets.new" target="_blank" rel="noopener">Google Sheets ↗</a><a class="b s" href="https://drive.google.com/" target="_blank" rel="noopener">Google Drive ↗</a></div>
+  <div class="cab"><div class="num">⚙️</div><div><div class="eyebrow">Paso 1 · Una sola vez</div><h2>Prepará Claude</h2></div></div>
+  <p class="por">Las skills necesitan que Claude pueda crear archivos. Se activa una vez y queda para siempre.</p>
+  <label class="chk"><input type="checkbox" data-k="ap1-1"><span class="box"></span><span class="txt">En Claude (escritorio o claude.ai) tocá tu nombre abajo a la izquierda → <b>«Configuración»</b>.</span></label>
+  <label class="chk"><input type="checkbox" data-k="ap1-2"><span class="box"></span><span class="txt">Entrá a <b>«Capacidades»</b> y activá <b>«Ejecución de código y creación de archivos»</b>.</span></label>
 </section>
 
 <section class="card paso rv" data-paso>
-  <div class="cab"><div class="num">📲</div><div><div class="eyebrow">Paso 3</div><h2>Que Claude arme la app</h2></div></div>
-  <p class="por">Claude arma la app con tu estilo: pantalla de entrada, tu producto y el botón para ponerla en la pantalla del celular.</p>
-  <label class="chk"><input type="checkbox" data-k="ap3-1"><span class="box"></span><span class="txt">Pegá «Armar mi app» en «Mi producto».</span></label>
-  <label class="chk"><input type="checkbox" data-k="ap3-2"><span class="box"></span><span class="txt">Probala con tu mail (el que anotaste) y con un mail que no esté: tiene que decir que no lo encuentra.</span></label>
-  <label class="chk"><input type="checkbox" data-k="ap3-3"><span class="box"></span><span class="txt">Publicala igual que tu página de venta y copiá el enlace.</span></label>
-  <label class="chk"><input type="checkbox" data-k="ap3-4"><span class="box"></span><span class="txt">Abrila en tu celular y usá «Agregar a la pantalla de inicio».</span></label>
-  <div class="frase">
-    <h3>Armar mi app</h3>
-    <pre id="ap3f1">Armá mi app de entrega en un solo archivo HTML, en mi carpeta «Mi negocio», con mi ficha de estilo:
-1. Pantalla de entrada: mi logo o el nombre del producto, «Entrá con el mail de tu compra» y un botón.
-2. Revisa el mail contra mi planilla de compradoras (con lo que armamos en el paso anterior). Si no está: un mensaje amable con mi contacto.
-3. Si está: «Hola, [nombre]» y la tarjeta de su producto con la portada y el botón «Abrir» que lleva a mi PDF: [pegá el enlace de Drive].
-4. Que recuerde el mail para no pedirlo cada vez.
-5. Botón «Poner en mi pantalla de inicio» con las instrucciones para iPhone y Android.
-6. Pensada primero para celular, linda y con movimiento suave.
-Después explicame cómo publicarla y cómo pruebo que funciona.</pre>
-    <button class="b s" type="button" data-copiar="ap3f1">📋 Copiar</button>
-  </div>
-  <div class="tip">💡 Cada vez que alguien te compre, sumás su mail a la planilla (o lo automatizamos con tu plataforma de pago). Lo vemos en la clase.</div>
+  <div class="cab"><div class="num">⬇️</div><div><div class="eyebrow">Paso 2</div><h2>Descargá tu skill</h2></div></div>
+  <p class="por">Es un archivo .zip. <b>No lo abras ni lo descomprimas</b>: se sube así como baja.</p>
+  <label class="chk"><input type="checkbox" data-k="ap2-1"><span class="box"></span><span class="txt">Tocá el botón y guardá el archivo en tu compu (queda en «Descargas»).</span></label>
+  <div class="links"><a class="b p" href="mi-app.zip" download>⬇️ Descargar mi-app.zip</a></div>
 </section>
 
 <section class="card paso rv" data-paso>
-  <div class="cab"><div class="num">💌</div><div><div class="eyebrow">Paso 4</div><h2>El mail que le llega</h2></div></div>
-  <p class="por">Cuando alguien compra, le llega un mail con el enlace a la app. Dejalo escrito y listo.</p>
-  <label class="chk"><input type="checkbox" data-k="ap4-1"><span class="box"></span><span class="txt">Pegá «Mail de bienvenida» y ajustalo a tu voz.</span></label>
-  <label class="chk"><input type="checkbox" data-k="ap4-2"><span class="box"></span><span class="txt">Guardalo: lo vas a poner en tu plataforma de pago como mail de entrega.</span></label>
-  <div class="frase">
-    <h3>Mail de bienvenida</h3>
-    <pre id="ap4f1">Escribí el mail que le llega a mi clienta apenas compra: asunto cálido, gracias por la compra, el enlace a mi app [pegá el enlace], que entre con el mismo mail de la compra, cómo ponerla en la pantalla del celular, y a quién escribir si tiene un problema. Corto, con mi voz, firmado con mi nombre.</pre>
-    <button class="b s" type="button" data-copiar="ap4f1">📋 Copiar</button>
-  </div>
+  <div class="cab"><div class="num">📤</div><div><div class="eyebrow">Paso 3</div><h2>Subila a Claude</h2></div></div>
+  <p class="por">Tarda un minuto. Después aparece en tu lista de skills, encendida.</p>
+  <label class="chk"><input type="checkbox" data-k="ap3-1"><span class="box"></span><span class="txt">En <b>«Configuración»</b> → <b>«Capacidades»</b>, bajá hasta <b>«Skills»</b> (puede decir «Habilidades»).</span></label>
+  <label class="chk"><input type="checkbox" data-k="ap3-2"><span class="box"></span><span class="txt">Tocá <b>«Subir skill»</b> (o «+ Agregar») y elegí el archivo <b>mi-app.zip</b> de tu carpeta «Descargas».</span></label>
+  <label class="chk"><input type="checkbox" data-k="ap3-3"><span class="box"></span><span class="txt">Fijate que quede <b>encendida</b> (el interruptor en color).</span></label>
+</section>
+
+<section class="card paso rv" data-paso>
+  <div class="cab"><div class="num">💬</div><div><div class="eyebrow">Paso 4</div><h2>Pedíselo con una frase</h2></div></div>
+  <p class="por">Abrí un chat dentro de tu proyecto «Mi producto» y escribí solamente esto:</p>
+  <label class="chk"><input type="checkbox" data-k="ap4-1"><span class="box"></span><span class="txt">Escribí la frase y mandala. Claude se da cuenta solo de que tiene que usar la skill.</span></label>
+  <div class="frase"><h3>Tu frase</h3><pre id="apfrase">Armá mi app</pre><button class="b s" type="button" data-copiar="apfrase">📋 Copiar</button></div>
+  <p class="por" style="margin-top:12px">También funciona si lo decís con tus palabras: «quiero mi app de entrega» · «que mis clientas entren con su mail» · «cómo entrego mi producto».</p>
+</section>
+
+<section class="card paso rv" data-paso>
+  <div class="cab"><div class="num">🧭</div><div><div class="eyebrow">Después</div><h2>Qué sigue</h2></div></div>
+  <p class="por">Cada vez que alguien compra, sumás su mail en la planilla y ya entra. ¡Tu negocio ya tiene producto, portada, página y app! 🎉</p>
 </section>
 
 <section class="card final rv" id="final">
@@ -207,7 +191,7 @@ function progreso(fiesta){
   $("#fill").style.width=p+"%";$("#pct").textContent=p+" %";
   $$("[data-paso]").forEach(function(s){var cs=s.querySelectorAll("input[data-k]"),ok=Array.prototype.every.call(cs,function(c){return c.checked});s.classList.toggle("lista",ok)});
   var f=$("#final");
-  if(p===100){f.classList.add("ok");$("#finalEmoji").textContent="🎉";$("#finalTit").innerHTML='¡Estás <span class="g">lista</span>!';$("#finalTxt").textContent="Tu app está lista: tus clientas entran con su mail y ven lo que compraron 💜";
+  if(p===100){f.classList.add("ok");$("#finalEmoji").textContent="🎉";$("#finalTit").innerHTML='¡Estás <span class="g">lista</span>!';$("#finalTxt").textContent="Tu skill está lista. Pedile a Claude «Armá mi app» 💜";
     if(fiesta){var r=f.getBoundingClientRect();chispas(window.innerWidth/2,Math.max(80,Math.min(window.innerHeight-80,r.top+60)),40);aviso("¡Listo! 🎉")}}
   else{f.classList.remove("ok");$("#finalEmoji").textContent=p>=50?"🌷":"🌱";$("#finalTit").textContent=p>=50?"¡Ya pasaste la mitad!":"Vas por buen camino";$("#finalTxt").textContent="Te faltan "+(cuentan.length-n)+" casillas para terminar."}
 }

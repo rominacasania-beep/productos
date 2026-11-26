@@ -91,6 +91,7 @@ footer{margin-top:34px;text-align:center;color:var(--muted);font-size:13px}
   *,*::before,*::after{animation:none!important;transition:none!important}
   .js .rv{opacity:1;transform:none}
 }
+.lista{margin:6px 0 0;padding:0;list-style:none}.lista li{padding:9px 0 9px 30px;position:relative;border-bottom:1px solid var(--line)}.lista li::before{content:"✓";position:absolute;left:4px;color:var(--menta);font-weight:700}
 </style>
 </head>
 <body>
@@ -99,93 +100,49 @@ footer{margin-top:34px;text-align:center;color:var(--muted);font-size:13px}
 <header class="hero rv">
   <div class="eyebrow">Regalo del taller · Tu producto de cero</div>
   <h1>Tu producto, <span class="g">de la idea al PDF</span></h1>
-  <p class="muted">Es el mismo camino que hicimos en vivo con «Volver a mí», ahora para el tuyo. Seguí los pasos en orden, copiá cada frase y pegala en Claude. Tildá cada casilla y la barra de arriba se va llenando.</p>
-  <div class="sello"><span class="flota">💜</span> <span>Todo se hace <b>dentro de tu proyecto «Mi producto»</b> en Claude de escritorio</span></div>
+  <p class="muted">Una skill para Claude que te acompaña de punta a punta: te conoce, elige la idea con vos, escribe con tu voz y te entrega tu producto en PDF, listo para vender.</p>
+  <div class="sello"><span class="flota">✨</span> <span>La instalás <b>una sola vez</b> y Claude la usa siempre</span></div>
 </header>
 
 <section class="card paso rv" data-paso>
-  <div class="cab"><div class="num">🎯</div><div><div class="eyebrow">Paso 1</div><h2>Elegí tu idea con datos</h2></div></div>
-  <p class="por">Un buen producto resuelve <b>un dolor concreto</b> de una persona concreta. No elegimos por lo que nos gusta: elegimos lo que ya se compra y donde vos tenés algo para dar.</p>
-  <label class="chk"><input type="checkbox" data-k="pc1-1"><span class="box"></span><span class="txt">Abrí Claude de escritorio y entrá a tu proyecto <b>«Mi producto»</b>.</span></label>
-  <label class="chk"><input type="checkbox" data-k="pc1-2"><span class="box"></span><span class="txt">Pegá la frase «Elegir mi idea» y respondé lo que te pregunte.</span></label>
-  <label class="chk"><input type="checkbox" data-k="pc1-3"><span class="box"></span><span class="txt">Quedate con <b>una sola idea</b>: una persona, un dolor, un resultado.</span></label>
-  <label class="chk"><input type="checkbox" data-k="pc1-4"><span class="box"></span><span class="txt">Guardala en el proyecto como contenido de texto con el título <b>Mi idea</b>.</span></label>
-  <div class="frase">
-    <h3>Elegir mi idea</h3>
-    <pre id="pc1f1">Ya me conocés por los archivos de este proyecto. Quiero elegir UNA idea de producto digital (un journal o una guía en PDF).
-1. Proponeme 5 ideas que crucen lo que yo sé con un dolor real por el que la gente ya paga. Para cada una: para quién es, qué dolor resuelve, qué resultado promete y por qué yo puedo crearla.
-2. Decime cómo verificar en la Biblioteca de anuncios de Meta que esa idea ya se vende (qué palabras buscar).
-3. Haceme 3 preguntas para ayudarme a elegir y esperá mis respuestas.
-4. Con lo que te diga, recomendame 1 y explicame por qué en 5 líneas.</pre>
-    <button class="b s" type="button" data-copiar="pc1f1">📋 Copiar</button>
-  </div>
-  <div class="tip">💡 Si dudás entre dos, elegí la que podrías explicarle a una amiga en una frase. Siempre podés crear la otra después.</div>
-  <div class="links"><a class="b p" href="https://www.facebook.com/ads/library/" target="_blank" rel="noopener">Biblioteca de anuncios ↗</a></div>
+  <div class="cab"><div class="num">🎁</div><div><div class="eyebrow">Qué hace por vos</div><h2>Lo que Claude va a hacer solo</h2></div></div>
+  <p class="por">Vos le contás tu idea y respondés lo que te pregunta. Claude hace el resto:</p>
+  <ul class="lista"><li>Te entrevista (8 preguntas, de a una) para conocer lo que sabés y viviste.</li><li>Te propone 5 ideas con un dolor real y elige con vos <b>una</b>.</li><li>Te arma la promesa, 8 nombres y el índice. Vos aprobás.</li><li>Escribe parte por parte <b>con tu voz</b> y te pregunta si suena a vos.</li><li>Revisa todo con 10 controles de calidad (nada inventado, nada copiado).</li><li>Diseña y te entrega el <b>PDF terminado</b>, con tapa, bienvenida, índice y cierre.</li></ul>
 </section>
 
 <section class="card paso rv" data-paso>
-  <div class="cab"><div class="num">📑</div><div><div class="eyebrow">Paso 2</div><h2>El índice y el nombre</h2></div></div>
-  <p class="por">Antes de escribir, armamos el esqueleto: el nombre, la promesa y qué va en cada parte.</p>
-  <label class="chk"><input type="checkbox" data-k="pc2-1"><span class="box"></span><span class="txt">Pegá «Índice y nombre» en el mismo chat.</span></label>
-  <label class="chk"><input type="checkbox" data-k="pc2-2"><span class="box"></span><span class="txt">Elegí el nombre que más te guste (o pedile más opciones).</span></label>
-  <label class="chk"><input type="checkbox" data-k="pc2-3"><span class="box"></span><span class="txt">Pedile cambios hasta que el índice te encante: es tu producto.</span></label>
-  <label class="chk"><input type="checkbox" data-k="pc2-4"><span class="box"></span><span class="txt">Guardalo en el proyecto como <b>Índice</b>.</span></label>
-  <div class="frase">
-    <h3>Índice y nombre</h3>
-    <pre id="pc2f1">Con la idea que elegimos, armame:
-1. 8 opciones de nombre: cortas, cálidas, fáciles de recordar, que digan el resultado. Al lado de cada una, una frase de subtítulo.
-2. La promesa del producto en una sola oración: «Para [quién] que [dolor], este [journal/guía] te ayuda a [resultado] en [tiempo]».
-3. El índice completo: de 6 a 10 partes, con el título de cada una y qué va a encontrar la clienta ahí (2 líneas por parte).
-Si es un journal, que cada parte tenga una explicación corta + preguntas para escribir + un ejercicio. Si es una guía, que cada parte tenga explicación + pasos + un ejemplo.</pre>
-    <button class="b s" type="button" data-copiar="pc2f1">📋 Copiar</button>
-  </div>
+  <div class="cab"><div class="num">⚙️</div><div><div class="eyebrow">Paso 1 · Una sola vez</div><h2>Prepará Claude</h2></div></div>
+  <p class="por">Las skills necesitan que Claude pueda crear archivos. Se activa una vez y queda para siempre.</p>
+  <label class="chk"><input type="checkbox" data-k="pc1-1"><span class="box"></span><span class="txt">En Claude (escritorio o claude.ai) tocá tu nombre abajo a la izquierda → <b>«Configuración»</b>.</span></label>
+  <label class="chk"><input type="checkbox" data-k="pc1-2"><span class="box"></span><span class="txt">Entrá a <b>«Capacidades»</b> y activá <b>«Ejecución de código y creación de archivos»</b>.</span></label>
 </section>
 
 <section class="card paso rv" data-paso>
-  <div class="cab"><div class="num">✍️</div><div><div class="eyebrow">Paso 3</div><h2>Escribir el contenido</h2></div></div>
-  <p class="por">Ahora Claude escribe, parte por parte. Vos leés, corregís y le pedís que suene a vos. Ir de a una parte hace que todo salga mucho mejor.</p>
-  <label class="chk"><input type="checkbox" data-k="pc3-1"><span class="box"></span><span class="txt">Pegá «Escribir una parte» y cambiá el número por 1.</span></label>
-  <label class="chk"><input type="checkbox" data-k="pc3-2"><span class="box"></span><span class="txt">Leé lo que escribió. Si algo no suena a vos, decíselo con tus palabras.</span></label>
-  <label class="chk"><input type="checkbox" data-k="pc3-3"><span class="box"></span><span class="txt">Repetí con cada parte del índice hasta terminar.</span></label>
-  <label class="chk"><input type="checkbox" data-k="pc3-4"><span class="box"></span><span class="txt">Al final pegá «Revisión completa» para que lo lea todo junto.</span></label>
-  <div class="frase">
-    <h3>Escribir una parte</h3>
-    <pre id="pc3f1">Escribí la parte 1 del índice completa, lista para la clienta.
-• Con mi voz (está en mis instrucciones): cálida, simple, hablándole a una sola persona.
-• Frases cortas, nada de palabras raras.
-• Si es un journal: una introducción corta, 5 a 8 preguntas para escribir con espacio para responder, y un ejercicio práctico.
-• Nada de promesas médicas ni de resultados garantizados.
-Cuando termines, preguntame si quiero cambios antes de pasar a la siguiente.</pre>
-    <button class="b s" type="button" data-copiar="pc3f1">📋 Copiar</button>
-  </div>
-  <div class="frase">
-    <h3>Revisión completa</h3>
-    <pre id="pc3f2">Leé todo el contenido que escribimos de principio a fin y decime:
-1. Si hay partes que se repiten o que se contradicen.
-2. Si cumple la promesa del producto.
-3. 3 cosas para que se sienta más valioso (por ejemplo: una página de bienvenida, una de cierre, una lista para imprimir).
-Después aplicá los cambios que yo apruebe.</pre>
-    <button class="b s" type="button" data-copiar="pc3f2">📋 Copiar</button>
-  </div>
+  <div class="cab"><div class="num">⬇️</div><div><div class="eyebrow">Paso 2</div><h2>Descargá tu skill</h2></div></div>
+  <p class="por">Es un archivo .zip. <b>No lo abras ni lo descomprimas</b>: se sube así como baja.</p>
+  <label class="chk"><input type="checkbox" data-k="pc2-1"><span class="box"></span><span class="txt">Tocá el botón y guardá el archivo en tu compu (queda en «Descargas»).</span></label>
+  <div class="links"><a class="b p" href="mi-producto.zip" download>⬇️ Descargar mi-producto.zip</a></div>
 </section>
 
 <section class="card paso rv" data-paso>
-  <div class="cab"><div class="num">📄</div><div><div class="eyebrow">Paso 4</div><h2>Convertirlo en un PDF lindo</h2></div></div>
-  <p class="por">Claude arma el diseño y te lo deja como archivo, listo para entregar. No hace falta saber diseño.</p>
-  <label class="chk"><input type="checkbox" data-k="pc4-1"><span class="box"></span><span class="txt">Pegá «Armar el PDF» y elegí los colores y letras que te proponga.</span></label>
-  <label class="chk"><input type="checkbox" data-k="pc4-2"><span class="box"></span><span class="txt">Abrí el archivo y miralo en la compu y en el celu.</span></label>
-  <label class="chk"><input type="checkbox" data-k="pc4-3"><span class="box"></span><span class="txt">Pedile los arreglos que quieras (márgenes, tamaño de letra, colores).</span></label>
-  <label class="chk"><input type="checkbox" data-k="pc4-4"><span class="box"></span><span class="txt">Guardá el PDF final en tu carpeta «Mi negocio» con el nombre del producto.</span></label>
-  <div class="frase">
-    <h3>Armar el PDF</h3>
-    <pre id="pc4f1">Ahora convertí todo el contenido en un PDF prolijo y lindo, tamaño A4 vertical.
-1. Proponeme 3 combinaciones de colores y letras que vayan con mi marca y con el tema, y esperá que elija.
-2. Armá: tapa con el nombre y el subtítulo, página de bienvenida, índice, cada parte con su título grande, espacios con renglones para escribir donde haga falta, y una página de cierre.
-3. Creá el archivo en mi carpeta «Mi negocio» y decime dónde quedó.
-Si no podés crear el PDF directo, hacelo en HTML listo para imprimir y explicame paso a paso cómo guardarlo como PDF.</pre>
-    <button class="b s" type="button" data-copiar="pc4f1">📋 Copiar</button>
-  </div>
-  <div class="tip">💡 Si Claude te pide permiso para crear o abrir archivos en tu compu, aceptá: así trabaja en tu carpeta.</div>
+  <div class="cab"><div class="num">📤</div><div><div class="eyebrow">Paso 3</div><h2>Subila a Claude</h2></div></div>
+  <p class="por">Tarda un minuto. Después aparece en tu lista de skills, encendida.</p>
+  <label class="chk"><input type="checkbox" data-k="pc3-1"><span class="box"></span><span class="txt">En <b>«Configuración»</b> → <b>«Capacidades»</b>, bajá hasta <b>«Skills»</b> (puede decir «Habilidades»).</span></label>
+  <label class="chk"><input type="checkbox" data-k="pc3-2"><span class="box"></span><span class="txt">Tocá <b>«Subir skill»</b> (o «+ Agregar») y elegí el archivo <b>mi-producto.zip</b> de tu carpeta «Descargas».</span></label>
+  <label class="chk"><input type="checkbox" data-k="pc3-3"><span class="box"></span><span class="txt">Fijate que quede <b>encendida</b> (el interruptor en color).</span></label>
+</section>
+
+<section class="card paso rv" data-paso>
+  <div class="cab"><div class="num">💬</div><div><div class="eyebrow">Paso 4</div><h2>Pedíselo con una frase</h2></div></div>
+  <p class="por">Abrí un chat dentro de tu proyecto «Mi producto» y escribí solamente esto:</p>
+  <label class="chk"><input type="checkbox" data-k="pc4-1"><span class="box"></span><span class="txt">Escribí la frase y mandala. Claude se da cuenta solo de que tiene que usar la skill.</span></label>
+  <div class="frase"><h3>Tu frase</h3><pre id="pcfrase">Creá mi producto</pre><button class="b s" type="button" data-copiar="pcfrase">📋 Copiar</button></div>
+  <p class="por" style="margin-top:12px">También funciona si lo decís con tus palabras: «quiero hacer mi journal» · «armemos mi guía» · «tengo una idea de producto».</p>
+</section>
+
+<section class="card paso rv" data-paso>
+  <div class="cab"><div class="num">🧭</div><div><div class="eyebrow">Después</div><h2>Qué sigue</h2></div></div>
+  <p class="por">Con tu PDF listo, seguí con <b>«Kit de portadas y mockups»</b>, después <b>«Estructura de página de venta»</b> y por último <b>«Tu app paso a paso»</b>. Si cerrás el chat, no pasa nada: Claude guarda una ficha y retoma donde quedaste.</p>
 </section>
 
 <section class="card final rv" id="final">
@@ -234,7 +191,7 @@ function progreso(fiesta){
   $("#fill").style.width=p+"%";$("#pct").textContent=p+" %";
   $$("[data-paso]").forEach(function(s){var cs=s.querySelectorAll("input[data-k]"),ok=Array.prototype.every.call(cs,function(c){return c.checked});s.classList.toggle("lista",ok)});
   var f=$("#final");
-  if(p===100){f.classList.add("ok");$("#finalEmoji").textContent="🎉";$("#finalTit").innerHTML='¡Estás <span class="g">lista</span>!';$("#finalTxt").textContent="Tenés tu producto terminado. Ahora ponele portada y página de venta 💜";
+  if(p===100){f.classList.add("ok");$("#finalEmoji").textContent="🎉";$("#finalTit").innerHTML='¡Estás <span class="g">lista</span>!';$("#finalTxt").textContent="Tu skill está lista. Pedile a Claude «Creá mi producto» 💜";
     if(fiesta){var r=f.getBoundingClientRect();chispas(window.innerWidth/2,Math.max(80,Math.min(window.innerHeight-80,r.top+60)),40);aviso("¡Listo! 🎉")}}
   else{f.classList.remove("ok");$("#finalEmoji").textContent=p>=50?"🌷":"🌱";$("#finalTit").textContent=p>=50?"¡Ya pasaste la mitad!":"Vas por buen camino";$("#finalTxt").textContent="Te faltan "+(cuentan.length-n)+" casillas para terminar."}
 }
